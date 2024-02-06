@@ -1,0 +1,15 @@
+# routes.yaml
+home:
+  path: /
+  controller: HomeController
+  method: index
+
+users:
+  path: /users
+  controller: UsersController
+  method: index
+
+contact:
+  path: /contact
+  controller: ContactController
+  method: index

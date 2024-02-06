@@ -22,8 +22,8 @@ web site for ISEP-APP-Informatique
 # XAMPP
 ## Install XAMPP
 Linux and Windows version are available on the [official website](https://www.apachefriends.org/download.html)
+
 ## Access to phpMyAdmin
-- Open your browser
 - Go to [localhost/phpmyadmin](http://localhost/phpmyadmin)
 
 # Tools
