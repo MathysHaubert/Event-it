@@ -20,14 +20,26 @@ class Router {
         $this->routes[] = ['route' => $route, 'controller' => $controller, 'method' => $method];
     }
 
+    /**
+     * Dispatch the request to the appropriate controller
+     * 
+     * @param string $url
+     * @return void
+     */
     public function dispatch($url) {
         foreach ($this->routes as $route) {
             if ($route['route'] === $url) {
-                $controller = new $route['controller'];
-                
-                $method = $route['method'];
-                $controller->$method();
-                return;
+                // check if the class exists
+                if (!class_exists($route['controller'])) {
+                    echo "{$route['controller']} not found";
+                    Kernel::logger("{$route['controller']} not found");
+                    return;
+                } else {
+                    $controller = new $route['controller'];
+                    $method = $route['method'];
+                    $controller->$method();
+                    return;
+                }
             }
         }
 

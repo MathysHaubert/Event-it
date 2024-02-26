@@ -12,6 +12,9 @@ define ('KERNEL', ROOT . '/src/kernel.php');
 
 try {
 
+    // check if app.log already exists
+    Kernel::manageLogFile();
+    
     $router = new Router();
 
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
