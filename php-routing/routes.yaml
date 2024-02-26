@@ -1,5 +1,5 @@
 # routes.yaml
-home:
+event_it.homepage:
   path: /
   controller: HomeController
   method: index

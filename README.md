@@ -32,3 +32,8 @@ Linux and Windows version are available on the [official website](https://www.ap
 
 ## How MVC works
 [Check here](https://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm)
+
+# How to setup the project
+- run ``` php -S localhost:8080 ``` and configure it.
+I invite you to check this tutoriel for [VS Code](https://stackoverflow.com/questions/60678203/is-it-possible-to-use-live-server-for-php-with-autoreload-on-save)
+However, on jetbrains IDE, you have to setup an apache2, with php-fpm. [Check here](https://www.jetbrains.com/help/phpstorm/2021.1/configuring-xdebug.html)
