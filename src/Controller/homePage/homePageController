@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 namespace App\Controller\homePage;
-// import the necessary classes
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController{
-    public function index(): Response
+use App\Kernel\Kernel;
+use App\Controller\Controller;
+
+class HomeController extends Controller{
+    public function index(): void
 {
-    return $this->render('home/index.html.twig');
+    Kernel::logger($this);
+    $this->twig->display('public/homePage/index.html.twig');
 }
 
 }
