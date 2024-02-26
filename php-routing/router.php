@@ -13,6 +13,7 @@ class Router {
         foreach ($routes as $name => $data) {
             $this->addRoute($data['path'], $data['controller'], $data['method']);
         }
+    
     }
 
     public function addRoute($route, $controller, $method) {
@@ -23,6 +24,7 @@ class Router {
         foreach ($this->routes as $route) {
             if ($route['route'] === $url) {
                 $controller = new $route['controller'];
+                
                 $method = $route['method'];
                 $controller->$method();
                 return;

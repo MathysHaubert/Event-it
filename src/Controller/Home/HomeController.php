@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\homePage;
+namespace App\Controller\Home;
 
 use App\Kernel\Kernel;
 use App\Controller\Controller;
@@ -10,8 +10,7 @@ use App\Controller\Controller;
 class HomeController extends Controller{
     public function index(): void
 {
-    Kernel::logger($this);
-    $this->twig->display('public/homePage/index.html.twig');
+    $this->twig->display('public/homePage/' . self::INDEX);
 }
 
 }
