@@ -23,5 +23,5 @@ try {
     
     $router->dispatch($url);
 } catch (Exception $e) {
-    Kernel::logger('Error: ' . $e->getMessage());
+    Kernel::logger('Error: ' . $e->getMessage(). sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
 }
