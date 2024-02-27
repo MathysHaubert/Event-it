@@ -43,14 +43,12 @@ This project is a web application for the ISEP school.
 
 If Composer is not installed, use your best friend [Google](https://google.com) 😉 .
 
-> Be aware, this command must be run in the project folder
-
 ## Clone the repository with Git
 [Check here](https://www.hostinger.com/tutorials/git-tutorial) for a tutorial on how to use Git.
 
 ## Install dependencies via Composer
 ``` composer install ``` will create the `vendor` folder and install the necessary dependencies.
-
+> Be aware, this command must be run in the project folder
 ## PHP server
 Run ``` php -S localhost:8080 ``` and configure it if necessary.
 I suggest you check this forum for [VS Code](https://stackoverflow.com/questions/60678203/is-it-possible-to-use-live-server-for-php-with-autoreload-on-save)
