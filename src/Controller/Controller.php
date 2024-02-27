@@ -6,7 +6,7 @@ use Twig\Environment;
 use \Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
 use App\Kernel\Kernel;
-use App\Translator\Translator;
+use App\TwigExtention\Translator;
 
 abstract class Controller
 {

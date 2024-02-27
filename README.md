@@ -127,9 +127,13 @@ use App\Controller\Controller as BaseController; // import the Controller class
  * @package App\Controller\Home
  */
 class HomeController extends BaseController {
+
     public function index(): void
 {
-    $this->twig->display('public/homePage/' . self::INDEX); // will render the index.html.twig
+    $this->webRender('public/homePage/' . self::INDEX, [
+        'title' => 'Home Page',
+        'content' => 'Welcome to the home page'
+    ]); // will render the index.html.twig with variable title and content
 }
 
 }
@@ -195,7 +199,7 @@ extends the `base.html.twig` and that will fill the blocks.
 ## Create translations in your twig files !
 I managed to keep it simple. In you twig files, you should just use it like this to translate the text:
 ```twig
-{{ translator.translate('event_it.teste.hello_world') }}
+{{ 'event_it.teste.hello_world'|trans }}
 ```
 So, if your key is `event_it.teste.hello_world`, you should have a file (depends the local) like this `translation.fr.yaml` for french text in the `translations` folder. In this file, you should have:
 ```yaml
