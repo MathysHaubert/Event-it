@@ -24,11 +24,7 @@ This project is a web application for the ISEP school.
 - [🐥 Deal with Git](#-deal-with-git)
 - [How to contribute](#how-to-contribute)
 
-<<<<<<< HEAD
 > link doesn't work, fuck it.
-=======
-  > Link doesn't work, fuck off.
->>>>>>> 76d11895f59aec2736410fd573fdcb778ce3bbad
 
 # 🧰Tools
 - Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
