@@ -73,11 +73,11 @@ To keep it simple, we will illustrate the project's structure using an example. 
 
 1. **Open Sesame:** the `index.php` file will be used every time. This file is the application's entry point. It is responsible for directing requests to the right controllers. For this, it reads in the `routes.yaml` file to know where to redirect the client.
 
-2. **The right controller:** Once your controller is called, as well as the right method, the controller will interact with the model to retrieve the necessary data. Once it has the data, it will pass it to the view. ```$this->twig->display('blablabla');``` will have the responsibility of generating the HTML to display from the twig. Later other file's name will be available.
+2. **The right controller:** Once your controller is called, as well as the right method, the controller will interact with the model to retrieve the necessary data. Once it has the data, it will pass it to the view. ```$this->webRender('blablabla');``` will have the responsibility of generating the HTML to display from the twig. Later other file's name will be available.
 
     > Controllers are in the `src/Controller` folder.
 
-    **Please,** keep the used syntax `$this->twig->display( 'folder' . self::INDEX);` for views. This will facilitate understanding of the code. 😉
+    **Please,** keep the used syntax `$this->webRender( 'folder' . self::INDEX, $data);` for views. This will facilitate understanding of the code. 😉
 
 3. **The model:** The model communicates with the database and processes data (e.g., retrieve, insert, update, delete). In our case, PHP manages the model.
 
