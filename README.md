@@ -5,22 +5,25 @@ Here's the translation of the README.md in English:
 This project is a web application for the ISEP school. 
 
 ## Summary
-- [🧰Tools](#-tools)
-- [🌚How to setup the project](#how-to-setup-the-project)
+- [🧰 Tools](#-tools)
+- [🌚 How to setup the project](#-how-to-setup-the-project)
   - [Composer](#composer)
   - [Clone the repository with Git](#clone-the-repository-with-git)
   - [Install dependencies via Composer](#install-dependencies-via-composer)
   - [PHP server](#php-server)
   - [Finally](#finally)
-- [📚Documentation](#-documentation)
+- [📚 Documentation](#-documentation)
     - [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
     - [🧠 Understanding the Project's Structure](#-understanding-the-projects-structure)
-- [⚠PHP Doc⚠](#php-doc)
-- [🐘 Create your first page !](#create-your-first-page-)
-  - [Controller PHP](#-controller-php)
-  - [Routes.yaml](#-routesyaml)
+- [⚠ PHP Doc](#-php-doc)
+- [🐘 Create your first page!](#-create-your-first-page)
+  - [Controller PHP](#controller-php)
+  - [Routes.yaml](#routesyaml)
   - [Twig Tutoriel](#twig-tutoriel)
+  - [Create translations in your twig files!](#create-translations-in-your-twig-files)
+- [🐥 Deal with Git](#-deal-with-git)
 - [How to contribute](#how-to-contribute)
+
 
 # 🧰Tools
 - Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
@@ -188,7 +191,45 @@ extends the `base.html.twig` and that will fill the blocks.
 {% include 'grille.html.twig' %} {# pour inclure un fichier externe si besoin #}
 ```
 
+[//]: <> (Part 2 about the translation)
+
+## Create translations in your twig files !
+I managed to keep it simple. In you twig files, you should just use it like this to translate the text:
+```twig
+{{ translator.translate('event_it.teste.hello_world') }}
+```
+So, if your key is `event_it.teste.hello_world`, you should have a file (depends the local) like this `translation.fr.yaml` for french text in the `translations` folder. In this file, you should have:
+```yaml
+event_it:
+  teste:
+    hello_world: "Bonjour le monde"
+```
+
+<span style="color:red">WARNING:</span> If you don't have the translation, it will display the key. So, be careful to have **all the translations in all the files**.
+
+# 🐥 Deal with git
+## First create a branch
+2 options, you can use the command line or the github interface. name it with the feature you are working on and your name. For example, if i work on the home page, I can name it `mh-feature-homePage`. With it, I will know that it's a feature, it's for the home page and who work on it. After that, don't forget to switch to it.
+
+Now you can work on your feature !
+
+## Commit
+When you have finished a part of the feature, you can commit your changes. Don't forget to write a clear message to explain what you have done. If you have to do several commits, it's not a problem.
+
+## Push
+When you have finished the feature, you can push your branch to the remote repository. It will be available for the others.
+
+## Pull request
+When you have pushed your branch, you can create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests). It will be reviewed by the others. If everything is ok, it will be merged to the main branch.
+Don't forget to put someone in the review, to assign the pull request to yourself, to put a label and please, <span style="color:red">**PLEASE**</span>, don't merge your pull request by yourself. Wait for the validation of the reviewer, some died for less than that...
+
+### Explanation:
+When you **merge** a pull request, it will be add to the main branch, so it will be available for everyone. If you merge it by yourself, you can have some conflicts with the main branch. So, it's better to wait for the validation of the reviewer.
+
 ## How to contribute
 💸[My paypal](https://paypal.me/MathysHaub)💸
 
 If you have questions, don't hesitate to ask me. I will be happy to help you. 😁
+I can't verify all function of the app, so if you find a bug, please report it. I will try to fix it as soon as possible. 😁
+
+XOXO
