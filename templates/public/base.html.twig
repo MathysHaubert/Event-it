@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello, World!</title>
+<meta charset="utf-8"/>
+    <title>
+        {% block title %}{% endblock %}
+    </title>
 
-    {% block title %} Acceuil {% endblock %}
-    {% block stylesheets %}{% endblock %}
-    {% block javascripts %}{% endblock %}
+
+    <link rel="stylesheet" href="app.css" />
+    {% block stylesheets %}
+        
+    {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
 </head>
 <body>
     {% block body %}{% endblock %}

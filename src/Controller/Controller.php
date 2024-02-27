@@ -26,6 +26,8 @@ abstract class Controller
 
         $this->twig = new Environment($this->loader);
 
+        $this->twig->addExtension(new Translator('en'));
+
         $this->translator = new Translator('en');
     }
 
@@ -45,9 +47,11 @@ abstract class Controller
     try {
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
+
         // Chargement et affichage du template avec les données
         $this->twig->load($template)->display($data);
     } catch (\Twig\Error\LoaderError | \Twig\Error\RuntimeError | \Twig\Error\SyntaxError $e) {
+
         // Log de l'erreur ou gestion selon le besoin
         Kernel::logger($e->getMessage() . sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
     }
