@@ -22,6 +22,8 @@ This project is a web application for the ISEP school.
   - [Twig Tutoriel](#twig-tutoriel)
 - [How to contribute](#how-to-contribute)
 
+> link doesn't work, fuck it.
+
 # 🧰Tools
 - Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
 - Server: [XAMPP](https://www.apachefriends.org/index.html) (optional)
