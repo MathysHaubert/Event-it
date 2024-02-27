@@ -227,7 +227,7 @@ Don't forget to put someone in the review, to assign the pull request to yoursel
 When you **merge** a pull request, it will be add to the main branch, so it will be available for everyone. If you merge it by yourself, you can have some conflicts with the main branch. So, it's better to wait for the validation of the reviewer.
 
 ## How to contribute
-💸[My paypal](https://paypal.me/MathysHaub)💸
+💸[My paypal](https://paypal.me/VictorGermain)💸
 
 If you have questions, don't hesitate to ask me. I will be happy to help you. 😁
 I can't verify all function of the app, so if you find a bug, please report it. I will try to fix it as soon as possible. 😁
