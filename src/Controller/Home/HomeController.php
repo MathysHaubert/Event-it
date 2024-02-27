@@ -9,7 +9,10 @@ use App\Controller\Controller;
 class HomeController extends Controller{
     public function index(): void
 {
-    $this->twig->display('public/homePage/' . self::INDEX);
+    $this->webRender('public/homePage/' . self::INDEX, [
+        'title' => 'Home Page',
+        'content' => 'Welcome to the home page'
+    ]);
 }
 
 }
