@@ -2,16 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\Translator;
+namespace App\TwigExtention;
 
 use Symfony\Component\Yaml\Yaml;
 use App\Kernel\Kernel;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class Translator
+class Translator extends AbstractExtension
 {
     private string $locale;
 
     private CONST TRANSLATION_FILE = 'translations/translation.%s.yaml';
+
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('trans',[$this,'translation'])
+        ];
+    }
 
     public function __construct(string $locale)
     {
@@ -19,18 +28,18 @@ class Translator
     }
 
     //create a function who will read in the translations/translation.$locale.yaml
-    public function translate(string $key): string
+    public function translation(string $key): ?string
     {
         try {
         $translations = Yaml::parseFile(sprintf(self::TRANSLATION_FILE,$this->locale));
         } catch (\Exception $e) {
             Kernel::logger($e->getMessage() . sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
         } finally {
-            return $this->foundTranslate($key, $translations);;
+            return $this->foundTranslate($key, $translations) === null ? $key : $this->foundTranslate($key, $translations);
         }
     }
 
-    public function foundTranslate(string $key, array $translations): string
+    public function foundTranslate(string $key, array $translations): ?string
     {
         $parts = explode('.', $key);
 
@@ -43,7 +52,7 @@ class Translator
                 break;
             }
         }
-        return $value;
+        return $value !== "" ? $value : $key ;
     }
 
     public function getInstance(): Translator

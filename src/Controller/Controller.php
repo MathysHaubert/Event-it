@@ -2,18 +2,19 @@
 
 namespace App\Controller;
 
+use App\TwigExtention\Assets;
 use Twig\Environment;
 use \Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
 use App\Kernel\Kernel;
-use App\Translator\Translator;
+use App\TwigExtention\Translator;
 
 abstract class Controller
 {
     protected const INDEX = 'index.html.twig';
-    private $loader;
+    private FilesystemLoader $loader;
 
-    protected $twig;
+    protected Environment $twig;
 
 
     protected Translator $translator;
@@ -26,7 +27,10 @@ abstract class Controller
 
         $this->twig = new Environment($this->loader);
 
-        $this->translator = new Translator('en');
+        $this->translator = new Translator($_SESSION['locale'] ?? 'en');
+
+        $this->twig->addExtension($this->translator);
+
     }
 
     public function __toString(): string
@@ -45,9 +49,11 @@ abstract class Controller
     try {
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
+
         // Chargement et affichage du template avec les données
         $this->twig->load($template)->display($data);
     } catch (\Twig\Error\LoaderError | \Twig\Error\RuntimeError | \Twig\Error\SyntaxError $e) {
+
         // Log de l'erreur ou gestion selon le besoin
         Kernel::logger($e->getMessage() . sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
     }

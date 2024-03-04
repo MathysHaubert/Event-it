@@ -1,6 +1,10 @@
 {% extends '/public/base.html.twig' %}
 
+{% block title %}
+Home
+{% endblock %}
+
 {% block body %}
 <h1>teste</h1>
-<p>{{ translator.translate('event_it.teste.hello_world') }} </p>
+<p>{{ 'event_it.teste.hello_world'|trans }} </p>
 {% endblock %}
