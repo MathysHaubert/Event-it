@@ -213,6 +213,9 @@ I managed to keep it simple. In you twig files, you should just use it like this
 ```twig
 {{ translator.translate('event_it.teste.hello_world') }}
 ```
+> This method is deprecated, a new one will pop soon !
+> However, the same system will be keep, so you can read:
+
 So, if your key is `event_it.teste.hello_world`, you should have a file (depends the local) like this `translation.fr.yaml` for french text in the `translations` folder. In this file, you should have:
 ```yaml
 event_it:
