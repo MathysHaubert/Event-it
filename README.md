@@ -161,6 +161,22 @@ event_it.public.homepage:
 > In the future, I will try to pass arguments in the url, example: have urls with ``/user/{id}/manage`` and id will be the id of the user. Very easy to create [CRUD](https://developer.mozilla.org/fr/docs/Glossary/CRUD) pages.
 
 ## 🍃Twig Tutoriel
+Twig is a powerful templating engine for PHP, and it's used to create dynamic HTML templates for your web application. Here's a simple guide to get you started with Twig in our project.
+
+## What is Twig?
+
+Twig is a template engine that allows you to write concise and expressive syntax to generate HTML output. It separates your logic (PHP code) from your presentation (HTML), making your code more maintainable and clean.
+
+## How Does Twig Work?
+
+Twig works by defining templates, which are HTML files with Twig code that can insert variables, control structures (like loops and conditions), and more. When the server processes a request, it fills in these templates with dynamic content before sending the HTML to the user's browser.
+
+## Basic Twig Syntax
+
+- `{{ ... }}` - Output content into the template (e.g., variables or expressions).
+- `{% ... %}` - Execute control structures (e.g., loops, conditions).
+- `{# ... #}` - Add comments that will not be rendered in the HTML.
+  
 Here is a small tutorial on how to use Twig. Firslty, we have the `base.html.twig` file that will be the base of all the pages. It will contain the basic structure of the HTML page. Then, we will have the `index.html.twig` file that
 
 ```twig
