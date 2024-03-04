@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
-use DateTime;
 use App\Entity\Client;
+use App\Entity\Identifier;
 use App\Entity\Organization;
-use App\Entity\User\UserInterface;
+use DateTime;
 
 class User implements UserInterface
 {
