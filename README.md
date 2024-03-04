@@ -236,3 +236,7 @@ If you have questions, don't hesitate to ask me. I will be happy to help you. ğŸ
 I can't verify all function of the app, so if you find a bug, please report it. I will try to fix it as soon as possible. ğŸ˜
 
 XOXO
+
+## Dependencies you may need
+- mbstring
+- phpenmod
