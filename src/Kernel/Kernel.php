@@ -24,11 +24,13 @@ class Kernel
      * Create the log file if it doesn't exist
      *
      * @return void
+     * @throws Exception
      */
     public static function manageLogFile(): void
     {
         if (file_exists(LOG_FILE)) {
             // do nothing;
+            return;
         } else if (file_exists(ROOT . '/var/log')) {
             // create app.log
             fopen(LOG_FILE, 'w');
@@ -37,7 +39,10 @@ class Kernel
             mkdir(ROOT . '/log', 0777, true);
         } else {
             // create /var/log/app.log
-            mkdir(ROOT . '/var/log', 0777, true);
+            mkdir(ROOT . '/var/log/app.log', 0777, true);
+        }
+        if (!file_exists(LOG_FILE)) {
+            throw new Exception('Could not create log file');
         }
     }
 }
