@@ -5,23 +5,24 @@ Here's the translation of the README.md in English:
 This project is a web application for the ISEP school. 
 
 ## Summary
-- [🧰 Tools](#-tools)
-- [🌚 How to setup the project](#-how-to-setup-the-project)
+- [Tools](#tools)
+- [How to setup the project](#how-to-setup-the-project)
+  - [Install the setup](#install-the-setup)
   - [Composer](#composer)
   - [Clone the repository with Git](#clone-the-repository-with-git)
   - [Install dependencies via Composer](#install-dependencies-via-composer)
   - [PHP server](#php-server)
   - [Finally](#finally)
-- [📚 Documentation](#-documentation)
+- [Documentation](#documentation)
     - [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
-    - [🧠 Understanding the Project's Structure](#-understanding-the-projects-structure)
-- [⚠ PHP Doc](#-php-doc)
-- [🐘 Create your first page!](#-create-your-first-page)
+    - [Understanding the Project's Structure](#understanding-the-projects-structure)
+- [PHP Doc](#php-doc)
+- [Create your first page!](#create-your-first-page)
   - [Controller PHP](#controller-php)
   - [Routes.yaml](#routesyaml)
   - [Twig Tutoriel](#twig-tutoriel)
   - [Create translations in your twig files!](#create-translations-in-your-twig-files)
-- [🐥 Deal with Git](#-deal-with-git)
+- [Deal with Git](#deal-with-git)
 - [How to contribute](#how-to-contribute)
 
 > link doesn't work, fuck it.
@@ -36,6 +37,16 @@ This project is a web application for the ISEP school.
 
 # How to setup the project
 
+## Install the setup
+The install should be simple, if you're on **linux** you can execute the setup.sh:
+
+```
+sudo ./setup.sh
+```
+
+On windows, you have 2 choices:
+- First, you can use [WSL](https://learn.microsoft.com/fr-fr/windows/wsl/install) (with an ubuntu  and return on the linux's setup)
+- Install [WAMPP](https://www.infowebmaster.fr/tutoriel/debuter-wamp)  (not difficult but you need to configure it).
 ## Composer
 > Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
 > To verify if Composer is installed on the project, type in the CLI:
@@ -43,19 +54,17 @@ This project is a web application for the ISEP school.
 
 If Composer is not installed, use your best friend [Google](https://google.com) 😉 .
 
-## Clone the repository with Git
-[Check here](https://www.hostinger.com/tutorials/git-tutorial) for a tutorial on how to use Git.
-
 ## Install dependencies via Composer
-``` composer install ``` will create the `vendor` folder and install the necessary dependencies.
-> Be aware, this command must be run in the project folder
-## PHP server
-Run ``` php -S localhost:8080 ``` and configure it if necessary.
-I suggest you check this forum for [VS Code](https://stackoverflow.com/questions/60678203/is-it-possible-to-use-live-server-for-php-with-autoreload-on-save)
-Moreover, for JetBrains IDEs, the setup should be similar.
+``` composer install ``` 
+will create the `vendor` folder and install the necessary dependencies.
+> Be aware, this command must be run in the project folder.
+
+## Location
+
+If you have installed by setup.sh, the project will be in the `/var/www/Event-it` folder. If you have installed by yourself, you can choose the location you want.
 
 ## Finally
-Open your browser and go to [http://localhost:8080](http://localhost:8080) to see the website.
+Open your browser and go to [http://localhost](http://localhost) to see the website.
 
 # 📚Documentation
 Now the best part, the documentation. 
