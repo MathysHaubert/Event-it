@@ -4,7 +4,7 @@ require_once 'php-routing/Router.php';
 require_once 'src/Kernel.php';
 require 'vendor/autoload.php';
 
-use App\Kernel\Kernel;
+use App\Controller\Kernel;
 
 const ROOT = __DIR__;
 const LOG_FILE = ROOT . '/var/log/app.log';
@@ -27,7 +27,7 @@ try {
     $router = new Router();
 
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
-    
+
     $url = $_SERVER['REQUEST_URI'];
 
     $router->dispatch($url);
