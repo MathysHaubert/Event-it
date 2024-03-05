@@ -1,14 +1,14 @@
 <?php
 
 require_once 'php-routing/Router.php';
-require_once 'src/Kernel.php';
+require_once 'src/Kernel/Kernel.php';
 require 'vendor/autoload.php';
 
 use App\Kernel\Kernel;
 
 const ROOT = __DIR__;
 const LOG_FILE = ROOT . '/var/log/app.log';
-const KERNEL = ROOT . '/src/kernel.php';
+const KERNEL = ROOT . '/src/Kernel/Kernel.php';
 
 const ASSETS = ROOT . '/assets';
 
@@ -27,11 +27,12 @@ try {
     $router = new Router();
 
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
-    
+
     $url = $_SERVER['REQUEST_URI'];
 
     $router->dispatch($url);
 
 } catch (Exception $e) {
+    echo ('Error: ' . $e->getMessage(). sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
     Kernel::logger('Error: ' . $e->getMessage(). sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
 }
