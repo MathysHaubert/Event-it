@@ -238,6 +238,30 @@ event_it:
 
 <span style="color:red">WARNING:</span> If you don't have the translation, it will display the key. So, be careful to have **all the translations in all the files**.
 
+## Bonus tips:
+- ### 1 The path function:
+    ```twig
+    <a href="{{ path("nom_de_votre_route")}}">Don't forget to contribute</a>
+    ```
+  example:
+    if my route is something like that:
+    ```yaml
+    # routes.yaml
+    event_it.public.homepage:
+    path: /my-paypal
+    controller: App\Controller\Home\HomeController
+    method: index
+    ```
+    I will have:
+    ```twig
+    <a href="{{ path("event_it.public.homepage") }}">Don't forget to contribute</a>
+    ```
+    The result will be:
+    ```html
+    <a href="/my-paypal">Don't forget to contribute</a>
+    ```
+    The main advantage is if you need to change the path for X reason, if **ANYBODY** do the same
+    you juste have to change the path in your ```routes.yaml ```.
 # 🐥 Deal with git
 ## First create a branch
 2 options, you can use the command line or the github interface. name it with the feature you are working on and your name. For example, if i work on the home page, I can name it `mh-feature-homePage`. With it, I will know that it's a feature, it's for the home page and who work on it. After that, don't forget to switch to it.
