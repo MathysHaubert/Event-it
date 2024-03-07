@@ -27,9 +27,7 @@ try {
     $router = new Router();
 
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
-
-    $url = $_SERVER['REQUEST_URI'];
-
+    $url = $_SERVER['REQUEST_URI']; 
     $router->dispatch($url);
 
 } catch (Exception $e) {

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\TwigExtention\Assets;
+use App\TwigExtention\PathFunction;
 use Twig\Environment;
 use \Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
@@ -30,6 +31,7 @@ abstract class Controller
         $this->translator = new Translator($_SESSION['locale'] ?? 'en');
 
         $this->twig->addExtension($this->translator);
+        $this->twig->addExtension(new PathFunction());
 
     }
 
@@ -40,7 +42,7 @@ abstract class Controller
 
     /**
      * Render a template file
-     * 
+     *
      * @param string $template path of the template file
      * @param array $data data to be passed to the template
      */

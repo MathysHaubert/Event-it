@@ -14,7 +14,7 @@ class Kernel
      * @param string $message
      * @return void
      */
-    public static function logger(string $message): void
+    public static function logger(mixed $message): void
     {
         $time = '['.date('Y-m-d H:i:s').'] ';
         error_log($time . $message . "\n", 3, LOG_FILE);
