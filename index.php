@@ -19,7 +19,7 @@ try {
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
     
     $url = $_SERVER['REQUEST_URI']; 
-    echo($url);
+    
     $router->dispatch($url);
 
 } catch (Exception $e) {
