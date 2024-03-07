@@ -5,23 +5,24 @@ Here's the translation of the README.md in English:
 This project is a web application for the ISEP school. 
 
 ## Summary
-- [🧰 Tools](#-tools)
-- [🌚 How to setup the project](#-how-to-setup-the-project)
+- [Tools](#tools)
+- [How to setup the project](#how-to-setup-the-project)
+  - [Install the setup](#install-the-setup)
   - [Composer](#composer)
   - [Clone the repository with Git](#clone-the-repository-with-git)
   - [Install dependencies via Composer](#install-dependencies-via-composer)
   - [PHP server](#php-server)
   - [Finally](#finally)
-- [📚 Documentation](#-documentation)
+- [Documentation](#documentation)
     - [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
-    - [🧠 Understanding the Project's Structure](#-understanding-the-projects-structure)
-- [⚠ PHP Doc](#-php-doc)
-- [🐘 Create your first page!](#-create-your-first-page)
+    - [Understanding the Project's Structure](#understanding-the-projects-structure)
+- [PHP Doc](#php-doc)
+- [Create your first page!](#create-your-first-page)
   - [Controller PHP](#controller-php)
   - [Routes.yaml](#routesyaml)
   - [Twig Tutoriel](#twig-tutoriel)
   - [Create translations in your twig files!](#create-translations-in-your-twig-files)
-- [🐥 Deal with Git](#-deal-with-git)
+- [Deal with Git](#deal-with-git)
 - [How to contribute](#how-to-contribute)
 
 > link doesn't work, fuck it.
@@ -36,6 +37,16 @@ This project is a web application for the ISEP school.
 
 # How to setup the project
 
+## Install the setup
+The install should be simple, if you're on **linux** you can execute the setup.sh:
+
+```
+sudo ./setup.sh
+```
+
+On windows, you have 2 choices:
+- First, you can use [WSL](https://learn.microsoft.com/fr-fr/windows/wsl/install) (with an ubuntu  and return on the linux's setup)
+- Install [WAMPP](https://www.infowebmaster.fr/tutoriel/debuter-wamp)  (not difficult but you need to configure it).
 ## Composer
 > Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
 > To verify if Composer is installed on the project, type in the CLI:
@@ -43,19 +54,17 @@ This project is a web application for the ISEP school.
 
 If Composer is not installed, use your best friend [Google](https://google.com) 😉 .
 
-## Clone the repository with Git
-[Check here](https://www.hostinger.com/tutorials/git-tutorial) for a tutorial on how to use Git.
-
 ## Install dependencies via Composer
-``` composer install ``` will create the `vendor` folder and install the necessary dependencies.
-> Be aware, this command must be run in the project folder
-## PHP server
-Run ``` php -S localhost:8080 ``` and configure it if necessary.
-I suggest you check this forum for [VS Code](https://stackoverflow.com/questions/60678203/is-it-possible-to-use-live-server-for-php-with-autoreload-on-save)
-Moreover, for JetBrains IDEs, the setup should be similar.
+``` composer install ``` 
+will create the `vendor` folder and install the necessary dependencies.
+> Be aware, this command must be run in the project folder.
+
+## Location
+
+If you have installed by setup.sh, the project will be in the `/var/www/Event-it` folder. If you have installed by yourself, you can choose the location you want.
 
 ## Finally
-Open your browser and go to [http://localhost:8080](http://localhost:8080) to see the website.
+Open your browser and go to [http://localhost](http://localhost) to see the website.
 
 # 📚Documentation
 Now the best part, the documentation. 
@@ -161,6 +170,22 @@ event_it.public.homepage:
 > In the future, I will try to pass arguments in the url, example: have urls with ``/user/{id}/manage`` and id will be the id of the user. Very easy to create [CRUD](https://developer.mozilla.org/fr/docs/Glossary/CRUD) pages.
 
 ## 🍃Twig Tutoriel
+Twig is a powerful templating engine for PHP, and it's used to create dynamic HTML templates for your web application. Here's a simple guide to get you started with Twig in our project.
+
+## What is Twig?
+
+Twig is a template engine that allows you to write concise and expressive syntax to generate HTML output. It separates your logic (PHP code) from your presentation (HTML), making your code more maintainable and clean.
+
+## How Does Twig Work?
+
+Twig works by defining templates, which are HTML files with Twig code that can insert variables, control structures (like loops and conditions), and more. When the server processes a request, it fills in these templates with dynamic content before sending the HTML to the user's browser.
+
+## Basic Twig Syntax
+
+- `{{ ... }}` - Output content into the template (e.g., variables or expressions).
+- `{% ... %}` - Execute control structures (e.g., loops, conditions).
+- `{# ... #}` - Add comments that will not be rendered in the HTML.
+  
 Here is a small tutorial on how to use Twig. Firslty, we have the `base.html.twig` file that will be the base of all the pages. It will contain the basic structure of the HTML page. Then, we will have the `index.html.twig` file that
 
 ```twig
@@ -201,6 +226,9 @@ I managed to keep it simple. In you twig files, you should just use it like this
 ```twig
 {{ 'event_it.teste.hello_world'|trans }}
 ```
+> This method is deprecated, a new one will pop soon !
+> However, the same system will be keep, so you can read:
+
 So, if your key is `event_it.teste.hello_world`, you should have a file (depends the local) like this `translation.fr.yaml` for french text in the `translations` folder. In this file, you should have:
 ```yaml
 event_it:
@@ -210,6 +238,30 @@ event_it:
 
 <span style="color:red">WARNING:</span> If you don't have the translation, it will display the key. So, be careful to have **all the translations in all the files**.
 
+## Bonus tips:
+- ### 1 The path function:
+    ```twig
+    <a href="{{ path("nom_de_votre_route")}}">Don't forget to contribute</a>
+    ```
+  example:
+    if my route is something like that:
+    ```yaml
+    # routes.yaml
+    event_it.public.homepage:
+    path: /my-paypal
+    controller: App\Controller\Home\HomeController
+    method: index
+    ```
+    I will have:
+    ```twig
+    <a href="{{ path("event_it.public.homepage") }}">Don't forget to contribute</a>
+    ```
+    The result will be:
+    ```html
+    <a href="/my-paypal">Don't forget to contribute</a>
+    ```
+    The main advantage is if you need to change the path for X reason, if **ANYBODY** do the same
+    you juste have to change the path in your ```routes.yaml ```.
 # 🐥 Deal with git
 ## First create a branch
 2 options, you can use the command line or the github interface. name it with the feature you are working on and your name. For example, if i work on the home page, I can name it `mh-feature-homePage`. With it, I will know that it's a feature, it's for the home page and who work on it. After that, don't forget to switch to it.

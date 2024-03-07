@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\TwigExtention\Assets;
+use App\TwigExtention\PathFunction;
 use Twig\Environment;
 use \Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
@@ -11,9 +13,9 @@ use App\TwigExtention\Translator;
 abstract class Controller
 {
     protected const INDEX = 'index.html.twig';
-    private $loader;
+    private FilesystemLoader $loader;
 
-    protected $twig;
+    protected Environment $twig;
 
 
     protected Translator $translator;
@@ -26,9 +28,11 @@ abstract class Controller
 
         $this->twig = new Environment($this->loader);
 
-        $this->twig->addExtension(new Translator('en'));
+        $this->translator = new Translator($_SESSION['locale'] ?? 'en');
 
-        $this->translator = new Translator('en');
+        $this->twig->addExtension($this->translator);
+        $this->twig->addExtension(new PathFunction());
+
     }
 
     public function __toString(): string
@@ -38,7 +42,7 @@ abstract class Controller
 
     /**
      * Render a template file
-     * 
+     *
      * @param string $template path of the template file
      * @param array $data data to be passed to the template
      */

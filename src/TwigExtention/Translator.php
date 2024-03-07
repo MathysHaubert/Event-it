@@ -15,7 +15,7 @@ class Translator extends AbstractExtension
 
     private CONST TRANSLATION_FILE = 'translations/translation.%s.yaml';
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('trans',[$this,'translation'])
