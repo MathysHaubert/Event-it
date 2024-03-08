@@ -9,3 +9,8 @@ Home
 <p>{{ 'event_it.teste.hello_world'|trans }} </p>
     <button href="{{  path('users') }}"></button>
 {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="assets/Resource/css/Home/style.css">
+{% endblock %}
