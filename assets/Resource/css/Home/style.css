@@ -1,3 +1,17 @@
 body {
     background-color: #393A51;
 }
+.cookie-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #2F4F4F;
+    max-width: 15em;
+    border-radius: 10px;
+}
+.cookie-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.button-box, .decline {
+    background-color: #36454F;
+}

@@ -13,3 +13,9 @@ contact:
   path: /contact
   controller: ContactController
   method: index
+
+  # Here ajax's route
+event_it.ajax.public.accept_cookies:
+  path: /ajax/accept-cookies
+  controller: App\Cookie\CookieHandler
+  method: setCookieAccepted

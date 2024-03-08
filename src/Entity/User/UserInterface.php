@@ -6,7 +6,7 @@ namespace App\Entity\User;
 
 use \DateTime;
 Use App\Entity\Client\Client;
-Use App\Entity\Organization\Organization;s
+Use App\Entity\Organization\Organization;
 
 interface UserInterface
 {

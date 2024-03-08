@@ -8,9 +8,15 @@ Home
 <h1>teste</h1>
 <p>{{ 'event_it.teste.hello_world'|trans }} </p>
     <button href="{{  path('users') }}"></button>
+    {% include 'public/homePage/cookie/_cookie.html.twig' %}
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="assets/Resource/css/Home/style.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="assets/Resource/js/Home/script.js"></script>
 {% endblock %}
