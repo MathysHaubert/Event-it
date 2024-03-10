@@ -236,30 +236,70 @@ event_it:
 
 <span style="color:red">WARNING:</span> If you don't have the translation, it will display the key. So, be careful to have **all the translations in all the files**.
 
-## Bonus tips:
-- ### 1 The path function:
-    ```twig
-    <a href="{{ path("nom_de_votre_route")}}">Don't forget to contribute</a>
-    ```
-  example:
-    if my route is something like that:
-    ```yaml
-    # routes.yaml
-    event_it.public.homepage:
-    path: /my-paypal
-    controller: App\Controller\Home\HomeController
-    method: index
-    ```
-    I will have:
-    ```twig
-    <a href="{{ path("event_it.public.homepage") }}">Don't forget to contribute</a>
-    ```
-    The result will be:
-    ```html
-    <a href="/my-paypal">Don't forget to contribute</a>
-    ```
-    The main advantage is if you need to change the path for X reason, if **ANYBODY** do the same
-    you juste have to change the path in your ```routes.yaml ```.
+# Bonus tips:
+
+## The path function:
+```twig
+<a href="{{ path("nom_de_votre_route")}}">Don't forget to contribute</a>
+```
+example:
+if my route is something like that:
+```yaml
+# routes.yaml
+event_it.public.homepage:
+path: /my-paypal
+controller: App\Controller\Home\HomeController
+method: index
+```
+I will have:
+```twig
+<a href="{{ path("event_it.public.homepage") }}">Don't forget to contribute</a>
+```
+The result will be:
+```html
+<a href="/my-paypal">Don't forget to contribute</a>
+```
+The main advantage is if you need to change the path for X reason, if **ANYBODY** do the same
+you juste have to change the path in your ```routes.yaml ```.
+
+Your documentation is mostly correct, but there are a few minor grammatical errors and areas that could be clarified. Here's a revised version:
+
+## Passing Parameters Through a URL *(beta)*
+> NOTE: This currently only works for integers such as IDs. Handling strings is more complex.
+
+```yaml
+event_it.public.homepage:
+  path: /{id}
+  controller: App\Controller\Home\HomeController
+  method: index
+  parameters:
+    id:
+      type: int
+```
+With this configuration, you can create a URL with any integer you want. For example, `/1` and `/9223372036854775807` are both valid. The integer can then be accessed in your controller:
+
+```php
+# Your controller
+public function index($data = []): void
+{
+    /**
+     * Here, $data will be your array:
+     *  [
+     *    "id" => *yourNumber*
+     *  ]
+     */
+    $this->webRender('public/homePage/' . self::INDEX, [
+        'title' => 'Home Page',
+        'content' => 'Welcome to the home page',
+        'cookieSet' => CookieHandler::isCookieSet(),
+    ]);
+}
+```
+I haven't tested this with multiple IDs yet, but it should work in theory.
+
+### What's the benefit?
+This allows you to manage users or objects! For example, you could have a URL like `/edit-profile/5`, where `5` is the ID of a user.
+
 # 🐥 Deal with git
 ## First create a branch
 2 options, you can use the command line or the github interface. name it with the feature you are working on and your name. For example, if i work on the home page, I can name it `mh-feature-homePage`. With it, I will know that it's a feature, it's for the home page and who work on it. After that, don't forget to switch to it.

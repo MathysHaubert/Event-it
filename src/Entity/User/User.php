@@ -1,210 +1,105 @@
 <?php
 
-namespace App\Entity\User;
+namespace App\Entity;
 
-use App\Entity\Client;
-use App\Entity\Identifier;
-use App\Entity\Organization;
+use App\Entity\Client\Client;
+use App\Trait\Identifier;
 use DateTime;
 
-class User implements UserInterface
+class User
 {
-
-use Identifier;
-    private string $lastName;
-    private string $firstName;
-    private DateTime $createdAt;
-    private DateTime $lastConnection;
-    private Client $client;
-    private string $password;
-    private string $email;
-    private Organization $organization;
+    use Identifier;
 
     public function __construct(
-        int $id,
-        string $lastName,
-        string $firstName,
-        DateTime $createdAt,
-        DateTime $lastConnection,
-        int $clientId,
-        string $password,
-        string $email,
-        int $organizationId
+        private string $lastname,
+        private string $firstname,
+        private DateTime $createAt,
+        private DateTime $lastConnection,
+        private Client $client,
+        private string $password,
+        private string $email,
+        private Organization $organization
     ) {
-        $this->id = $id;
-        $this->lastName = $lastName;
-        $this->firstName = $firstName;
-        $this->createdAt = $createdAt;
-        $this->lastConnection = $lastConnection;
-        $this->clientId = $clientId;
-        $this->password = $password;
-        $this->email = $email;
-        $this->organizationId = $organizationId;
     }
 
-
-    public function __toString()
+    public function getLastname(): string
     {
-        return $this->firstName . ' ' . $this->lastName;
+        return $this->lastname;
     }
 
-    /**
-     * Get the value of email
-     */
-    public function getEmail()
+    public function setLastname(string $lastname): void
     {
-        return $this->email;
+        $this->lastname = $lastname;
     }
 
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */
-    public function setEmail($email)
+    public function getFirstname(): string
     {
-        $this->email = $email;
-
-        return $this;
+        return $this->firstname;
     }
 
-    /**
-     * Get the value of organizationId
-     */
-    public function getOrganizationId()
+    public function setFirstname(string $firstname): void
     {
-        return $this->organizationId;
+        $this->firstname = $firstname;
     }
 
-    /**
-     * Set the value of organizationId
-     *
-     * @return  self
-     */
-    public function setOrganizationId($organizationId)
+    public function getCreateAt(): DateTime
     {
-        $this->organizationId = $organizationId;
-
-        return $this;
+        return $this->createAt;
     }
 
-    /**
-     * Get the value of password
-     */
-    public function getPassword()
+    public function setCreateAt(DateTime $createAt): void
     {
-        return $this->password;
+        $this->createAt = $createAt;
     }
 
-    /**
-     * Set the value of password
-     *
-     * @return  self
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of clientId
-     */
-    public function getClientId()
-    {
-        return $this->clientId;
-    }
-
-    /**
-     * Set the value of clientId
-     *
-     * @return  self
-     */
-    public function setClientId($clientId)
-    {
-        $this->clientId = $clientId;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of lastConnection
-     */
-    public function getLastConnection()
+    public function getLastConnection(): DateTime
     {
         return $this->lastConnection;
     }
 
-    /**
-     * Set the value of lastConnection
-     *
-     * @return  self
-     */
-    public function setLastConnection($lastConnection)
+    public function setLastConnection(DateTime $lastConnection): void
     {
         $this->lastConnection = $lastConnection;
-
-        return $this;
     }
 
-    /**
-     * Get the value of createdAt
-     */
-    public function getCreatedAt()
+    public function getClient(): Client
     {
-        return $this->createdAt;
+        return $this->client;
     }
 
-    /**
-     * Set the value of createdAt
-     *
-     * @return  self
-     */
-    public function setCreatedAt($createdAt)
+    public function setClient(Client $client): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->client = $client;
     }
 
-    /**
-     * Get the value of firstName
-     */
-    public function getFirstName()
+    public function getPassword(): string
     {
-        return $this->firstName;
+        return $this->password;
     }
 
-    /**
-     * Set the value of firstName
-     *
-     * @return  self
-     */
-    public function setFirstName($firstName)
+    public function setPassword(string $password): void
     {
-        $this->firstName = $firstName;
-
-        return $this;
+        $this->password = $password;
     }
 
-    /**
-     * Get the value of lastName
-     */
-    public function getLastName()
+    public function getEmail(): string
     {
-        return $this->lastName;
+        return $this->email;
     }
 
-    /**
-     * Set the value of lastName
-     *
-     * @return  self
-     */
-    public function setLastName($lastName)
+    public function setEmail(string $email): void
     {
-        $this->lastName = $lastName;
-
-        return $this;
+        $this->email = $email;
     }
+
+    public function getOrganization(): Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(Organization $organization): void
+    {
+        $this->organization = $organization;
+    }
+    
 }
