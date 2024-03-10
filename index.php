@@ -12,7 +12,6 @@ const KERNEL = ROOT . '/src/Kernel/Kernel.php';
 
 const ASSETS = ROOT . '/assets';
 
-
 try {
     // check if app.log already exists
     Kernel::manageLogFile();

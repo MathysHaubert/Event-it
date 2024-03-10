@@ -16,6 +16,7 @@ class Kernel
      */
     public static function logger(mixed $message): void
     {
+        error_log('teste');
         $time = '['.date('Y-m-d H:i:s').'] ';
         error_log($time . $message . "\n", 3, LOG_FILE);
     }
@@ -28,21 +29,24 @@ class Kernel
      */
     public static function manageLogFile(): void
     {
-        if (file_exists(LOG_FILE)) {
-            // do nothing;
-            return;
-        } else if (file_exists(ROOT . '/var/log')) {
-            // create app.log
-            fopen(LOG_FILE, 'w');
-        } else if (file_exists(ROOT . '/var')) {
-            // create /log/app.log
-            mkdir(ROOT . '/log', 0777, true);
-        } else {
-            // create /var/log/app.log
-            mkdir(ROOT . '/var/log/app.log', 0777, true);
-        }
-        if (!file_exists(LOG_FILE)) {
-            throw new Exception('Could not create log file');
+        try { if (file_exists(LOG_FILE)) {
+                // do nothing;
+                return;
+            } else if (file_exists(ROOT . '/var/log')) {
+                // create app.log
+                fopen(LOG_FILE, 'w');
+            } else if (file_exists(ROOT . '/var')) {
+                // create /log/app.log
+                mkdir(ROOT . '/log', 0774, true);
+            } else {
+                // create /var/log/app.log
+                mkdir(ROOT . '/var/log/app.log', 0774, true);
+            }
+            if (!file_exists(LOG_FILE)) {
+                throw new Exception('Could not create log file');
+            }
+        } catch (Exception $e) {
+            throw new Exception('Could not create log file:'.$e->getMessage());
         }
     }
 }

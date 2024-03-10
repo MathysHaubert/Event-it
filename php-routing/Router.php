@@ -10,16 +10,31 @@ class Router {
     public function loadRoutes($file): void
     {
         $routes = Yaml::parseFile($file);
-
         foreach ($routes as $name => $data) {
-            $this->addRoute($data['path'], $data['controller'], $data['method']);
+            $this->addRoute($data['path'], $data['controller'], $data['method'], $data['parameters']);
         }
 
     }
 
-    public function addRoute($route, $controller, $method): void
+    public function addRoute($route, $controller, $method, $params = []): void
     {
-        $this->routes[] = ['route' => $route, 'controller' => $controller, 'method' => $method];
+        if (!empty($params)) {
+            // get params from the route with {}
+        
+            preg_match_all('/\{([^\}]*)\}/', $route, $matches);
+            /** @var array $options */
+            foreach ($params as $key => $options) {
+                if (in_array($key, $matches[1])) {
+                    // get the index of the parameter, do the assertion and replace the parameter
+                    Kernel::logger($route);
+                }
+            }
+        }
+        $this->routes[] = [
+            'route' => $route, 
+            'controller' => $controller, 
+            'method' => $method,
+            'params' => $params];
     }
 
     /**
@@ -40,7 +55,7 @@ class Router {
                 } else {
                     $controller = new $route['controller'];
                     $method = $route['method'];
-                    $controller->$method();
+                    $controller->$method($route['params']);
                     return;
                 }
             }

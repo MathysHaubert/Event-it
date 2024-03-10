@@ -15,7 +15,12 @@ contact:
   method: index
 
   # Here ajax's route
-event_it.ajax.public.accept_cookies:
-  path: /ajax/accept-cookies
+event_it.ajax.public.manage_cookie:
+  path: /ajax/cookie/{id}/{id2}
   controller: App\Cookie\CookieHandler
-  method: setCookieAccepted
+  method: handleRequest
+  parameters:
+    id:
+      type: int
+      required: true
+      default: 0

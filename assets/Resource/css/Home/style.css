@@ -1,7 +1,7 @@
 body {
     background-color: #393A51;
 }
-.cookie-box {
+.cookie-popup {
     display: flex;
     flex-direction: column;
     background-color: #2F4F4F;
