@@ -6,9 +6,9 @@ namespace App\Controller\Home;
 
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
-use App\Trait\dd as dd;
+use App\Kernel\Kernel;
 class HomeController extends Controller{
-    public function index(): void
+    public function index($data = []): void
 {
     // define the default locale at french
     $this->webRender('public/homePage/' . self::INDEX, [

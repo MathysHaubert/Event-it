@@ -10,6 +10,10 @@ const ROOT = __DIR__;
 const LOG_FILE = ROOT . '/var/log/app.log';
 const KERNEL = ROOT . '/src/Kernel/Kernel.php';
 
+// in dev mode only
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+//
 const ASSETS = ROOT . '/assets';
 
 try {
