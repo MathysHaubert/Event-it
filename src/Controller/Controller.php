@@ -8,10 +8,13 @@ use Twig\Environment;
 use \Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
 use App\Kernel\Kernel;
+use App\Trait\dd;
 use App\TwigExtention\Translator;
 
 abstract class Controller
 {
+    use dd;
+    
     protected const INDEX = 'index.html.twig';
     private FilesystemLoader $loader;
 

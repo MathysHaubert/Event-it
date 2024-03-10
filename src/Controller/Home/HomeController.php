@@ -6,10 +6,10 @@ namespace App\Controller\Home;
 
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
-use App\Kernel\Kernel;
+
 class HomeController extends Controller{
     public function index($data = []): void
-{
+{  
     // define the default locale at french
     $this->webRender('public/homePage/' . self::INDEX, [
         'title' => 'Home Page',
@@ -17,5 +17,4 @@ class HomeController extends Controller{
         'cookieSet' => CookieHandler::isCookieSet(),
     ]);
 }
-
 }
