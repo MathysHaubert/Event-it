@@ -9,10 +9,7 @@ This project is a web application for the ISEP school.
 - [How to setup the project](#how-to-setup-the-project)
   - [Install the setup](#install-the-setup)
   - [Composer](#composer)
-  - [Clone the repository with Git](#clone-the-repository-with-git)
-  - [Install dependencies via Composer](#install-dependencies-via-composer)
-  - [PHP server](#php-server)
-  - [Finally](#finally)
+
 - [Documentation](#documentation)
     - [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
     - [Understanding the Project's Structure](#understanding-the-projects-structure)
