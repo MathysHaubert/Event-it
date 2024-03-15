@@ -11,5 +11,5 @@
 !/**/docker/nginx/logs/.gitkeep
 public_html/vendor/**
 .vscode/**
-public_html/var/**
+
 .idea/**

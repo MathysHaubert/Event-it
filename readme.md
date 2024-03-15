@@ -6,32 +6,32 @@ This project is a web application for the ISEP school.
 
 ## Summary
 
--   [Tools](#tools)
--   [How to setup the project](#how-to-setup-the-project)
-    -   [Docker](#docker)
-    -   [Composer](#composer)
--   [Documentation](#documentation)
-    -   [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
-    -   [Understanding the Project's Structure](#understanding-the-projects-structure)
--   [PHP Doc](#php-doc)
--   [Create your first page!](#create-your-first-page)
-    -   [Controller PHP](#controller-php)
-    -   [Routes.yaml](#routesyaml)
-    -   [Twig Tutoriel](#twig-tutoriel)
-    -   [Create translations in your twig files!](#create-translations-in-your-twig-files)
--   [Deal with Git](#deal-with-git)
--   [How to contribute](#how-to-contribute)
+- [Tools](#tools)
+- [How to setup the project](#how-to-setup-the-project)
+  - [Docker](#docker)
+  - [Composer](#composer)
+- [Documentation](#documentation)
+  - [Understanding the Project's MVC Architecture](#understanding-the-projects-mvc-architecture)
+  - [Understanding the Project's Structure](#understanding-the-projects-structure)
+- [PHP Doc](#php-doc)
+- [Create your first page!](#create-your-first-page)
+  - [Controller PHP](#controller-php)
+  - [Routes.yaml](#routesyaml)
+  - [Twig Tutoriel](#twig-tutoriel)
+  - [Create translations in your twig files!](#create-translations-in-your-twig-files)
+- [Deal with Git](#deal-with-git)
+- [How to contribute](#how-to-contribute)
 
 > link doesn't work, fuck it.
 
 # Tools
 
--   Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
--   Server: [XAMPP](https://www.apachefriends.org/index.html) (optional)
--   Version control: [Git](https://git-scm.com/)
--   Design: [Figma](https://www.figma.com/)
--   Project management: [Notion](https://www.notion.so/)
--   Entity mapping: [Doctrine](https://www.doctrine-project.org)
+- Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
+- Server: [XAMPP](https://www.apachefriends.org/index.html) (optional)
+- Version control: [Git](https://git-scm.com/)
+- Design: [Figma](https://www.figma.com/)
+- Project management: [Notion](https://www.notion.so/)
+- Entity mapping: [Doctrine](https://www.doctrine-project.org)
 
 # How to setup the project
 
@@ -43,12 +43,6 @@ This project is a web application for the ISEP school.
 
 ## The container
 
-Now you have docker, you just have to clone or download our github's repository. And if you're on linux, you just have to enter on the cli bash:
-`docker composer up`
-at the root.
-
-On windows, it should not be overcomplicated too but i don't know how, good luck. :wink:
-
 ## Prerequisites:
 
 - [Install Docker](https://docs.docker.com/install/)
@@ -58,7 +52,7 @@ On windows, it should not be overcomplicated too but i don't know how, good luck
 
 - Clone the repository
 - Enter the repository folder
-- Run the `docker-compose up` command
+- Run the `docker compose up` command
   - if you want to run in background mode, run the command `docker-compose up -d`
 - Access the address `http://localhost:8080` to access phpmyadmin
   - user access
@@ -194,17 +188,9 @@ xdebug.cli_color=1
   Zend OPcache
 ```
 
-## Comments:
-
-The project starts the services of `nginx`, `php`, `mysql`, `postgresql`, `phpmyadmin`, `pgadmin`
-and `redis` by default, if you want to use `apache2`, `mariadb` you need to comment the services
-that are being used and enable the services you want to use on the
-`docker-compose.yml` file.
-
 ## License:
 
 [MIT](https://opensource.org/licenses/MIT)
-
 
 ## Composer
 
@@ -229,11 +215,11 @@ Now the best part, the documentation.
 
 > MVC stands for Model-View-Controller. It is a software design pattern that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways that information is presented to and accepted from the user. [Check here](https://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm) for more information.
 
--   **M for Model:** This represents the application's data logic. The model communicates with the database and processes data (e.g., retrieve, insert, update, delete). In our case, PHP manages the model.
+- **M for Model:** This represents the application's data logic. The model communicates with the database and processes data (e.g., retrieve, insert, update, delete). In our case, PHP manages the model.
 
--   **V for View:** The view is responsible for displaying data or the user interface. In your case, Twig is used to create your view templates. Twig allows separating the presentation logic from PHP code by offering a flexible and powerful template system.
+- **V for View:** The view is responsible for displaying data or the user interface. In your case, Twig is used to create your view templates. Twig allows separating the presentation logic from PHP code by offering a flexible and powerful template system.
 
--   **C for Controller:** The controller manages the application's business logic. It responds to user inputs (usually through a web interface), interacts with the model, and returns a view. In PHP, the controller is often a set of classes or methods that define actions. Always PHP 😁
+- **C for Controller:** The controller manages the application's business logic. It responds to user inputs (usually through a web interface), interacts with the model, and returns a view. In PHP, the controller is often a set of classes or methods that define actions. Always PHP 😁
 
 ## Understanding the Project's Structure
 
@@ -243,16 +229,16 @@ To keep it simple, we will illustrate the project's structure using an example. 
 
 2. **The right controller:** Once your controller is called, as well as the right method, the controller will interact with the model to retrieve the necessary data. Once it has the data, it will pass it to the view. `$this->webRender('blablabla');` will have the responsibility of generating the HTML to display from the twig. Later other file's name will be available.
 
-    > Controllers are in the `src/Controller` folder.
+   > Controllers are in the `src/Controller` folder.
 
-    **Please,** keep the used syntax `$this->webRender( 'folder' . self::INDEX, $data);` for views. This will facilitate understanding of the code. 😉
+   **Please,** keep the used syntax `$this->webRender( 'folder' . self::INDEX, $data);` for views. This will facilitate understanding of the code. 😉
 
 3. **The model:** The model communicates with the database and processes data (e.g., retrieve, insert, update, delete). In our case, PHP manages the model.
 
 4. **The view:** The view is responsible for displaying data or the user interface. In your case, Twig is used to create the templates for your views. Twig allows separating the presentation logic from PHP code by offering a flexible and powerful template system.
 
-    > Views are in the `templates` folder.
-    > In `templates/public`, if the view is "public to all", otherwise in `templates/admin` if the view is "private".
+   > Views are in the `templates` folder.
+   > In `templates/public`, if the view is "public to all", otherwise in `templates/admin` if the view is "private".
 
 ## PHP Doc
 
@@ -260,9 +246,9 @@ PHPDoc is a tool that allows generating documentation from PHP source code. It i
 
 ### It allows to:
 
--   Describe classes, methods, properties, parameters, return types, exceptions, etc.
--   Better understand how the code works.
--   Describe what parameters a method expects, and what type of data is returned.
+- Describe classes, methods, properties, parameters, return types, exceptions, etc.
+- Better understand how the code works.
+- Describe what parameters a method expects, and what type of data is returned.
 
 I will make an effort to document the code to facilitate its understanding. Thank you for doing the same! 😁
 
@@ -318,9 +304,9 @@ class HomeController extends BaseController {
 ```yaml
 # routes.yaml
 name: # name of the routes
-    path: / # the path of the route to the url
-    controller: namespace\controllerName # namespace of the controller
-    method: index # method of the controller
+  path: / # the path of the route to the url
+  controller: namespace\controllerName # namespace of the controller
+  method: index # method of the controller
 ```
 
 Don't hesitate to give clear and precise names for the routes.
@@ -329,9 +315,9 @@ So, for the HomeController, we have:
 ```yaml
 # routes.yaml
 event_it.public.homepage:
-    path: /
-    controller: App\Controller\Home\HomeController
-    method: index
+  path: /
+  controller: App\Controller\Home\HomeController
+  method: index
 ```
 
 > Nothing prevents you from having several methods for 1 controller.
@@ -352,9 +338,9 @@ Twig works by defining templates, which are HTML files with Twig code that can i
 
 ## Basic Twig Syntax
 
--   `{{ ... }}` - Output content into the template (e.g., variables or expressions).
--   `{% ... %}` - Execute control structures (e.g., loops, conditions).
--   `{# ... #}` - Add comments that will not be rendered in the HTML.
+- `{{ ... }}` - Output content into the template (e.g., variables or expressions).
+- `{% ... %}` - Execute control structures (e.g., loops, conditions).
+- `{# ... #}` - Add comments that will not be rendered in the HTML.
 
 Here is a small tutorial on how to use Twig. Firslty, we have the `base.html.twig` file that will be the base of all the pages. It will contain the basic structure of the HTML page. Then, we will have the `index.html.twig` file that
 
@@ -404,8 +390,8 @@ So, if your key is `event_it.teste.hello_world`, you should have a file (depends
 
 ```yaml
 event_it:
-    teste:
-        hello_world: "Bonjour le monde"
+  teste:
+    hello_world: "Bonjour le monde"
 ```
 
 <span style="color:red">WARNING:</span> If you don't have the translation, it will display the key. So, be careful to have **all the translations in all the files**.
@@ -452,12 +438,12 @@ Your documentation is mostly correct, but there are a few minor grammatical erro
 
 ```yaml
 event_it.public.homepage:
-    path: /{id}
-    controller: App\Controller\Home\HomeController
-    method: index
-    parameters:
-        id:
-            type: int
+  path: /{id}
+  controller: App\Controller\Home\HomeController
+  method: index
+  parameters:
+    id:
+      type: int
 ```
 
 With this configuration, you can create a URL with any integer you want. For example, `/1` and `/9223372036854775807` are both valid. The integer can then be accessed in your controller:
@@ -524,7 +510,9 @@ XOXO
 
 ## Dependencies you may need
 
--   mbstring
--   phpenmod
+- mbstring
+- phpenmod
 
 > ###### I reserve the right to refer you to the README for each question you ask me. However, if the question makes sense and could be useful to others, do not hesitate to add it in a justified place
+
+Thank to [@vagnercardosoweb](https://github.com/vagnercardosoweb) for the docker template
