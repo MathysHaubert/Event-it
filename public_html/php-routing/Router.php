@@ -1,8 +1,10 @@
 <?php
-require_once  dirname(__DIR__) . '/vendor/autoload.php';
+require_once  'vendor/autoload.php';
 
 use App\Kernel\Kernel;
 use Symfony\Component\Yaml\Yaml;
+use App\Event\Kernel\KernelEvent;
+use App\Kernel\EventManager;
 
 class Router {
     private $routes = [];
@@ -19,8 +21,8 @@ class Router {
     public function addRoute($route, $controller, $method, $params): void
     {
         $this->routes[] = [
-            'path' => $route, 
-            'controller' => $controller, 
+            'path' => $route,
+            'controller' => $controller,
             'method' => $method,
             'params' => $params];
     }
@@ -45,18 +47,19 @@ class Router {
                     if ($options["type"] === "int") {
                         preg_match('/\d+/', $url, $resultArray);
                         $data[$key] = array_values($resultArray);
-                    } 
+                    }
                     $url = preg_replace('/\{([^\}]*)\}/', $matches[0][$index], $route["path"]);
-                    // si le paramètre est de type int on récupère un chiffre
+                    // si le parametre est de type int on récupère un chiffre
                     Kernel::logger($url);
                 }
             }
-            if ($route['path'] === $url) { // check if the class exists
+            if ($route['path'] === $url) { // c heck if the class exists
                 if (!class_exists($route['controller'])) {
                     echo "{$route['controller']} not found";
                     Kernel::logger("{$route['controller']} not found");
                     return;
                 } else {
+                    EventManager::trigger(KernelEvent::PreRequest);
                     $controller = new $route['controller'];
                     $method = $route['method'];
                     $controller->$method($data ?? []);
