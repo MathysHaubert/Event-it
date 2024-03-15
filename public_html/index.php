@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 require_once 'php-routing/Router.php';
 require_once 'src/Kernel/Kernel.php';
 require 'vendor/autoload.php';
