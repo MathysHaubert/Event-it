@@ -27,7 +27,7 @@ This project is a web application for the ISEP school.
 # Tools
 
 - Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
-- Server: [XAMPP](https://www.apachefriends.org/index.html) (optional)
+- Server: [Docker](https://www.docker.com/)) 
 - Version control: [Git](https://git-scm.com/)
 - Design: [Figma](https://www.figma.com/)
 - Project management: [Notion](https://www.notion.so/)
