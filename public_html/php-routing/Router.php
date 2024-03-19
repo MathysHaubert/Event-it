@@ -1,13 +1,24 @@
 <?php
-require_once  'vendor/autoload.php';
+require_once(__DIR__ . '/../vendor/autoload.php');
 
+use App\Event\KernelEvent;
 use App\Kernel\Kernel;
 use Symfony\Component\Yaml\Yaml;
-use App\Event\Kernel\KernelEvent;
-use App\Kernel\EventManager;
+use Doctrine\Common\EventManager;
 
 class Router {
     private $routes = [];
+
+    private EventManager $eventManager;
+
+    /**
+     * @param EventManager $eventManager
+     */
+    public function __construct()
+    {
+        $this->eventManager = new EventManager();
+    }
+
 
     public function loadRoutes($file): void
     {
@@ -59,7 +70,7 @@ class Router {
                     Kernel::logger("{$route['controller']} not found");
                     return;
                 } else {
-                    EventManager::trigger(KernelEvent::PreRequest);
+                    $this->eventManager->dispatchEvent(KernelEvent::PRE_REQUEST);
                     $controller = new $route['controller'];
                     $method = $route['method'];
                     $controller->$method($data ?? []);
@@ -67,6 +78,6 @@ class Router {
                 }
             }
         }
-        echo "404 Not Found";
+        echo "404 Not dz Found";
     }
 }

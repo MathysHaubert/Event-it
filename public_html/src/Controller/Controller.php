@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use App\TwigExtention\PathFunction;
-use Twig\Environment;
-use \Twig\Loader\FilesystemLoader;
-use Twig\TemplateWrapper;
+use App\Event\KernelEvent;
 use App\Kernel\Kernel;
 use App\Trait\dd;
+use App\TwigExtention\PathFunction;
 use App\TwigExtention\Translator;
-use App\Event\Kernel\KernelEvent;
-use App\Kernel\EventManager;
+use Doctrine\Common\EventManager;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Twig\TemplateWrapper;
+
 
 abstract class Controller
 {
@@ -26,8 +27,11 @@ abstract class Controller
 
     protected TemplateWrapper $template;
 
+    protected EventManager $eventManager;
+
     public function __construct()
     {
+        $this ->eventManager = new EventManager();
         $this->loader = new FilesystemLoader(ROOT.'/templates');
 
         $this->twig = new Environment($this->loader);
@@ -52,22 +56,22 @@ abstract class Controller
      */
     public function webRender(string $template, array $data = []): void
 {
-    EventManager::trigger(KernelEvent::PreResponse, $data);
+    $this->eventManager->dispatchEvent(KernelEvent::PRE_RESPONSE);
     try {
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
 
-        EventManager::trigger(KernelEvent::PreResponse, $data);
+        $this->eventManager->dispatchEvent(KernelEvent::PRE_RESPONSE);
         // Chargement et affichage du template avec les données
         $this->twig->load($template)->display($data);
 
-        EventManager::trigger(KernelEvent::PostResponse, $data);
+        $this->eventManager->dispatchEvent(KernelEvent::POST_RESPONSE);
     } catch (\Twig\Error\LoaderError | \Twig\Error\RuntimeError | \Twig\Error\SyntaxError $e) {
 
         // Log de l'erreur ou gestion selon le besoin
         Kernel::logger($e->getMessage() . sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
     }
-    EventManager::trigger(KernelEvent::PostResponse, $data);
+    $this->eventManager->dispatchEvent(KernelEvent::POST_RESPONSE);
 
 }
 
