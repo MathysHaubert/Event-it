@@ -6,7 +6,8 @@ networks:
 
 services:
   php:
-    build: ./docker/php
+    build:
+      context: ./docker/php
     restart: unless-stopped
     container_name: docker.php
     tty: true
@@ -33,39 +34,6 @@ services:
       - docker.network
     volumes:
       - .:/var/www
-
-  # apache:
-  #   build: ./docker/apache
-  #   restart: unless-stopped
-  #   container_name: docker.apache
-  #   tty: true
-  #   depends_on:
-  #     - php
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   networks:
-  #     - docker.network
-  #   volumes:
-  #     - .:/var/www
-
-  #  mariadb:
-  #    image: mariadb
-  #    restart: unless-stopped
-  #    container_name: docker.mariadb
-  #    tty: true
-  #    ports:
-  #      - '3306:3306'
-  #    networks:
-  #      - docker.network
-  #    volumes:
-  #      - './docker/mysql/mariadb.cnf:/etc/mysql/conf.d/custom.cnf:ro'
-  #      - './docker/mysql/dbdata:/var/lib/mysql'
-  #    environment:
-  #      MYSQL_DATABASE: ${MYSQL_DATABASE:-development}
-  #      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
-  #      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-mysql}
-  #      MYSQL_USER: ${MYSQL_USER:-mysql}
 
   mysql:
     image: mysql:5
