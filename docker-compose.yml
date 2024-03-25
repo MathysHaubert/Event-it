@@ -1,114 +1,30 @@
-version: "3.7"
-
-networks:
-  docker.network:
-    driver: bridge
-
 services:
   php:
-    build:
-      context: ./docker/php
-    restart: unless-stopped
-    container_name: docker.php
-    tty: true
-    depends_on:
-      - mysql
-      - postgres
-      - redis
-    networks:
-      - docker.network
-    volumes:
-      - .:/var/www
-
-  nginx:
-    build: ./docker/nginx
-    container_name: docker.nginx
-    restart: unless-stopped
-    tty: true
-    depends_on:
-      - php
+    image: php:8.2-apache
+    container_name: php-8.2-apache
     ports:
-      - "433:433"
-      - "80:80"
-    networks:
-      - docker.network
+      - "9000:80"
     volumes:
-      - .:/var/www
-
-  mysql:
-    image: mysql:5
-    restart: unless-stopped
-    container_name: docker.mysql
-    tty: true
+      - ./public_html:/var/www/html
+  db:
+    image: mysql:8.0
+    container_name: mysql-8.0
+    command: --default-authentication-plugin=mysql_native_password
     ports:
-      - "3306:3306"
-    networks:
-      - docker.network
-    volumes:
-      - "./docker/mysql/mysql.cnf:/etc/mysql/conf.d/custom.cnf:ro"
-      - "./docker/mysql/dbdata:/var/lib/mysql"
+      - "3307:3306"
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-development}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-mysql}
-      MYSQL_USER: ${MYSQL_USER:-mysql}
-
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: event-API
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - ./mysql:/var/lib/mysql
   phpmyadmin:
-    image: phpmyadmin
-    container_name: docker.phpmyadmin
-    tty: true
-    depends_on:
-      - mysql
-    ports:
-      - "8080:80"
-    networks:
-      - docker.network
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
     environment:
-      PMA_HOST: mysql
-      PMA_ARBITRARY: 1
-      PMA_PORT: 3306
-
-  postgres:
-    image: postgres:15-alpine
-    container_name: docker.postgres
-    restart: unless-stopped
-    tty: true
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
     ports:
-      - "5432:5432"
-    networks:
-      - docker.network
-    volumes:
-      - "./docker/postgres/dbdata:/var/lib/postgresql/data"
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-development}
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: docker.pgadmin
-    tty: true
-    depends_on:
-      - postgres
-    ports:
-      - "8081:80"
-    networks:
-      - docker.network
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@localhost.com}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-
-  redis:
-    image: bitnami/redis:latest
-    restart: unless-stopped
-    container_name: docker.redis
-    tty: true
-    ports:
-      - "6379:6379"
-    networks:
-      - docker.network
-    volumes:
-      - ./docker/redis:/bitnami/redis/data
-    environment:
-      ALLOW_EMPTY_PASSWORD: ${REDIS_ALLOW_EMPTY_PASSWORD:-no}
-      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
+      - "8899:80"
