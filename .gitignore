@@ -13,3 +13,4 @@ public_html/vendor/**
 .vscode/**
 public_html/var/**
 .idea/**
+mysql/**

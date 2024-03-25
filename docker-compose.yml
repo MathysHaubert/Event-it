@@ -6,6 +6,9 @@ services:
       - "9000:80"
     volumes:
       - ./public_html:/var/www/html
+    build:
+        context: .
+        dockerfile: docker/php/Dockerfile
   db:
     image: mysql:8.0
     container_name: mysql-8.0
