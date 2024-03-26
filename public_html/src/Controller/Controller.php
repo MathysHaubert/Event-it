@@ -52,22 +52,18 @@ abstract class Controller
      */
     public function webRender(string $template, array $data = []): void
 {
-    EventManager::trigger(KernelEvent::PreResponse, $data);
     try {
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
 
-        EventManager::trigger(KernelEvent::PreResponse, $data);
         // Chargement et affichage du template avec les données
         $this->twig->load($template)->display($data);
 
-        EventManager::trigger(KernelEvent::PostResponse, $data);
     } catch (\Twig\Error\LoaderError | \Twig\Error\RuntimeError | \Twig\Error\SyntaxError $e) {
 
         // Log de l'erreur ou gestion selon le besoin
         Kernel::logger($e->getMessage() . sprintf(' in file %s at line %s', $e->getFile(), $e->getLine()));
     }
-    EventManager::trigger(KernelEvent::PostResponse, $data);
 
 }
 

@@ -1,13 +1,10 @@
 <?php
 
-use App\Kernel\EventManager;
-
 ob_start();
 
 require_once 'php-routing/Router.php';
 require_once 'src/Kernel/Kernel.php';
 require 'vendor/autoload.php';
-require 'src/Kernel/EventManager.php';
 
 use App\Event\Kernel\KernelEvent;
 use App\Kernel\Kernel;
@@ -23,9 +20,6 @@ ini_set('display_errors', 1);
 const ASSETS = ROOT . '/assets';
 
 try {
-    // add base kernel event on list:
-    EventManager::addEvent([KernelEvent::PreRequest, KernelEvent::PostRequest, KernelEvent::PreResponse, KernelEvent::PostResponse]);
-    EventManager::trigger(KernelEvent::PreRequest);
     // check if app.log already exists
     Kernel::manageLogFile();
     // Démarrer la session PHP
@@ -41,7 +35,6 @@ try {
     $router->loadRoutes(__DIR__ . '/php-routing/routes.yaml');
     $url = $_SERVER['REQUEST_URI'];
     $router->dispatch($url);
-    EventManager::trigger(KernelEvent::PreRequest);
 
 
 } catch (Exception $e) {

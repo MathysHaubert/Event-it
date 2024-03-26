@@ -59,7 +59,6 @@ class Router {
                     Kernel::logger("{$route['controller']} not found");
                     return;
                 } else {
-                    EventManager::trigger(KernelEvent::PreRequest);
                     $controller = new $route['controller'];
                     $method = $route['method'];
                     $controller->$method($data ?? []);
