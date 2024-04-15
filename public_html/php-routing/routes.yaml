@@ -20,7 +20,12 @@ event_it.ajax.public.manage_cookie:
   controller: App\Cookie\CookieHandler
   method: handleRequest
 
-Login:
+event_it.Login:
   path: /login
   controller: App\Controller\Login\LoginController
+  method: index
+
+Register:
+  path: /register
+  controller: App\Controller\Register\RegisterController
   method: index

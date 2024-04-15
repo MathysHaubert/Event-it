@@ -1,22 +1,76 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #28293d;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+
+.login-container {
+  grid-column: 7 / span 6;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  color: #000000;
+  background-color: #C5D2EC;
+}
+.logo {
+  display: flex;
+  grid-column: 1 / span 6;
+  grid-row: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  color: #1751bb;
+  background-color: #C5D2EC;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+
 h2 {
-    text-align: center;
-    color: #333;
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
 div {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2em;
 }
 
 input[type="text"], input[type="password"] {
@@ -24,20 +78,23 @@ input[type="text"], input[type="password"] {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-
+  font-size: 1em;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
 }
-
 button:hover {
   background-color: #0056b3;
 }
