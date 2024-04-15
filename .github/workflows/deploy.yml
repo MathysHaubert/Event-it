@@ -1,0 +1,35 @@
+name: Deploy to server
+
+# todo : ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# todo : ssh-copy-id -i /path/to/your/public/key.pub username@server
+# Add the private key (the one without the .pub extension) as a secret in your GitHub repository.
+# You can do this in the repository settings under "Secrets". Let's call this secret SSH_PRIVATE_KEY.
+
+#  Add the SERVER_HOST and SERVER_USERNAME secrets to your GitHub repository. (settings -> secrets -> new repository secret)
+#  These should be the IP address or hostname of your server, and your username on the server, respectively.
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/your/project #todo : change this path to the actual path of the project
+            git pull
+            docker-compose down
+            docker-compose build
+            docker-compose up -d
