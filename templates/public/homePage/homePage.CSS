@@ -1,0 +1,195 @@
+body{
+    background-color:#28293D;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box; 
+}
+
+.acceuil{
+    width: 851px;
+height: 581px;
+top: 156px;
+left: 295px;
+gap: 0px;
+border-radius: 20px 0px 0px 0px;
+opacity: 0px;
+/*position: relative;*/
+display: contents;
+}
+
+.bienvenue{
+    
+
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 36.31px;
+    text-align: center;    
+    color: #fff;
+
+}
+
+.nomEventIt{
+
+    font-family: KoPub Batang;
+font-size: 128px;
+font-weight: 400;
+line-height: 140.03px;
+text-align: center;
+    color: #fff;
+    
+    }
+
+.boutonPlus{
+    display: flex;
+    margin: auto;
+    position: absolute;
+
+    justify-content: center;
+    align-items: center;
+    width: 188px;
+    height: 73px;
+    top: 664px;
+    left: 626px;
+    gap: 0px;
+    border-radius: 9999px;
+    opacity: 0px;
+    background-color: #1766F9;
+    ;
+  
+    
+}
+ 
+.boutonPlusHome{
+
+position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: none;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.boutonPlusHome:hover {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 1);
+  }
+  
+
+
+
+
+.entete{
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #7F98BC;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+align-items: center;
+
+}
+.userBoutonNav{
+    background-color: none;
+}
+
+.boutonNav{
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: none;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .boutonNav:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .boutonNav-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .boutonNav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background:#28293D;
+    transition: all 0.475s;
+  }
+
+  .englobeCarrousel{
+    width: 1353px;
+    height: 627.2px;
+    top: 844.8px;
+    left: 44px;
+    gap: 0px;
+    opacity: 0px;
+
+  }
+
+.pourquoiNous{
+    
+    font-family: Inter;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 77.45px;
+    text-align: center;
+    color: #FFFFFF;
+
+
+}
+
+  .carousel {
+  position: relative;
+  max-width: 600px; /* À ajuster. */
+  margin: auto;
+  overflow: hidden;
+}
+
+.slides .slide {
+  display: none;
+  width: 100%;
+}
+
+.slides .slide img {
+  width: 100%;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+}
+
+.prev {
+  left: 0;
+}
