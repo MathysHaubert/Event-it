@@ -53,7 +53,7 @@ input[type="text"], input[type="password"], input[type="email"] {
   margin: 0;
   color: #1751bb;
   background-color: #C5D2EC;
-  background: linear-gradient(#fff 50%, #C5D2EC 50%);
+  background: linear-gradient(#C5D2EC 50%, #fff 50%);
   font-size: 2em;
   height: 100vh;
 }
@@ -64,7 +64,7 @@ input[type="text"], input[type="password"], input[type="email"] {
   font-size: 5vw;
   text-transform: uppercase;
   white-space: nowrap;
-  background: linear-gradient(#C5D2EC 50%, #fff 50%);
+  background: linear-gradient(#fff 50%, #C5D2EC 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
