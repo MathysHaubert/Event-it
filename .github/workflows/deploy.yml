@@ -33,3 +33,5 @@ jobs:
             docker-compose down
             docker-compose build
             docker-compose up -d
+            sleep 10 # wait for containers to start
+            docker-compose exec -T php composer install
