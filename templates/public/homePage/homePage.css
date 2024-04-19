@@ -6,6 +6,10 @@ body{
     box-sizing: border-box; 
 }
 
+p {
+  color: white; /* Tous les paragraphes auront un texte bleu */
+}
+
 .acceuil{
 
   display: grid;
@@ -198,10 +202,13 @@ align-items: center;
 }
 
 .description{
+  margin-top: 100px; /* Ajoute un espace de 100px en haut de cette div*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    font-family: Inter;
   
 }
 
@@ -228,3 +235,21 @@ align-items: center;
     align-items: center;
 
 }
+
+
+.img_text_desc{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    text-col
+    padding: 10px;
+    border-radius: 7%;
+
+    background-color: #393A51;
+    
+
+}
+
