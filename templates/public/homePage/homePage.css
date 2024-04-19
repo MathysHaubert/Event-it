@@ -196,3 +196,35 @@ align-items: center;
 .prev {
   left: 0;
 }
+
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+
+.premiere_description{
+  
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.img_des{
+  width: 300px; /* Réduit la largeur de l'image à 50% de sa taille originale */
+  height: auto; /* Ajuste la hauteur automatiquement pour conserver le ratio */
+
+}
+
+.deuxieme_description{
+  
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
