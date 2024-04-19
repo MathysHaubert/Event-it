@@ -7,6 +7,10 @@ body{
 }
 
 .acceuil{
+
+  display: grid;
+  place-items: center;
+  
     width: 851px;
 height: 581px;
 top: 156px;
@@ -43,16 +47,15 @@ text-align: center;
 
 .boutonPlus{
     display: flex;
-    margin: auto;
-    position: absolute;
+    
 
     justify-content: center;
     align-items: center;
     width: 188px;
     height: 73px;
     top: 664px;
-    left: 626px;
-    gap: 0px;
+    left: 50%;
+    
     border-radius: 9999px;
     opacity: 0px;
     background-color: #1766F9;
