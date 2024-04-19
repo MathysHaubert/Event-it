@@ -212,7 +212,7 @@ align-items: center;
   
 }
 
-.premiere_description{
+.sous_description{
   margin-left: 5%;
 
   display: flex;
@@ -223,20 +223,10 @@ align-items: center;
 }
 
 .img_des{
-  width: 300px; /* Réduit la largeur de l'image à 50% de sa taille originale */
+  width: 350px; /* Réduit la largeur de l'image à 300px */
   height: auto; /* Ajuste la hauteur automatiquement pour conserver le ratio */
-
-}
-
-.deuxieme_description{
-
-  margin-right: 5%;
-
-  display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
+  margin-bottom: 12%;
+  border-radius: 7%;
 }
 
 
@@ -246,7 +236,7 @@ align-items: center;
   border-radius: 7%;
   background-color: #393A51;
   width: 350px;
-  height: auto;
+  height: 325px;
 
     display: flex;
     flex-direction: column;
