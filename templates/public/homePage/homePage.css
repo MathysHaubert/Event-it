@@ -51,15 +51,15 @@ text-align: center;
 
 .boutonPlus{
     display: flex;
-    
-
     justify-content: center;
     align-items: center;
     width: 188px;
     height: 73px;
     top: 664px;
     left: 50%;
-    
+
+    margin-left: 550px ;
+    margin-bottom: 20px;
     border-radius: 9999px;
     opacity: 0px;
     background-color: #1766F9;
@@ -213,7 +213,8 @@ align-items: center;
 }
 
 .premiere_description{
-  
+  margin-left: 5%;
+
   display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -228,7 +229,9 @@ align-items: center;
 }
 
 .deuxieme_description{
-  
+
+  margin-right: 5%;
+
   display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -239,17 +242,23 @@ align-items: center;
 
 .img_text_desc{
 
+  padding: 10px;
+  border-radius: 7%;
+  background-color: #393A51;
+  width: 350px;
+  height: auto;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    text-col
-    padding: 10px;
-    border-radius: 7%;
-
-    background-color: #393A51;
     
-
+  
 }
 
+.text_pricipale_de_description{
+margin-left: 15%;
+margin-right: 15%;
+  text-align: center;
+  
+}
