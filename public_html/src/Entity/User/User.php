@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Client\Client;
 use App\Trait\Identifier;
+use App\Entity\Organization\Organization;
 use DateTime;
 
 class User
@@ -90,7 +91,7 @@ class User
     {
         $this->organization = $organization;
     }
-    
+
     public static function createUserFromArray(array $data): User
     {
         return new User(
