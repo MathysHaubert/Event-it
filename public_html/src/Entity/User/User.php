@@ -15,7 +15,6 @@ class User
         private string $firstname,
         private DateTime $createAt,
         private DateTime $lastConnection,
-        private Client $client,
         private string $password,
         private string $email,
         private Organization $organization
@@ -62,16 +61,6 @@ class User
         $this->lastConnection = $lastConnection;
     }
 
-    public function getClient(): Client
-    {
-        return $this->client;
-    }
-
-    public function setClient(Client $client): void
-    {
-        $this->client = $client;
-    }
-
     public function getPassword(): string
     {
         return $this->password;
@@ -102,4 +91,16 @@ class User
         $this->organization = $organization;
     }
     
+    public static function createUserFromArray(array $data): User
+    {
+        return new User(
+            $data['lastname'],
+            $data['firstname'],
+            new DateTime($data['createAt']),
+            new DateTime($data['lastConnection']),
+            $data['password'],
+            $data['email'],
+            Organization::createOrganizationFromArray($data['organization'])
+        );
+    }
 }

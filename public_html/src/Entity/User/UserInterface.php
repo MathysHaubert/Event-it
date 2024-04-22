@@ -22,9 +22,6 @@ interface UserInterface
     public function getLastConnection(): DateTime;
     public function setLastConnection(DateTime $lastConnection): void;
 
-    public function getClient(): Client;
-
-    public function setClient(Client $client): void;
     public function getPassword(): string;
 
     public function setPassword(string $password): void;

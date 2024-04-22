@@ -10,7 +10,10 @@ class Organization
 {
     use Identifier;
 
-    private string $name;
-
-    private Status $status;
+    public function __construct(
+        private string $name,
+        private int $id,
+        private int $status_id
+    ){
+    }
 }
