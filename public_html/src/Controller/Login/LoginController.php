@@ -10,7 +10,6 @@ class LoginController extends Controller{
     public function index($data = [])
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //TODO: handle login and render the homepage
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
             header('Location: /');
