@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
         const confirmPassword = document.querySelector('#confirmPassword').value;
+        const email = document.querySelector('#email').value
+        const terms = document.querySelector('#terms').checked;
 
-        if (username === '' || password === '' || confirmPassword === '') {
+      if (username === '' || password === '' || confirmPassword === '' || email === '' || !terms) {
             alert('All fields are required!');
             return;
         }
@@ -19,6 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Simulate a registration request
-        console.log(`Registering with username: ${username} and password: ${password}`);
+        setTimeout(function() {
+            alert('Registration successful!');
+            window.location.href = 'login.html';
+        }, 2000);
+
     });
 });

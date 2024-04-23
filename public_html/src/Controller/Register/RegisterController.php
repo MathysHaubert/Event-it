@@ -10,7 +10,6 @@ use App\Cookie\CookieHandler;
 class RegisterController extends Controller{
     public function index($data = []): void
     {
-        // define the default locale at french
         $this->webRender('public/Register/' . self::INDEX , [
             'title' => 'Register Page',
             'content' => 'Welcome to the register page',
