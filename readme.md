@@ -4,6 +4,8 @@ Here's the translation of the README.md in English:
 
 This project is a web application for the ISEP school.
 
+# Fonctionnement
+![Explication fonctionnement.svg](Resource_README%2FExplication%20fonctionnement.svg)
 ## Summary
 
 - [Tools](#tools)
@@ -27,7 +29,7 @@ This project is a web application for the ISEP school.
 # Tools
 
 - Dependency manager: [Composer](https://getcomposer.org/doc/00-intro.md)
-- Server: [Docker](https://www.docker.com/)) 
+- Server: [Docker](https://www.docker.com/))
 - Version control: [Git](https://git-scm.com/)
 - Design: [Figma](https://www.figma.com/)
 - Project management: [Notion](https://www.notion.so/)
