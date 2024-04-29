@@ -63,7 +63,6 @@ text-align: center;
     border-radius: 9999px;
     opacity: 0px;
     background-color: #1766F9;
-    ;
   
     
 }
@@ -256,6 +255,16 @@ margin-right: 15%;
 
 
 /* Début style FAQ*/
+.accordion{
+
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: Inter;
+}
+
 .accordion-container{
 
   display: flex;
@@ -270,15 +279,19 @@ margin-right: 15%;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+   /* justify-content: space-between;*/
     align-items: center;
     margin-left: 2%;
     margin-right: 2%;
+    margin-bottom: 3%;
    
 }
 .accordion-header {
-  background-color: #f2f2f2;
-  color: #444;
+  
+  border-radius: 4px;
+    opacity: 0px;
+    background-color: #FFFFFF1A;
+  /*color: #444;*/
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -299,10 +312,20 @@ margin-right: 15%;
 
 .accordion-content {
   padding: 0 18px;
-  background-color: white;
+  background-color: #FFFFFF1A;
+  width: 100%;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+
+  
+font-family: Inter;
+color: #FFFFFF;
+font-size: 16px;
+font-weight: 600;
+line-height: 24px;
+text-align: left;
+
 }
 
 @media (max-width: 767px) {
