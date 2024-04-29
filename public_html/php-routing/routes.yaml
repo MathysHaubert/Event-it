@@ -3,7 +3,7 @@ event_it.public.homepage:
   path: /
   controller: App\Controller\Home\HomeController
   method: index
-  
+
 users:
   path: /users
   controller: UsersController
@@ -19,3 +19,8 @@ event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
   controller: App\Cookie\CookieHandler
   method: handleRequest
+
+verifyemail:
+  path : /verifyemail
+  controller: App\Controller\Verifyemail\verifyemail
+  method: index

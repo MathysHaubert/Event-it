@@ -1,0 +1,38 @@
+{% extends '/public/base.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <h1>Vérification d'email</h1>
+    <form action="verification.php" method="POST" onsubmit="return validateEmail()">
+      <label for="email">Entrez votre adresse e-mail :</label>
+      <input type="email" id="email" name="email" required>
+      <button type="submit">Envoyer</button>
+      <!-- Feedback visuel pour la saisie de l'email -->
+      <div id="email-validation-message" class="error-message" style="display: none;">L'adresse e-mail est invalide.</div>
+    </form>
+    <!-- Message de confirmation -->
+    <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail a été envoyé avec succès.</div>
+    <!-- Lien pour revenir en arrière -->
+    <a href="#" onclick="history.go(-1);">Modifier l'adresse e-mail</a>
+  </div>
+
+  <script>
+    function validateEmail() {
+      var emailInput = document.getElementById('email');
+      var emailValidationMessage = document.getElementById('email-validation-message');
+      var confirmationMessage = document.getElementById('confirmation-message');
+
+      // Vérification de l'email
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        emailValidationMessage.style.display = 'block';
+        confirmationMessage.style.display = 'none';
+        return false; // Empêche la soumission du formulaire si l'email est invalide
+      } else {
+        emailValidationMessage.style.display = 'none';
+        confirmationMessage.style.display = 'block';
+        return true; // Permet la soumission du formulaire si l'email est valide
+      }
+    }
+  </script>
+{% endblock %}
