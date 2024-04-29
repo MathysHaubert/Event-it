@@ -29,3 +29,8 @@ Register:
   path: /register
   controller: App\Controller\Register\RegisterController
   method: index
+
+Stat:
+  path: /stat
+  controller: App\Controller\StatPage\StatPageController
+  method: index

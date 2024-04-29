@@ -1,0 +1,31 @@
+{% extends '/public/base.html.twig' %}
+{% block title %}
+  Stat Page
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="stat-container">
+        <h1 class="title">Stat Page</h1>
+        <div class="graph">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="pie-charts-container">
+            <div class="pie-chart">
+                <canvas id="pieChart1"></canvas>
+            </div>
+            <div class="pie-chart">
+                <canvas id="pieChart2"></canvas>
+            </div>
+        </div>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/StatPage/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/StatPage/script.js"></script>
+{% endblock %}
