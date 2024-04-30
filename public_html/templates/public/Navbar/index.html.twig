@@ -1,0 +1,26 @@
+<div class="body">
+    <img src="assets/Resource/img/logo.png" alt="logo" class="images">
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="{{ path('acceuil') }}" class="nav-link">Acceuil</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('recherche') }}" class="nav-link">Recherche</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('faq') }}" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('Contact') }}" class="nav-link">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <a href="{% if is_logged_in %}{{ path('statPage') }}{% else %}{{ path('login') }}{% endif %}">
+        <img src="assets/Resource/img/UserButton.png" alt="logo" class="images">
+    </a>
+</div>
+
+<link rel="stylesheet" href="assets/Resource/css/Navbar/style.css">
+
+<script type="module" src="assets/Resource/js/Navbar/script.js"></script>
