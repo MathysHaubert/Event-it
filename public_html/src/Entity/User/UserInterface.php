@@ -34,5 +34,7 @@ interface UserInterface
 
     public function setOrganization(Organization $organization): void;
 
-    public function getUser(param $array): User;
+    public static function getUser(param $array): User;
+
+    public static function createUser(data $array): User;
 }

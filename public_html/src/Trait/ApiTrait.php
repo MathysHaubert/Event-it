@@ -3,7 +3,7 @@
 namespace App\Trait;
 
 trait ApiTrait{
-    public function get($url, $token = null, $body = null){
+    public function get($url, $body = null, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
