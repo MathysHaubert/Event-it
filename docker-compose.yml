@@ -1,43 +1,11 @@
-version: '3'
-
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile-nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./site:/var/www/html
-    depends_on:
-      - php
-    networks:
-      - app-network
-
   php:
+    image: php:8.2-apache
+    container_name: php-8.2-apache
+    ports:
+      - "9000:80"
+    volumes:
+      - ./public_html:/var/www/html
     build:
       context: .
-      dockerfile: Dockerfile-php
-    volumes:
-      - ./site:/var/www/html
-    networks:
-      - app-network
-
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: yourdbname
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpassword
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  db_data:
+      dockerfile: docker/php/Dockerfile

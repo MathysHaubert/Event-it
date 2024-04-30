@@ -1,0 +1,11 @@
+.fake-button {
+    border-radius: 15%;
+    padding: 5px;
+}
+.fake-button, .validate {
+    background-color: forestgreen;
+}
+.fake-button, .decline {
+    background-color: red;
+    color:black;
+}

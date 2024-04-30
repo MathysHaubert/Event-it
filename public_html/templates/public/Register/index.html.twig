@@ -1,0 +1,109 @@
+{% extends'public/base.html.twig' %}
+
+{% block title %}
+ Register Page
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="register-container">
+        <div class="register-form">
+            <form action="{{ path('register') }}" method="post">
+                <div class="form-group
+                {% if form.username.vars.errors|length > 0 %}
+                    has-error
+                {% endif %}
+                ">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" value="{{ form.username.vars.value}}" required >
+                    {% if form.username.vars.errors|length > 0 %}
+                        <span class="help-block
+                        {% if form.username.vars.errors|length > 0 %}
+                            has-error
+                        {% endif %}
+                        ">
+                            {% for error in form.username.vars.errors %}
+                                {{ error.message }}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="form-group
+                {% if form.email.vars.errors|length > 0 %}
+                    has-error
+                {% endif %}
+                ">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" value="{{ form.email.vars.value }} " required>
+                    {% if form.email.vars.errors|length > 0 %}
+                        <span class="help-block
+                        {% if form.email.vars.errors|length > 0 %}
+                            has-error
+                        {% endif %}
+                        ">
+                            {% for error in form.email.vars.errors %}
+                                {{ error.message }}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="form-group
+                {% if form.password.vars.errors|length > 0 %}
+                    has-error
+                {% endif %}
+                ">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" value="{{ form.password.vars.value }}" required>
+                    {% if form.password.vars.errors|length > 0 %}
+                        <span class="help-block
+                        {% if form.password.vars.errors|length > 0 %}
+                            has-error
+                        {% endif %}
+                        ">
+                            {% for error in form.password.vars.errors %}
+                                {{ error.message }}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="form-group
+                {% if form.confirmPassword.vars.errors|length > 0 %}
+                    has-error
+                {% endif %}
+                ">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" value="{{ form.confirmPassword.vars.value }}" required>
+                    {% if form.confirmPassword.vars.errors|length > 0 %}
+                        <span class="help-block
+                        {% if form.confirmPassword.vars.errors|length > 0 %}
+                            has-error
+                        {% endif %}
+                        ">
+                            {% for error in form.confirmPassword.vars.errors %}
+                                {{ error.message }}
+                            {% endfor %}
+                        </span>
+                    {% endif %}
+                </div>
+              <div>
+                <label for="CGU"><a href="https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-web/rediger-des-conditions-generales-dutilisation#autres-mentions-obligatoires">I accept<br> the terms and Conditions</a></label>
+                  <input type="checkbox" id="CGU" name="CGU" required>
+              </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="logo">
+        <h1 class="logo-text">EVENT IT</h1>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/Register/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/Register/script.js"></script>
+{% endblock %}

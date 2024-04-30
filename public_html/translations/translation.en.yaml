@@ -1,0 +1,10 @@
+event_it:
+  teste:
+    hello_world: "Hello world"
+  ui:
+    cookies:
+      title: "Cookies"
+      description: "This website uses cookies to ensure you get the best experience on our website."
+    button:
+        accept: "Accept"
+        decline: "Decline"
