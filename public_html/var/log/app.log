@@ -1,0 +1,34 @@
+[2024-03-26 16:28:20] Unexpected token "operator" of value "/". in file /var/www/html/templates/public/homePage/index.html.twig at line 12
+[2024-03-26 16:28:41] Unexpected token "operator" of value "/". in file /var/www/html/templates/public/homePage/index.html.twig at line 12
+[2024-04-02 14:58:05] ContactController not found
+[2024-04-02 15:07:17] App\Controller\Contact\ContactController::index not found
+[2024-04-02 15:07:55] ContactController::index not found
+[2024-04-02 15:08:47] App\Controller\Contact\ContactController::index not found
+[2024-04-02 15:09:39] App\Controller\Contact\ContactController::index not found
+[2024-04-02 15:15:12] App\Controller\Contact\ContactController::index not found
+[2024-04-02 15:16:35] App\Controller\Contact\ContactController::index not found
+[2024-04-02 15:19:32] UsersController not found
+[2024-04-02 15:23:21] App\Controller\Contact not found
+[2024-04-02 15:23:42] App\Controller\Contact not found
+[2024-04-02 15:23:46] App\Controller\Contact not found
+[2024-04-02 15:23:58] App\Controller\Contact not found
+[2024-04-02 15:25:03] App\Controller\Contact/ContactController not found
+[2024-04-02 15:31:16] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:32:07] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:32:37] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:33:01] Unable to find template "templates/contactPage/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:42:45] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:43:10] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:43:40] Unable to find template "public/contact" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:45:45] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:46:04] Unable to find template "public/contactPageindex.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:46:17] Unable to find template "<public>
+        <contactPage>index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:46:26] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:47:28] Unable to find template "public/contactPageindex.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:48:32] Unable to find template "public/contacPage/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:50:50] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:51:33] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:52:01] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:53:38] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-02 15:53:43] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227

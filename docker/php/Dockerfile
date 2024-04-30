@@ -31,7 +31,7 @@ RUN apt-get install -y \
   # Clean up \
   && apt-get autoremove -y \
   && apt-get clean
-
+RUN a2enmod rewrite
 # Expose port
 EXPOSE 80
 
