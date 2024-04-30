@@ -1,39 +1,35 @@
 {% extends '/public/base.html.twig' %}
 
+{% block title %}
+  Home Page
+{% endblock %}
+
 {% block body %}
-<html>
-    <head>
-        <title>Home page</title>
-        <link rel="stylesheet" type="text/css" href="homePage.css">
-    </head>
-
-    <body>
-
     <div class="acceuil" >
         <div class="bienvenue">
 
-            <p > 
+            <p >
                 Bienvenue
             </p>
         </div>
 
         <div >
-            <p class="nomEventIt"> 
+            <p class="nomEventIt">
                 Event IT
-            </p>   
+            </p>
 
         </div>
 
-        
+
         <div class="boutonPlus">
             <button class="boutonPlusHome"> Plus </button>
         </div>
 
     </div>
 
-      
+
 <div class="englobeCarrousel">
-    
+
 
     <hr noshade style="
     width: 1216px;
@@ -46,17 +42,17 @@
     ">
 
 <div class="pourquoiNous">
-    <p > 
+    <p >
         Pourquoi nous?
     </p>
 </div>
-        
+
 
     <div class="carousel">
         <div class="slides">
-          <div class="slide"><img src="img1.jpg" alt=""></div>
-          <div class="slide"><img src="img2.jpg" alt=""></div>
-          <div class="slide"><img src="img3.jpg" alt=""></div>
+          <div class="slide"><img src="assets/Resource/img/img1.jpg" alt=""></div>
+          <div class="slide"><img src="assets/Resource/img/img2.jpg" alt=""></div>
+          <div class="slide"><img src="assets/Resource/img/img3.jpg" alt=""></div>
         </div>
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
@@ -78,21 +74,21 @@
                 Harmonisez l'Expérience Sonore:  <br>
                 Redéfinissez le Son des Concerts
             </p>
-            <img class=" img_des" src="img1.jpg" alt="">
+            <img class=" img_des" src="assets/Resource/img/img1.jpg" alt="">
          </div>
 
         <p class="text_pricipale_de_description" >
             Explorez l'essence de l'émotion sonore partagée. <br>
             Chaque concert devient une expérience captivante, unissant artistes et public dans une symphonie d'émotions. <br>
-            Découvrez comment notre engagement envers un son exceptionnel crée une connexion instantanée et mémorable entre la musique et l'âme. <br> 
+            Découvrez comment notre engagement envers un son exceptionnel crée une connexion instantanée et mémorable entre la musique et l'âme. <br>
             Bienvenue dans le monde du son qui transcende et rapproche.
         </p>
 
-        
+
 
     </div >
 
-    
+
 
     <div class="sous_description">
 
@@ -107,7 +103,7 @@
             <p>
                 Son Émotionnel, Connexion Instantanée
             </p>
-            <img class=" img_des" src="img3.jpg" alt="">
+            <img class=" img_des" src="assets/Resource/img/img3.jpg" alt="">
 
          </div>
     </div>
@@ -128,8 +124,8 @@
 <div class= "faq">
 
     <p class="pourquoiNous"> FAQ </p>
-    
-    <div class="accordion"> 
+
+    <div class="accordion">
 
         <div class="accordion-container">
             <div class="questionsFaq">
@@ -138,15 +134,15 @@
                   </div>
                   <div class="accordion-content">Le niveau de bruit maximum varie selon les réglementations locales, mais il est généralement fixé à environ 85-100 décibels pour les zones résidentielles. Il est crucial de vérifier les normes spécifiques de votre localité avant de planifier votre événement.</div>
             </div>
-            
+
             <div class="questionsFaq">
                 <div class="accordion-header" aria-expanded="false">
                     <i class="fa fa-angle-right"></i> Comment mesurez-vous les niveaux sonores pendant un événement ?
                   </div>
                   <div class="accordion-content">Nous utilisons des sonomètres calibrés pour surveiller en continu les niveaux de bruit à différents points de l'événement. Ces données nous aident à ajuster le volume en temps réel pour respecter les normes légales et le confort du public.</div>
             </div>
-            
-            <div class="questionsFaq"> 
+
+            <div class="questionsFaq">
                 <div class="accordion-header" aria-expanded="false">
                     <i class="fa fa-angle-right"></i> Que faites-vous pour minimiser les perturbations sonores pour les résidents locaux ?
                   </div>
@@ -182,19 +178,20 @@
 
     </div>
 
-    
-      
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    
-</div>    
-        
-          
-
-        
-
-          <script src="homePage.js"></script>
-    </body>
 
 
-    </html>
+
+</div>
+
 {% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/Home/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/Home/script.js"></script>
+{% endblock %}
+
