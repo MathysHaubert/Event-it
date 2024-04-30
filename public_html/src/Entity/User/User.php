@@ -108,19 +108,13 @@ class User
 
     public static function getUser(param $array): User
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-        $ApiUrl = $_ENV['API_URL'];
-        $data = ApiTrait::get($ApiUrl.'/user', $param);
+        $data = ApiTrait::get($_ENV[API_URL].'/user', $param);
         return self::createUserFromArray($data);
     }
 
     public static function createUser(data $array): User
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-        $ApiUrl = $_ENV['API_URL'];
-        $data = ApiTrait::post($ApiUrl.'/user', $array);
+        $data = ApiTrait::post($_ENV[API_URL].'/user', $array);
         return self::createUserFromArray($data);
     }
 }
