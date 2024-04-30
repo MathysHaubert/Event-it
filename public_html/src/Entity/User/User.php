@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Client\Client;
 use App\Trait\Identifier;
 use DateTime;
+use Dotenv\Dotenv;
 
 class User
 {
@@ -91,7 +92,7 @@ class User
         $this->organization = $organization;
     }
     
-    public static function createUserFromArray(array $data): User
+    private static function createUserFromArray(array $data): User
     {
         return new User(
             $data['lastname'],
@@ -102,5 +103,14 @@ class User
             $data['email'],
             Organization::createOrganizationFromArray($data['organization'])
         );
+    }
+
+    public static function getUser(param $array): User
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+        $ApiUrl = $_ENV['API_URL'];
+        $data = ApiTrait::get($ApiUrl.'/user', null, $param);
+        return self::createUserFromArray($data);
     }
 }

@@ -3,12 +3,15 @@
 namespace App\Trait;
 
 trait ApiTrait{
-    public function get($url, $token = null){
+    public function get($url, $token = null, $body = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         if($token) {
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+        }
+        if($body) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
         }
         $output = curl_exec($ch);
         curl_close($ch);
