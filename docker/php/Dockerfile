@@ -2,7 +2,6 @@ FROM php:8.2-apache
 LABEL authors="MathysHaubert"
 
 RUN apt-get update && apt-get upgrade -y
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql mysqli
 RUN if [ ! -e /usr/local/etc/php/php.ini ]; then ln -s /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini; fi
 
 # Install dependencies
@@ -13,8 +12,6 @@ RUN apt-get install -y \
   \
   # Php extensions
   && docker-php-ext-install \
-  mysqli \
-  pdo_mysql \
   mbstring \
   xml \
   gd \
