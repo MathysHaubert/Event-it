@@ -1,24 +1,22 @@
 .body {
   background-color: #7f98bc;
   font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   display: flex;
+  width: 100%;
   justify-content: space-between;
+  position: relative;
+  align-items: center;
 }
 
-.images {
-  max-width: 5vw;
-  max-height: 5vw;
-}
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #7f98bc;
   color: white;
-  padding: 10px 30px;
+  height: 5vh;
+  top: 0;
 }
 
 .nav-link {
@@ -26,9 +24,18 @@
   text-decoration: none;
 }
 
+.images {
+  max-width: 5vw;
+  max-height: 10vh;
+}
+
 .nav-list {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   gap: 4vw;
+}
+
+.nav-link.active{
+  text-decoration: underline;
 }
