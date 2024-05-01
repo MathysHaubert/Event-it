@@ -10,6 +10,8 @@ Home
 <p>{{ 'event_it.teste.hello_world'|trans }} </p>
     <button href="{{  path('users') }}"></button>
     {% include 'public/homePage/cookie/_cookie.html.twig' %}
+    <a href="{{ path('contact') }}" class="btn">Contact</a>
+
 {% endblock %}
 
 {% block stylesheets %}
@@ -21,3 +23,4 @@ Home
     {{ parent() }}
     <script type="module" src="assets/Resource/js/Home/script.js"></script>
 {% endblock %}
+
