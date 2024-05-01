@@ -11,7 +11,7 @@ users:
 
 contact:
   path: /contact
-  controller: ContactController
+  controller: App\Controller\Contact\ContactController
   method: index
 
   # Here ajax's route
