@@ -1,34 +1,31 @@
-[2024-03-26 16:28:20] Unexpected token "operator" of value "/". in file /var/www/html/templates/public/homePage/index.html.twig at line 12
-[2024-03-26 16:28:41] Unexpected token "operator" of value "/". in file /var/www/html/templates/public/homePage/index.html.twig at line 12
-[2024-04-02 14:58:05] ContactController not found
-[2024-04-02 15:07:17] App\Controller\Contact\ContactController::index not found
-[2024-04-02 15:07:55] ContactController::index not found
-[2024-04-02 15:08:47] App\Controller\Contact\ContactController::index not found
-[2024-04-02 15:09:39] App\Controller\Contact\ContactController::index not found
-[2024-04-02 15:15:12] App\Controller\Contact\ContactController::index not found
-[2024-04-02 15:16:35] App\Controller\Contact\ContactController::index not found
-[2024-04-02 15:19:32] UsersController not found
-[2024-04-02 15:23:21] App\Controller\Contact not found
-[2024-04-02 15:23:42] App\Controller\Contact not found
-[2024-04-02 15:23:46] App\Controller\Contact not found
-[2024-04-02 15:23:58] App\Controller\Contact not found
-[2024-04-02 15:25:03] App\Controller\Contact/ContactController not found
-[2024-04-02 15:31:16] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:32:07] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:32:37] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:33:01] Unable to find template "templates/contactPage/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:42:45] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:43:10] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:43:40] Unable to find template "public/contact" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:45:45] Unable to find template "public/contactPage" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:46:04] Unable to find template "public/contactPageindex.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:46:17] Unable to find template "<public>
-        <contactPage>index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:46:26] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:47:28] Unable to find template "public/contactPageindex.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:48:32] Unable to find template "public/contacPage/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:50:50] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:51:33] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:52:01] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:53:38] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-04-02 15:53:43] Unable to find template "base.html.twig" (looked into: /var/www/html/templates) in "public/contactPage/index.html.twig" at line 1. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+  [2024-03-26 14:42:51] An exception has been thrown during the rendering of a template ("App\TwigExtention\PathFunction::getPath(): Argument #1 ($routeName) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 73"). in file /var/www/html/templates/public/homePage/index.html.twig at line 11
+[2024-03-26 14:43:13] An exception has been thrown during the rendering of a template ("App\TwigExtention\PathFunction::getPath(): Argument #1 ($routeName) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 54"). in file /var/www/html/templates/public/homePage/index.html.twig at line 4
+[2024-03-26 14:43:33] An exception has been thrown during the rendering of a template ("App\TwigExtention\PathFunction::getPath(): Argument #1 ($routeName) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 63"). in file /var/www/html/templates/public/homePage/index.html.twig at line 8
+[2024-03-26 15:50:11] Unable to find template "public/LoginPage/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-03-26 15:51:27] Unable to find template "public/Login/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-03-26 15:55:38] An exception has been thrown during the rendering of a template ("App\TwigExtention\Translator::translation(): Argument #1 ($key) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 89"). in file /var/www/html/templates/public/Login/index.html.twig at line 18
+[2024-03-26 15:55:54] An exception has been thrown during the rendering of a template ("App\TwigExtention\Translator::translation(): Argument #1 ($key) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 89"). in file /var/www/html/templates/public/Login/index.html.twig at line 18
+[2024-03-26 16:00:50] An exception has been thrown during the rendering of a template ("App\TwigExtention\Translator::translation(): Argument #1 ($key) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 89"). in file /var/www/html/templates/public/Login/index.html.twig at line 18
+[2024-03-26 16:00:56] An exception has been thrown during the rendering of a template ("App\TwigExtention\Translator::translation(): Argument #1 ($key) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 89"). in file /var/www/html/templates/public/Login/index.html.twig at line 18
+[2024-03-26 16:02:17] An exception has been thrown during the rendering of a template ("App\TwigExtention\Translator::translation(): Argument #1 ($key) must be of type string, null given, called in /var/www/html/vendor/twig/twig/src/Environment.php(360) : eval()'d code on line 89"). in file /var/www/html/templates/public/Login/index.html.twig at line 18
+[2024-03-27 14:43:53] Unknown "form_row" function. in file /var/www/html/templates/public/Register/index.html.twig at line 12
+[2024-03-27 14:44:23] Unknown "form_row" function. in file /var/www/html/templates/public/Register/index.html.twig at line 12
+[2024-03-27 14:44:41] Unknown "form_row" function. in file /var/www/html/templates/public/Register/index.html.twig at line 12
+[2024-03-27 14:44:53] Unknown "form_row" function. in file /var/www/html/templates/public/Register/index.html.twig at line 12
+[2024-04-23 15:08:31] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:08:34] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:09:58] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:50:40] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:51:12] Unable to find template "public/home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:53:20] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:53:33] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:56:09] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:57:52] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:59:28] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 15:59:53] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 16:02:15] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 16:02:31] Unable to find template "public/home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-23 16:17:27] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
+[2024-04-23 16:17:35] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
+[2024-04-23 16:17:40] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
+[2024-04-23 16:27:15] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227

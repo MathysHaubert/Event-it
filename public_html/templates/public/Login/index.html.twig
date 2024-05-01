@@ -1,0 +1,48 @@
+{% extends '/public/base.html.twig' %}
+
+{% block title %}
+  Login Page
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="login-container">
+      <div class="login-form">
+        <form action="{{ path('login') }}" method="post">
+          <div class="form-group
+          {% if error %}
+            has-error
+          {% endif %}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required>
+          </div>
+          <div class="form-group
+          {% if error %}
+            has-error
+          {% endif %}">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="_password" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" >Login</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="logo">
+      <h1>EVENT IT</h1>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/Login/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/Login/script.js"></script>
+{% endblock %}
