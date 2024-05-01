@@ -3,22 +3,24 @@
 namespace App\Trait;
 
 trait ApiTrait{
-    public function get($url, $body = null, $token = null){
+    public static function get($url, $body = null, $token = null){
         $ch = curl_init();
+
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        if($token) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
-        }
-        if($body) {
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
-        }
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+
+        echo "\nGET request to URL: $url\n";
+        echo "Body: ";
+        print_r($body);
+        echo "\nToken: $token\n";
+
         $output = curl_exec($ch);
         curl_close($ch);
         return json_decode($output, true);
     }
 
-    public function post($url, $data, $token = null){
+    public static function post($url, $data, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -36,7 +38,7 @@ trait ApiTrait{
         return json_decode($output, true);
     }
 
-    public function put($url, $data, $token = null){
+    public static function put($url, $data, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -54,7 +56,7 @@ trait ApiTrait{
         return json_decode($output, true);
     }
 
-    public function delete($url, $token = null){
+    public static function delete($url, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
@@ -67,7 +69,7 @@ trait ApiTrait{
         return json_decode($output, true);
     }
 
-    public function update($url, $data, $token = null){
+    public static function update($url, $data, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -85,7 +87,7 @@ trait ApiTrait{
         return json_decode($output, true);
     }
 
-    public function patch($url, $data, $token = null){
+    public static function patch($url, $data, $token = null){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");

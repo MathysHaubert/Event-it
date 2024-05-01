@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
 use App\Entity\Client\Client;
 use App\Trait\Identifier;
 use App\Entity\Organization\Organization;
 use DateTime;
 use Dotenv\Dotenv;
+use App\Trait\ApiTrait;
 
 class User
 {
     use Identifier;
 
     public function __construct(
-        private string $lastname,
-        private string $firstname,
-        private DateTime $createAt,
-        private DateTime $lastConnection,
-        private string $password,
-        private string $email,
-        private Organization $organization
+        private string $lastname = '',
+        private string $firstname = '',
+        private ?DateTime $createAt = null,
+        private ?DateTime $lastConnection = null,
+        private string $password = '',
+        private string $email = '',
+        private ?Organization $organization = null
     ) {
     }
 
@@ -92,29 +93,45 @@ class User
     {
         $this->organization = $organization;
     }
-    
+
     private static function createUserFromArray(array $data): User
     {
         return new User(
-            $data['lastname'],
-            $data['firstname'],
-            new DateTime($data['createAt']),
-            new DateTime($data['lastConnection']),
+            $data['lastName'],
+            $data['firstName'],
+            new DateTime($data['createdAt']['date']),
+            new DateTime($data['lastConnection']['date']),
             $data['password'],
             $data['email'],
-            Organization::createOrganizationFromArray($data['organization'])
+            isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null
         );
     }
 
-    public static function getUser(param $array): User
+    public static function getUser(string $param): array
     {
-        $data = ApiTrait::get($_ENV[API_URL].'/user', $param);
-        return self::createUserFromArray($data);
+        $api = new Api();
+        $data = $api->get("http://176.147.224.139:8088".'/user', $param); //todo : replace url with env variable
+        $users = [];
+        if($data !== null){
+            foreach ($data as $userData) {
+                $users[] = self::createUserFromArray($userData);
+            }
+        }
+        return $users;
     }
 
-    public static function createUser(data $array): User
+    public static function createUser($data)
     {
-        $data = ApiTrait::post($_ENV[API_URL].'/user', $array);
-        return self::createUserFromArray($data);
+        $api = new Api();
+        $response = $api->post('/user', $data);
+
+        // Add logging here
+        error_log(print_r($response, true));
+
+        return self::createUserFromArray($response);
     }
+}
+
+class Api {
+    use ApiTrait;
 }

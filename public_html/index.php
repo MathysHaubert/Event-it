@@ -8,6 +8,7 @@ require 'vendor/autoload.php';
 
 use App\Event\Kernel\KernelEvent;
 use App\Kernel\Kernel;
+use Dotenv\Dotenv;
 
 const ROOT = __DIR__;
 const LOG_FILE = ROOT . '/var/log/app.log';
