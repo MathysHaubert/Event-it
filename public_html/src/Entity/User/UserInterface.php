@@ -36,5 +36,5 @@ interface UserInterface
 
     public static function getUser(string $param): User;
 
-    public static function createUser(array $data): User;
+    public static function createUser(array $data): User | null;
 }

@@ -5,16 +5,13 @@ namespace App\Trait;
 trait ApiTrait{
     public static function get($url, $body = null, $token = null){
         $ch = curl_init();
-
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-
-        echo "\nGET request to URL: $url\n";
-        echo "Body: ";
-        print_r($body);
-        echo "\nToken: $token\n";
-
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+        if($token) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+        }
         $output = curl_exec($ch);
         curl_close($ch);
         return json_decode($output, true);
@@ -34,6 +31,13 @@ trait ApiTrait{
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $output = curl_exec($ch);
+
+        // Check if the cURL request failed
+        if($output === false) {
+            // Output the error message
+            echo 'cURL error: ' . curl_error($ch) . "\n";
+        }
+
         curl_close($ch);
         return json_decode($output, true);
     }

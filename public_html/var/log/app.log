@@ -29,3 +29,16 @@
 [2024-04-23 16:17:35] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
 [2024-04-23 16:17:40] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
 [2024-04-23 16:27:15] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 17:56:30] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 17:58:22] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 17:59:11] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:05:58] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:08:18] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:10:06] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:12:43] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:17:30] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:17:53] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:21:23] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:23:05] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:23:35] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-01 18:25:28] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227

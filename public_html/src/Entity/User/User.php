@@ -99,36 +99,40 @@ class User
         return new User(
             $data['lastName'],
             $data['firstName'],
-            new DateTime($data['createdAt']['date']),
-            new DateTime($data['lastConnection']['date']),
+            isset($data['createdAt']['date']) ? new DateTime($data['createdAt']['date']) : null,
+            isset($data['lastConnection']['date']) ? new DateTime($data['lastConnection']['date']) : null,
             $data['password'],
             $data['email'],
             isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null
         );
     }
 
-    public static function getUser(string $param): array
+    public static function getUser(array $params): array    //todo: this is ugly af and need to be fixed asap but no time
     {
-        $api = new Api();
-        $data = $api->get("http://176.147.224.139:8088".'/user', $param); //todo : replace url with env variable
-        $users = [];
-        if($data !== null){
-            foreach ($data as $userData) {
-                $users[] = self::createUserFromArray($userData);
-            }
-        }
-        return $users;
+    $api = new Api();
+    $data = $api->get("http://176.147.224.139:8088".'/user', $params); //todo : replace url with env variable
+    $users = [];
+    var_dump($data);
+    foreach ($data as $userData) {
+        $user = self::createUserFromArray($userData);
+        $users[] = $user;
+    }
+    return $users;
     }
 
     public static function createUser($data)
     {
         $api = new Api();
-        $response = $api->post('/user', $data);
+        $response = $api->post("http://176.147.224.139:8088".'/user', $data); //todo : replace url with env variable
 
         // Add logging here
         error_log(print_r($response, true));
 
-        return self::createUserFromArray($response);
+        if($response){
+            $user = self::createUserFromArray($data);
+            return $user;
+        }
+        return null;
     }
 }
 
