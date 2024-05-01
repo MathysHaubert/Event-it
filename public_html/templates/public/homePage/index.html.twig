@@ -1,26 +1,197 @@
 {% extends '/public/base.html.twig' %}
 
 {% block title %}
-Home
+  Home Page
 {% endblock %}
 
 {% block body %}
-  {{ path('Login')}}
-  <h1>teste</h1>
-<p>{{ 'event_it.teste.hello_world'|trans }} </p>
-    <button href="{{  path('users') }}"></button>
-    {% include 'public/homePage/cookie/_cookie.html.twig' %}
-    <a href="{{ path('contact') }}" class="btn">Contact</a>
+    <div class="acceuil" >
+        <div class="bienvenue">
+
+            <p >
+                Bienvenue
+            </p>
+        </div>
+
+        <div >
+            <p class="nomEventIt">
+                Event IT
+            </p>
+
+        </div>
+
+
+        <div class="boutonPlus">
+            <button class="boutonPlusHome"> Plus </button>
+        </div>
+
+    </div>
+
+
+<div class="englobeCarrousel">
+
+
+    <hr noshade style="
+    width: 1216px;
+    height: 4px;
+    left: 109.5px;
+    top: 844.8px;
+    margin-top: 6%;
+    background: #FFFFFF1A;
+
+    ">
+
+<div class="pourquoiNous">
+    <p >
+        Pourquoi nous?
+    </p>
+</div>
+
+
+    <div class="carousel">
+        <div class="slides">
+          <div class="slide"><img src="assets/Resource/img/img1.jpg" alt=""></div>
+          <div class="slide"><img src="assets/Resource/img/img2.jpg" alt=""></div>
+          <div class="slide"><img src="assets/Resource/img/img3.jpg" alt=""></div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+
+
+
+
+
+
+</div>
+
+<div class="description">
+
+    <div class="sous_description">
+
+        <div class="img_text_desc">
+            <p>
+                Harmonisez l'Expérience Sonore:  <br>
+                Redéfinissez le Son des Concerts
+            </p>
+            <img class=" img_des" src="assets/Resource/img/img1.jpg" alt="">
+         </div>
+
+        <p class="text_pricipale_de_description" >
+            Explorez l'essence de l'émotion sonore partagée. <br>
+            Chaque concert devient une expérience captivante, unissant artistes et public dans une symphonie d'émotions. <br>
+            Découvrez comment notre engagement envers un son exceptionnel crée une connexion instantanée et mémorable entre la musique et l'âme. <br>
+            Bienvenue dans le monde du son qui transcende et rapproche.
+        </p>
+
+
+
+    </div >
+
+
+
+    <div class="sous_description">
+
+        <p class="text_pricipale_de_description">
+            Plongez dans l'univers envoûtant de la musique où chaque note résonne avec une clarté exceptionnelle. <br>
+            Notre mission est de transcender l'expérience sonore dans les salles de concert, offrant une qualité sonore inégalée qui captive les auditeurs et amplifie l'énergie artistique. <br>
+            Découvrez comment nous redéfinissons les normes acoustiques, créant une symphonie parfaite entre l'artiste et son public. <br>
+            Bienvenue dans une nouvelle ère de perfection sonore.
+        </p>
+
+        <div class="img_text_desc" >
+            <p>
+                Son Émotionnel, Connexion Instantanée
+            </p>
+            <img class=" img_des" src="assets/Resource/img/img3.jpg" alt="">
+
+         </div>
+    </div>
+
+</div>
+
+
+<hr noshade style="
+    width: 1216px;
+    height: 4px;
+    left: 109.5px;
+    top: 844.8px;
+    margin-top: 6%;
+    background: #FFFFFF1A;
+
+    ">
+
+<div class= "faq">
+
+    <p class="pourquoiNous"> FAQ </p>
+
+    <div class="accordion">
+
+        <div class="accordion-container">
+            <div class="questionsFaq">
+                <div class="accordion-header" aria-expanded="false">
+                    <i class="fa fa-angle-right"></i> Quel est le niveau de bruit maximum autorisé pour un concert en extérieur ?
+                  </div>
+                  <div class="accordion-content">Le niveau de bruit maximum varie selon les réglementations locales, mais il est généralement fixé à environ 85-100 décibels pour les zones résidentielles. Il est crucial de vérifier les normes spécifiques de votre localité avant de planifier votre événement.</div>
+            </div>
+
+            <div class="questionsFaq">
+                <div class="accordion-header" aria-expanded="false">
+                    <i class="fa fa-angle-right"></i> Comment mesurez-vous les niveaux sonores pendant un événement ?
+                  </div>
+                  <div class="accordion-content">Nous utilisons des sonomètres calibrés pour surveiller en continu les niveaux de bruit à différents points de l'événement. Ces données nous aident à ajuster le volume en temps réel pour respecter les normes légales et le confort du public.</div>
+            </div>
+
+            <div class="questionsFaq">
+                <div class="accordion-header" aria-expanded="false">
+                    <i class="fa fa-angle-right"></i> Que faites-vous pour minimiser les perturbations sonores pour les résidents locaux ?
+                  </div>
+                  <div class="accordion-content">Nous adoptons plusieurs stratégies, telles que l'orientation des haut-parleurs vers l'intérieur du site, l'utilisation de barrières acoustiques et la limitation des basses fréquences. De plus, nous nous engageons à respecter les heures d'opération autorisées pour réduire l'impact sonore pendant les périodes de repos.</div>
+            </div>
+          </div>
+
+<div class="accordion-container">
+    <div class="questionsFaq">
+        <div class="accordion-header" aria-expanded="false">
+            <i class="fa fa-angle-right"></i> Comment gérez-vous les risques liés aux températures élevées lors d'un concert ?
+          </div>
+          <div class="accordion-content">La sécurité des participants est notre priorité. Nous assurons la disponibilité de zones ombragées, de stations d'hydratation gratuites et nous communiquons des conseils de prévention de la chaleur aux participants avant et pendant l'événement.</div>
+    </div>
+    <div class="questionsFaq">
+        <div class="accordion-header" aria-expanded="false">
+            <i class="fa fa-angle-right"></i> Y a-t-il des mesures prises pour les concerts en cas de températures basses ?
+          </div>
+          <div class="accordion-content">Pour les événements par temps froid, nous fournissons des zones chauffées, recommandons un habillement approprié à travers nos canaux de communication, et offrons parfois des accessoires chauffants à l'achat ou en location.</div>
+    </div>
+    <div class="questionsFaq">
+        <div class="accordion-header" aria-expanded="false">
+            <i class="fa fa-angle-right"></i> Que dois-je faire si je trouve le concert trop bruyant ou trop chaud ?
+          </div>
+          <div class="accordion-content">Nous encourageons tous les participants à signaler immédiatement tout inconfort au personnel de l'événement. Des ajustements peuvent souvent être faits en temps réel pour améliorer votre expérience.</div>
+    </div>
+
+</div>
+
+<div>
+    <button> Plus de questions</button>
+</div>
+
+    </div>
+
+
+
+
+</div>
 
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="assets/Resource/css/Home/style.css">
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/Home/style.css">
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script type="module" src="assets/Resource/js/Home/script.js"></script>
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/Home/script.js"></script>
 {% endblock %}
 
