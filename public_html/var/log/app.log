@@ -29,3 +29,12 @@
 [2024-04-23 16:17:35] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
 [2024-04-23 16:17:40] Unknown "redirect" function. in file /var/www/html/templates/public/Login/index.html.twig at line 28
 [2024-04-23 16:27:15] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:37:41] Unable to find template "/Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:37:55] Unable to find template "/Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:41:00] Unable to find template "/Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:41:14] Unable to find template "/Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:41:20] Unable to find template "/Navbar/index.html.twig" (looked into: /var/www/html/templates) in "public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:44:30] Unable to find template "Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:44:46] Unable to find template "./Navbar/index.html.twig" (looked into: /var/www/html/templates) in "/public/base.html.twig" at line 19. in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-04-30 15:45:06] Calling "parent" on a template that does not extend nor "use" another template is forbidden. in file /var/www/html/templates/public/Navbar/index.html.twig at line 27
+[2024-04-30 15:55:04] Calling "parent" on a template that does not extend nor "use" another template is forbidden. in file /var/www/html/templates/public/Navbar/index.html.twig at line 29
