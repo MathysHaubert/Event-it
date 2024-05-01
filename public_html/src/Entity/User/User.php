@@ -112,7 +112,6 @@ class User
     $api = new Api();
     $data = $api->get("http://176.147.224.139:8088".'/user', $params); //todo : replace url with env variable
     $users = [];
-    var_dump($data);
     foreach ($data as $userData) {
         $user = self::createUserFromArray($userData);
         $users[] = $user;

@@ -29,3 +29,8 @@ Register:
   path: /register
   controller: App\Controller\Register\RegisterController
   method: index
+
+UserList:
+  path: /userlist
+  controller: App\Controller\UserList\UserListController
+  method: index
