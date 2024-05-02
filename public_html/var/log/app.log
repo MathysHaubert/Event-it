@@ -42,3 +42,7 @@
 [2024-05-01 18:23:05] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-01 18:23:35] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-01 18:25:28] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-02 22:02:26] Unable to find template "public/UserList/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-02 22:02:37] Unable to find template "public/UserList/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-02 22:21:29] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-02 22:22:05] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227

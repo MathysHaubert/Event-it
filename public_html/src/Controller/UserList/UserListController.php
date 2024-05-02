@@ -13,7 +13,7 @@ class UserListController extends Controller{
     {
         $userInstance = new User();
         $userList = $userInstance->getUser([]);
-        $this->webRender('public/UserList/' . self::INDEX , [
+        $this->webRender('public/userList/' . self::INDEX , [
             'title' => 'User List Page',
             'content' => 'Welcome to the user list page',
             'cookieSet' => CookieHandler::isCookieSet(),
