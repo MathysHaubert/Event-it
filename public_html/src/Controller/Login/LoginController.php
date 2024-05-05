@@ -14,26 +14,25 @@ class LoginController extends Controller{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
-            $userInstance = new User();
-            $user = User::getUser(["email" => $username, "password" => $password]);
-            if (!empty($user)) {
-                $userList = $userInstance->getUser([]);
-                $this->webRender('public/userList/' . self::INDEX , [
-                    'title' => 'User List Page',
-                    'content' => 'Welcome to the user list page',
-                    'cookieSet' => CookieHandler::isCookieSet(),
-                    'users' => $userList,
-                ]);
+            $user = User::login(["email" => $username, "password" => $password]);   //todo : actually login the user on the app
+            if ($user) {
+                header('Location: /');
+                exit;
+            } else {
+                $this->render();
             }
 
         } else {
-            $this->webRender('public/Login/' . self::INDEX, [
-                'title' => 'Login Page',
-                'content' => 'Welcome to the login page',
-                'cookieSet' => CookieHandler::isCookieSet(),
-            ]);
+            $this->render();
         }
+    }
 
+    private function render(){  //todo: this just rerender the page, need to add error messages on why user cant log in @EnzoDEPRE your job now
+        $this->webRender('public/Login/' . self::INDEX, [
+            'title' => 'Login Page',
+            'content' => 'Welcome to the login page',
+            'cookieSet' => CookieHandler::isCookieSet(),
+        ]);
     }
 
 
