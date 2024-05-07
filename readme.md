@@ -6,6 +6,8 @@ This project is a web application for the ISEP school.
 
 # Fonctionnement
 ![Explication fonctionnement.svg](Resource_README%2FExplication%20fonctionnement.svg)
+## JWT
+![image](https://github.com/MathysHaubert/Event-it/assets/46419378/a4986a44-30dc-4f16-9665-ceead7e2a09d)
 ## Summary
 
 - [Tools](#tools)

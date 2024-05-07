@@ -3,7 +3,7 @@ event_it.public.homepage:
   path: /
   controller: App\Controller\Home\HomeController
   method: index
-  
+
 users:
   path: /users
   controller: UsersController
@@ -11,7 +11,7 @@ users:
 
 contact:
   path: /contact
-  controller: ContactController
+  controller: App\Controller\Contact\ContactController
   method: index
 
   # Here ajax's route
@@ -19,3 +19,18 @@ event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
   controller: App\Cookie\CookieHandler
   method: handleRequest
+
+event_it.Login:
+  path: /login
+  controller: App\Controller\Login\LoginController
+  method: index
+
+Register:
+  path: /register
+  controller: App\Controller\Register\RegisterController
+  method: index
+
+UserList:
+  path: /userlist
+  controller: App\Controller\UserList\UserListController
+  method: index

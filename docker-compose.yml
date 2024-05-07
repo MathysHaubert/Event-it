@@ -1,33 +1,10 @@
 services:
   php:
-    image: php:8.2-apache
     container_name: php-8.2-apache
     ports:
       - "9000:80"
     volumes:
       - ./public_html:/var/www/html
     build:
-        context: .
-        dockerfile: docker/php/Dockerfile
-  db:
-    image: mysql:8.0
-    container_name: mysql-8.0
-    command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: event-API
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
-    volumes:
-      - ./mysql:/var/lib/mysql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root
-    ports:
-      - "8899:80"
+      context: .
+      dockerfile: docker/php/Dockerfile
