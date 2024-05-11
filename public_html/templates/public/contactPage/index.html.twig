@@ -1,0 +1,47 @@
+{% extends '/public/base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Event-it répond à vos questions sur tous les sujets!</h1>
+    <div class="line"></div>
+    <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans un délai de 48 heures ouvrées</p>
+    <button class="button" id="formButton">Formulaire</button>
+</div>
+<div id="container2">
+        <form id="contactForm">
+            <div class="input-group">
+                <input type="text" id="firstName" name="firstName" required placeholder="Prénom*">
+                <input type="text" id="lastName" name="lastName" required placeholder="Nom*">
+            </div>
+            <input type="email" id="email" name="email" placeholder="E-mail">
+            <input type="text" id="subject" name="subject" placeholder="Sujet">
+            <textarea id="comment" name="comment" placeholder="Taper un commentaire..."></textarea>
+            <input type="tel" id="phone" name="phone" placeholder="Numéro de téléphone">
+
+            <div class="file-upload">
+                <label for="fileUpload" class="file-upload-label">
+                    Formats de fichiers acceptés : jpg, png ou pdf (max. 50MB)
+                    Vous pouvez uniquement télécharger 1 fichier.
+                </label>
+                <input type="file" id="fileUpload" name="fileUpload" accept=".jpg, .png, .pdf">
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="contactByPhone" name="contactByPhone">
+                <label for="contactByPhone">Veuillez me contacter par téléphone</label>
+            </div>
+
+            <button type="submit" class="button" id="submitButton">Envoyer</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="assets/Resource/css/Contact/style.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="module" src="assets/Resource/js/Contact/script.js"></script>
+{% endblock %}

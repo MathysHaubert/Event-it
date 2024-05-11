@@ -1,0 +1,41 @@
+.body {
+  background-color: #7f98bc;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7f98bc;
+  color: white;
+  height: 5vh;
+  top: 0;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.images {
+  max-width: 5vw;
+  max-height: 10vh;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  gap: 4vw;
+}
+
+.nav-link.active{
+  text-decoration: underline;
+}

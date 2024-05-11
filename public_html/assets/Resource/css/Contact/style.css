@@ -1,0 +1,121 @@
+/* Additional styles for the contact page */
+body{
+    height: auto;
+}
+.container {
+    text-align: center;
+    }
+
+#container2 {
+    
+    text-align: center;
+    width: 700px;
+    margin: 0 auto;
+    
+   
+}
+
+#contactForm{
+    height: 700px;
+}
+p{
+    font-size: x-large;
+    color: rgb(255, 255, 255);
+    margin-bottom: 100px;
+}
+h1 {
+    font-size: 3.5em;
+    color:white ;
+}
+
+.line {
+    width: 30%;
+    height: 2px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #6da8ff;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    margin-bottom: 300px;
+}
+
+.button:hover {
+    background-color: #3700ff;
+}
+
+
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+.input-group input[type="text"] {
+    width: 45%; 
+}
+
+input, textarea, .file-upload {
+    width: 97%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b4b4b4;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+
+}
+
+textarea {
+    min-height: 120px; 
+    border-radius: 20px;
+
+}
+
+.file-upload {
+    position: relative;
+    cursor: pointer;
+    border-radius: 20px;
+
+}
+
+.file-upload input[type="file"] {
+    opacity: 0; /* Hide the default file input */
+    width: 100%;
+    height: 100%;
+    
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center; 
+     
+}
+
+.checkbox input[type="checkbox"] {
+    margin-right: 5px; 
+    float: left;
+    width: 10px;
+    font-size: larger;
+}
+.checkbox label{
+    font-size: 1em;
+    color: #fff;
+}
+.button {
+    /* Button styles as defined previously */
+}
