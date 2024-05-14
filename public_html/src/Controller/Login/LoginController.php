@@ -14,7 +14,6 @@ class LoginController extends Controller{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
-            echo $password;
             $user = User::login(["email" => $username, "password" => $password]);   //todo : actually login the user on the app
             if ($user) {
                 header('Location: /');
