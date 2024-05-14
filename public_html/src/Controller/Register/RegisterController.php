@@ -20,7 +20,7 @@ class RegisterController extends Controller
             $confirmPassword = $_POST['confirmPassword'];
             $userInstance = new User();
             if ($confirmPassword !== $password ) {
-                $this->webRender('public/Register/' . self::INDEX, [
+                $this->webRender('public/homePage/' . self::INDEX, [
                     'title' => 'Register Page',
                     'content' => 'Welcome to the register page',
                     'cookieSet' => CookieHandler::isCookieSet(),
@@ -30,7 +30,7 @@ class RegisterController extends Controller
             if (!empty($user)) {
                 $userList = $userInstance->getUser([]);
                 //TODO render to verifyemail
-                $this->webRender('public/verifyemail/' . self::INDEX, [
+                $this->webRender('public/homePage/' . self::INDEX, [
                     'title' => 'User List Page',
                     'content' => 'Welcome to the user list page',
                     'cookieSet' => CookieHandler::isCookieSet(),

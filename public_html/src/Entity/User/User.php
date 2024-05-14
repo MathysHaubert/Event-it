@@ -107,15 +107,17 @@ class User
         );
     }
 
-    public static function getUser(array $params): array    //todo: this is ugly af and need to be fixed asap but no time
+    public static function getUser(array $params): array
     {
     $api = new Api();
     $data = $api->get("http://176.147.224.139:8088".'/user', $params); //todo : replace url with env variable
     $users = [];
+
     foreach ($data as $userData) {
         $user = self::createUserFromArray($userData);
         $users[] = $user;
     }
+
     return $users;
     }
 
@@ -124,11 +126,22 @@ class User
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/user', $data); //todo : replace url with env variable
 
-        // Add logging here
-        error_log(print_r($response, true));
-
         if($response){
             $user = self::createUserFromArray($data);
+            return $user;
+        }
+        return null;
+    }
+
+    public static function login($data)
+    {
+        $api = new Api();
+        $response = $api->post("http://176.147.224.139:8088".'/login', $data);
+        if(!!$response['error']){
+            return null;
+        }
+        if($response){
+            $user = self::createUserFromArray($response, true);
             return $user;
         }
         return null;
