@@ -3,16 +3,16 @@
 namespace App\Entity\User;
 
 use App\Entity\Client\Client;
-use App\Trait\Identifier;
 use App\Entity\Organization\Organization;
-use DateTime;
-use Dotenv\Dotenv;
 use App\Trait\ApiTrait;
+use App\Trait\Identifier;
+use DateTime;
 
 class User
 {
     use Identifier;
 
+    private ?string $jwt;
     public function __construct(
         private string $lastname = '',
         private string $firstname = '',
@@ -20,8 +20,10 @@ class User
         private ?DateTime $lastConnection = null,
         private string $password = '',
         private string $email = '',
-        private ?Organization $organization = null
+        private ?Organization $organization = null,
+        $jwt = null,
     ) {
+        $this->jwt = $jwt;
     }
 
     public function getLastname(): string
@@ -94,6 +96,17 @@ class User
         $this->organization = $organization;
     }
 
+    public function getJwt(): string
+    {
+        return $this->jwt;
+    }
+
+    public function setJwt(string $jwt): void
+    {
+        $this->jwt = $jwt;
+    }
+
+
     private static function createUserFromArray(array $data): User
     {
         return new User(
@@ -101,22 +114,30 @@ class User
             $data['firstName'],
             isset($data['createdAt']['date']) ? new DateTime($data['createdAt']['date']) : null,
             isset($data['lastConnection']['date']) ? new DateTime($data['lastConnection']['date']) : null,
-            $data['password'],
+            $data['password'] ?? '',
             $data['email'],
-            isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null
+            isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null,
+            $data['token'] ?? null,
         );
     }
 
     public static function getUser(array $params): array    //todo: this is ugly af and need to be fixed asap but no time
     {
     $api = new Api();
-    $data = $api->get("http://176.147.224.139:8088".'/user', $params); //todo : replace url with env variable
+    $data = $api->get($_ENV['API_URL'].'/user', $params); //todo : replace url with env variable
     $users = [];
     foreach ($data as $userData) {
         $user = self::createUserFromArray($userData);
         $users[] = $user;
     }
     return $users;
+    }
+
+    public static function setLogin(array $params): User
+    {
+        $api = new Api();
+        $data = $api->post($_ENV['API_URL'].'/login', $params);
+        return self::createUserFromArray($data);
     }
 
     public static function createUser($data)
