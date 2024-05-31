@@ -77,7 +77,9 @@ document.querySelector(".next").addEventListener("click", function() {
   plusSlides(1);
 });
 
-
+function scrollToSection(sectionId) {
+  document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
 
 // Début FAQ gestion boutons
 
