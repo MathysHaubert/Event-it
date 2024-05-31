@@ -7,7 +7,7 @@ namespace App\Controller\Verifyemail;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 
-class verifyemail extends Controller{
+class verifyemail extends Controller {
     public function index($data = []): void
     {
         // define the default locale at french

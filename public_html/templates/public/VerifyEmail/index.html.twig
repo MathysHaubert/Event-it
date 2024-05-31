@@ -1,0 +1,59 @@
+{% extends '/public/base.html.twig' %}
+
+{% block title %}
+  Verify Email
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/Login/style.css"> {# Utilise le même fichier CSS que la page de login #}
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="login-container">
+      <div class="login-form">
+        <h2>Email Verification</h2>
+        <form action="verification.php" method="POST" onsubmit="return validateEmail()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+            <div id="email-validation-message" class="error-message" style="display: none;">L'adresse e-mail est invalide.</div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Verify</button>
+          </div>
+        </form>
+        <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail a été envoyé avec succès.</div>
+      </div>
+    </div>
+    <div class="logo">
+      <h1>EVENT IT</h1>
+    </div>
+  </div>
+
+  <script>
+    function validateEmail() {
+      var emailInput = document.getElementById('email');
+      var emailValidationMessage = document.getElementById('email-validation-message');
+      var confirmationMessage = document.getElementById('confirmation-message');
+
+      // Vérification de l'email
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        emailValidationMessage.style.display = 'block';
+        confirmationMessage.style.display = 'none';
+        return false; // Empêche la soumission du formulaire si l'email est invalide
+      } else {
+        emailValidationMessage.style.display = 'none';
+        confirmationMessage.style.display = 'block';
+        return true; // Permet la soumission du formulaire si l'email est valide
+      }
+    }
+  </script>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/Login/script.js"></script> {# Utilise le même fichier JS que la page de login #}
+{% endblock %}

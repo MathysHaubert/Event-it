@@ -29,3 +29,13 @@ Register:
   path: /register
   controller: App\Controller\Register\RegisterController
   method: index
+
+recuperationMDP:
+  path : /recuperationMDP
+  controller: App\Controller\PasswordRecovery\recuperationMDP
+  method: index
+
+verify email:
+  path: /VerifyEmail
+  controller: App\Controller\VerifyEmail\VerifyEmailController
+  method: index
