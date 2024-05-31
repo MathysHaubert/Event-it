@@ -1,0 +1,17 @@
+[2024-04-30 07:26:19] Unknown "asset" function. in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 5
+[2024-04-30 07:26:28] Unknown "asset" function. in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 5
+[2024-04-30 07:33:51] The block 'stylesheets' has already been defined line 3. in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 44
+[2024-04-30 07:34:51] The block 'stylesheets' has already been defined line 3. in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 43
+[2024-04-30 07:35:00] The block 'stylesheets' has already been defined line 3. in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 43
+[2024-04-30 07:36:55] Unexpected token "end of template" ("end of statement block" expected). in file /var/www/html/templates/public/verifyEmail/index.html.twig at line 52
+[2024-04-30 12:05:59] Unable to find template "public/Home/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-05-02 20:38:16] ContactController not found
+[2024-05-31 08:58:10] App\Controller\RecuperationMDP\recuperationMDP not found
+[2024-05-31 08:58:30] App\Controller\recuperationMDP\recuperationMDP not found
+[2024-05-31 08:59:50] App\Controller\RecuperationMDP\RecuperationMDP not found
+[2024-05-31 08:59:53] App\Controller\RecuperationMDP\RecuperationMDP not found
+[2024-05-31 08:59:53] App\Controller\RecuperationMDP\RecuperationMDP not found
+[2024-05-31 09:00:04] App\Controller\RecuperationMDP\recuperationMDP not found
+[2024-05-31 09:01:11] App\Controller\RecuperationMDP\recuperationMDP not found
+[2024-05-31 09:01:40] App\Controller\RecuperationMDP\recuperationMDP not found
+[2024-05-31 11:57:54] App\Controller\RecuperationMDP\recuperationMDP not found

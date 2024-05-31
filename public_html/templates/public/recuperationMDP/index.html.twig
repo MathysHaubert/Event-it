@@ -1,7 +1,7 @@
 {% extends '/public/base.html.twig' %}
 
 {% block title %}
-  Verify Email
+  Password Recovery
 {% endblock %}
 
 {% block stylesheets %}
@@ -13,18 +13,18 @@
   <div class="container">
     <div class="login-container">
       <div class="login-form">
-        <h2>Email Verification</h2>
-        <form action="verification.php" method="POST" onsubmit="return validateEmail()">
+        <h2>Password Recovery</h2>
+        <form action="{{ path('password_recovery') }}" method="POST" onsubmit="return validateEmail()">
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control" required>
             <div id="email-validation-message" class="error-message" style="display: none;">L'adresse e-mail est invalide.</div>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Verify</button>
+            <button type="submit" class="btn btn-primary">Recover Password</button>
           </div>
         </form>
-        <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail a été envoyé avec succès.</div>
+        <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail de récupération a été envoyé avec succès.</div>
       </div>
     </div>
     <div class="logo">

@@ -34,3 +34,9 @@ verifyemail:
   path : /verifyemail
   controller: App\Controller\Verifyemail\verifyemail
   method: index
+
+recuperationMDP:
+  path : /recuperationMDP
+  controller: App\Controller\PasswordRecovery\recuperationMDP
+  method: index
+
