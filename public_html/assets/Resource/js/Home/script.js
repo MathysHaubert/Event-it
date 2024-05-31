@@ -110,3 +110,10 @@ headers.forEach(header => {
 
 // Fin FAQ gestion boutons
 
+redirectToFaqPage()
+function redirectToFaqPage() {
+  const button = document.getElementById("RedirectToFaq")
+  button.addEventListener('click',function(){
+    window.location.href = '/faq'
+  })
+}

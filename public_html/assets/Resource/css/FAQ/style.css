@@ -1,0 +1,102 @@
+.pourquoiNous{
+
+  font-family: Inter;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 77.45px;
+  text-align: center;
+  color: #FFFFFF;
+
+
+}
+
+/* Début style FAQ*/
+.accordion{
+
+    display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    
+      font-family: Inter;
+    }
+    
+    .accordion-container{
+    
+    display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    
+      font-family: Inter;
+    }
+    
+    .questionsFaq{
+    
+      display: flex;
+      flex-direction: column;
+     /* justify-content: space-between;*/
+      align-items: center;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-bottom: 3%;
+    
+    }
+    .accordion-header {
+    
+    border-radius: 4px;
+      opacity: 0px;
+      background-color: #FFFFFF1A;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 370px;
+    height: 85px;
+    /*width: 100%;*/
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    }
+    
+    .accordion-header:hover {
+    background-color: #ddd;
+    color: black;
+    }
+    
+    .accordion-header i {
+    margin-right: 10px;
+    }
+    
+    .accordion-content {
+    padding: 0 18px;
+    background-color: #FFFFFF1A;
+    /*width: 100%;*/
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    
+    
+    font-family: Inter;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    
+    }
+    
+    @media (max-width: 767px) {
+    .accordion-header {
+      font-size: 18px;
+    }
+    }
+    
+    @media (min-width: 768px) {
+    .accordion-header {
+      font-size: 22px;
+    }
+    }
+    
+    /* Fin style FAQ*/

@@ -29,3 +29,8 @@ Register:
   path: /register
   controller: App\Controller\Register\RegisterController
   method: index
+
+event_it.public.faq:
+  path: /faq
+  controller: App\Controller\FAQ\FaqController
+  method: index
