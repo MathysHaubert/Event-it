@@ -135,13 +135,6 @@ class User
     return $users;
     }
 
-    public static function setLogin(array $params): User
-    {
-        $api = new Api();
-        $data = $api->post($_ENV['API_URL'].'/login', $params);
-        return self::createUserFromArray($data);
-    }
-
     public static function createUser($data)
     {
         $api = new Api();
@@ -158,14 +151,33 @@ class User
     {
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/login', $data);
+        echo "<p>Response: </p>";
+        echo json_encode($response);
         if(!!$response['error']){
             return null;
         }
         if($response){
             $user = self::createUserFromArray($response, true);
+            $_SESSION['jwt'] = $user->getJwt();
             return $user;
         }
         return null;
+    }
+
+    public static function getCurrentUser() {
+        if(!isset($_SESSION['jwt'])){
+            return;
+        }
+        $api = new Api();
+
+        $currentUser = $api->get($_ENV['API_URL'].'/currentUser', null, $_SESSION['jwt']);
+
+        echo "<p>Current User: </p>";
+        echo json_encode($currentUser);
+
+        if(!$currentUser) return;
+
+        return self::createUserFromArray($currentUser);
     }
 }
 

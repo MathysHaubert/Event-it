@@ -13,6 +13,10 @@ class UserListController extends Controller{
     {
         $userInstance = new User();
         $userList = $userInstance->getUser([]);
+        if (!empty($_SESSION['jwt'])) {
+            $userInstance->setJwt($_SESSION['jwt']);
+        }
+        $currentUser = $userInstance->getCurrentUser($userInstance->getJwt());  
         $this->webRender('public/userList/' . self::INDEX , [
             'title' => 'User List Page',
             'content' => 'Welcome to the user list page',

@@ -13,10 +13,10 @@
       <div class="login-form">
         <form id="form" action="{{ path('login') }}" method="post">
           <div class="form-group">
-            <h1>Login</h1>
+            <h2>Login</h2>
           {% if error %}
             has-error
-          {% endif %}">
+          {% endif %}
             <label for="username">Username</label>
             <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required>
           </div>

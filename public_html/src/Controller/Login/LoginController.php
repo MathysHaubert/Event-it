@@ -14,10 +14,8 @@ class LoginController extends Controller{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
-            $user = User::setLogin(["email" => $username, "password" => $password]);
-            if (!empty($user->getJwt())){
-                $_SESSION['jwt'] = $user->getJwt();
-            }
+            $user = User::login(["email" => $username, "password" => $password]);
+            if (!empty($user)){
                 $this->webRender('public/userList/' . self::INDEX , [
                     'title' => 'User List Page',
                     'content' => 'Welcome to the user list page',
@@ -35,4 +33,5 @@ class LoginController extends Controller{
     }
 
 
+}
 }
