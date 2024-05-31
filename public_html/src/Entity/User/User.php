@@ -151,8 +151,6 @@ class User
     {
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/login', $data);
-        echo "<p>Response: </p>";
-        echo json_encode($response);
         if(!!$response['error']){
             return null;
         }
@@ -171,9 +169,6 @@ class User
         $api = new Api();
 
         $currentUser = $api->get($_ENV['API_URL'].'/currentUser', null, $_SESSION['jwt']);
-
-        echo "<p>Current User: </p>";
-        echo json_encode($currentUser);
 
         if(!$currentUser) return;
 
