@@ -1,5 +1,8 @@
 {% extends'public/base.html.twig' %}
 
+{% block navbar %}
+{% endblock %}
+
 {% block title %}
  Register Page
 {% endblock %}
@@ -7,9 +10,8 @@
 <div class="container">
     <div class="register-container">
         <div class="register-form">
-            <form action="{{ path('register') }}" method="post">
-                <div class="form-group
-                ">
+            <form id="registerForm" action="{{ path('register') }}" method="post">
+                <div class="form-group">
                     <label for="username">First name</label>
                     <input type="text" id="firstName" name="firstName" class="form-control" required >
                     <label for="username">Last name</label>

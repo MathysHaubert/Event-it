@@ -1,5 +1,8 @@
 {% extends '/public/base.html.twig' %}
 
+{% block navbar %}
+{% endblock %}
+
 {% block title %}
   Login Page
 {% endblock %}
@@ -9,10 +12,11 @@
     <div class="login-container">
       <div class="login-form">
         <form id="form" action="{{ path('login') }}" method="post">
-          <div class="form-group
+          <div class="form-group">
+            <h2>Login</h2>
           {% if error %}
             has-error
-          {% endif %}">
+          {% endif %}
             <label for="username">Username</label>
             <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required>
           </div>
@@ -23,6 +27,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="_password" class="form-control" required>
           </div>
+          <a href="{{ path('register') }}">Create an account</a>
           <div class="form-group">
             <button type="submit" class="btn btn-primary" >Login</button>
 

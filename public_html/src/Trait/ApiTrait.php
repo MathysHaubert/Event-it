@@ -8,14 +8,34 @@ trait ApiTrait{
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
-        if($token) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+
+        if ($body !== null) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+            $headers = ['Content-Type: application/json']; // Set content type to JSON
+            if ($token) {
+                $headers[] = 'Authorization: Bearer ' . $token;
+            }
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        } else if ($token) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Authorization: Bearer ' . $token]);
         }
+
         $output = curl_exec($ch);
+        if ($output === false) {
+            $error = curl_error($ch);
+            curl_close($ch);
+            return ['error' => true, 'message' => $error];
+        }
+
         curl_close($ch);
+        
+        if (substr($output, -2) === '""' && substr($output, -3, 1) === '}') {
+            $output = substr($output, 0, -2);
+        }
+
         return json_decode($output, true);
     }
+
 
     public static function post($url, $data, $token = null){
         $ch = curl_init();
