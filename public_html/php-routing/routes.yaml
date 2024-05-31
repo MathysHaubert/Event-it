@@ -14,6 +14,12 @@ contact:
   controller: ContactController
   method: index
 
+  # Here ajax's route
+event_it.ajax.public.manage_cookie:
+  path: /ajax/cookie
+  controller: App\Cookie\CookieHandler
+  method: handleRequest
+
 event_it.Login:
   path: /login
   controller: App\Controller\Login\LoginController
@@ -22,15 +28,4 @@ event_it.Login:
 Register:
   path: /register
   controller: App\Controller\Register\RegisterController
-  method: index
-
-  # Here ajax's route
-event_it.ajax.public.manage_cookie:
-  path: /ajax/cookie
-  controller: App\Cookie\CookieHandler
-  method: handleRequest
-
-verifyemail:
-  path : /verifyemail
-  controller: App\Controller\Verifyemail\verifyemail
   method: index
