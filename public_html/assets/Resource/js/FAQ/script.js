@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             );
         });
-        
+
         rejectButton.addEventListener("click", function () {
             // Make an AJAX request to the server
             console.log("Decline cookies");
@@ -47,40 +47,41 @@ document.addEventListener("DOMContentLoaded", function() {
             );
         });
     }
-
-   
-    // FAQ accordion functionality
-    document.addEventListener('DOMContentLoaded', function () {
-      // Sélectionner tous les éléments avec la classe 'accordion-header'
-      const headers = document.querySelectorAll('.accordion-header');
-    
-      headers.forEach(header => {
-        // Ajouter un écouteur d'événement pour chaque header
-        header.addEventListener('click', function () {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-    
-          // Fermer toutes les autres sections de l'accordéon
-          headers.forEach(h => {
-            h.setAttribute('aria-expanded', 'false');
-            h.querySelector('i').classList.remove('fa-angle-down');
-            h.querySelector('i').classList.add('fa-angle-right');
-            h.nextElementSibling.style.maxHeight = null;
-          });
-    
-          // Basculer l'état de la section actuelle
-          if (!expanded) {
-            this.setAttribute('aria-expanded', 'true');
-            this.querySelector('i').classList.remove('fa-angle-right');
-            this.querySelector('i').classList.add('fa-angle-down');
-            this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 'px';
-          } else {
-            this.setAttribute('aria-expanded', 'false');
-            this.querySelector('i').classList.remove('fa-angle-down');
-            this.querySelector('i').classList.add('fa-angle-right');
-            this.nextElementSibling.style.maxHeight = null;
-          }
-        });
-      });
-    });
-    
 });
+
+
+
+// FAQ accordion functionality
+document.addEventListener('DOMContentLoaded', function () {
+  // Sélectionner tous les éléments avec la classe 'accordion-header'
+  const headers = document.querySelectorAll('.accordion-header');
+
+  headers.forEach(header => {
+    // Ajouter un écouteur d'événement pour chaque header
+    header.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+
+      // Fermer toutes les autres sections de l'accordéon
+      headers.forEach(h => {
+        h.setAttribute('aria-expanded', 'false');
+        h.querySelector('i').classList.remove('fa-angle-down');
+        h.querySelector('i').classList.add('fa-angle-right');
+        h.nextElementSibling.style.maxHeight = null;
+      });
+
+      // Basculer l'état de la section actuelle
+        if (!expanded) {
+        this.setAttribute('aria-expanded', 'true');
+        this.querySelector('i').classList.remove('fa-angle-right');
+        this.querySelector('i').classList.add('fa-angle-down');
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 'px';
+      } else {
+        this.setAttribute('aria-expanded', 'false');
+        this.querySelector('i').classList.remove('fa-angle-down');
+        this.querySelector('i').classList.add('fa-angle-right');
+        this.nextElementSibling.style.maxHeight = null;
+      }
+    });
+  });
+});
+
