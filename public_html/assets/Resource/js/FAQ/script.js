@@ -84,3 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+redirectToFaqAdd()
+function redirectToFaqAdd() {
+  const button = document.getElementById("RedirectToFaqAdd")
+  button.addEventListener('click',function(){
+    window.location.href = '/faqadd'
+  })
+}

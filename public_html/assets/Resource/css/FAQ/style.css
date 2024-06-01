@@ -1,102 +1,86 @@
-.pourquoiNous{
-
+.pourquoiNous {
   font-family: Inter;
-  font-size: 64px;
+  font-size: 4rem; /* 64px / 16px = 4rem */
   font-weight: 500;
-  line-height: 77.45px;
+  line-height: 4.84rem; /* 77.45px / 16px = 4.84rem */
   text-align: center;
   color: #FFFFFF;
-
-
 }
 
-/* Début style FAQ*/
-.accordion{
+/* Début style FAQ */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Inter;
+}
 
-    display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    
-      font-family: Inter;
-    }
-    
-    .accordion-container{
-    
-    display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    
-      font-family: Inter;
-    }
-    
-    .questionsFaq{
-    
-      display: flex;
-      flex-direction: column;
-     /* justify-content: space-between;*/
-      align-items: center;
-      margin-left: 2%;
-      margin-right: 2%;
-      margin-bottom: 3%;
-    
-    }
-    .accordion-header {
-    
-    border-radius: 4px;
-      opacity: 0px;
-      background-color: #FFFFFF1A;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 370px;
-    height: 85px;
-    /*width: 100%;*/
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 16px;
-    transition: 0.4s;
-    }
-    
-    .accordion-header:hover {
-    background-color: #ddd;
-    color: black;
-    }
-    
-    .accordion-header i {
-    margin-right: 10px;
-    }
-    
-    .accordion-content {
-    padding: 0 18px;
-    background-color: #FFFFFF1A;
-    /*width: 100%;*/
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    
-    
-    font-family: Inter;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: left;
-    
-    }
-    
-    @media (max-width: 767px) {
-    .accordion-header {
-      font-size: 18px;
-    }
-    }
-    
-    @media (min-width: 768px) {
-    .accordion-header {
-      font-size: 22px;
-    }
-    }
-    
-    /* Fin style FAQ*/
+.accordion-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Inter;
+}
+
+.questionsFaq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0.32rem; /* 2% of a standard 16px font size */
+  margin-right: 0.32rem; /* 2% of a standard 16px font size */
+  margin-bottom: 0.48rem; /* 3% of a standard 16px font size */
+}
+
+.accordion-header {
+  border-radius: 0.25rem; /* 4px / 16px = 0.25rem */
+  background-color: #FFFFFF1A;
+  color: white;
+  cursor: pointer;
+  padding: 1.125rem; /* 18px / 16px = 1.125rem */
+  width: 23.125rem; /* 370px / 16px = 23.125rem */
+  height: 5.3125rem; /* 85px / 16px = 5.3125rem */
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1rem; /* 16px / 16px = 1rem */
+  transition: 0.4s;
+}
+
+.accordion-header:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.accordion-header i {
+  margin-right: 0.625rem; /* 10px / 16px = 0.625rem */
+}
+
+.accordion-content {
+  padding: 0 1.125rem; /* 0 18px / 16px = 0 1.125rem */
+  background-color: #FFFFFF1A;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-family: Inter;
+  color: #FFFFFF;
+  font-size: 1rem; /* 16px / 16px = 1rem */
+  font-weight: 600;
+  line-height: 1.5rem; /* 24px / 16px = 1.5rem */
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .accordion-header {
+    font-size: 1.125rem; /* 18px / 16px = 1.125rem */
+  }
+}
+
+@media (min-width: 768px) {
+  .accordion-header {
+    font-size: 1.375rem; /* 22px / 16px = 1.375rem */
+  }
+}
+
+/* Fin style FAQ */

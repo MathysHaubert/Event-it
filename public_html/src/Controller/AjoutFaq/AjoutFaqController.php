@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Controller\AjoutFaq;
 
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
@@ -10,15 +9,12 @@ $username = "event-it";
 $password = "password-for-event-it";
 $dbname = "event-API";
 
+$servername = "http://176.147.224.139:8899/";
+$username = "event-it";
+$password = "password-for-event-it";
+$dbname = "event-API";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-class AjoutFaqController extends Controller {
-    public function index($data = []): void
-    {
-        require_once 'public_html/vendor/autoload.php';
-
-
-
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -36,10 +32,5 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
-echo $twig->render('index.html.twig', ['faqs' => $faq]);
-        }
-}
-
-
-
+echo $twig->render('faq.html.twig', ['faqs' => $faq]);
 ?>
