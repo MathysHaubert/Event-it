@@ -11,6 +11,10 @@ use App\Entity\User\User;
 class LoginController extends Controller{
     public function index($data = [])
     {
+        if(isset($_SESSION['jwt'])){
+            unset($_SESSION['jwt']);
+            unset($_SESSION['user']);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
@@ -18,7 +22,7 @@ class LoginController extends Controller{
             if (!empty($user)){
                 $_SESSION['jwt'] = $user->getJwt();
                 $_SESSION['user'] = $user;
-            }
+                }
                 $this->webRender('public/userList/' . self::INDEX , [
                     'title' => 'User List Page',
                     'content' => 'Welcome to the user list page',

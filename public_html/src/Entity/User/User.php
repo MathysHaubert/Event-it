@@ -21,6 +21,7 @@ class User
         private string $password = '',
         private string $email = '',
         private ?Organization $organization = null,
+        private string $role = '',
         $jwt = null,
     ) {
         $this->jwt = $jwt;
@@ -44,6 +45,16 @@ class User
     public function setFirstname(string $firstname): void
     {
         $this->firstname = $firstname;
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     public function getCreateAt(): DateTime
@@ -86,7 +97,7 @@ class User
         $this->email = $email;
     }
 
-    public function getOrganization(): Organization
+    public function getOrganization(): ?Organization
     {
         return $this->organization;
     }
@@ -94,6 +105,12 @@ class User
     public function setOrganization(Organization $organization): void
     {
         $this->organization = $organization;
+    }
+
+    public function setOrganizationId(int $organizationId): void
+    {
+        $organization = Organization::getOrganization(['id' => $organizationId]);
+        $this->organization = $organization[0];
     }
 
     public function getJwt(): string
@@ -117,11 +134,12 @@ class User
             $data['password'] ?? '',
             $data['email'],
             isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null,
+            $data['role'],
             $data['token'] ?? null,
         );
     }
 
-    public static function getUser(array $params): array
+    public static function getUser(array $params): User | array
     {
     $api = new Api();
     $data = $api->get($_ENV['API_URL'].'/user', $params); //todo : replace url with env variable
@@ -173,6 +191,17 @@ class User
         if(!$currentUser) return;
 
         return self::createUserFromArray($currentUser);
+    }
+
+    public static function updateUser($data)
+    {
+        $api = new Api();
+        $response = $api->put($_ENV['API_URL'].'/user', $data, $_SESSION['jwt']);
+        if($response){
+            $user = self::createUserFromArray($data);
+            return $user;
+        }
+        return null;
     }
 }
 

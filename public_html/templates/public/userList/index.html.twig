@@ -1,4 +1,4 @@
-{% extends'public/base.html.twig' %}
+{% extends 'public/base.html.twig' %}
 
 {% block title %}
 User List
@@ -14,59 +14,71 @@ User List
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Creation Date</th>
-                {% if user.role == ADMIN %}
-                  <th>Organization</th>
-                {% endif %}
-                {% if user.role == ADMIN %}
-                  <th>Role</th>
-                {% endif %}
-              </tr>
-            </thead>
-            <tbody>
-              {% for user in users %}
-                <tr class="alert" role="alert">
-                  <td>{{ user.firstName }}</td>
-                  <td>{{ user.lastName }}</td>
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
-                  {% if user.role == ADMIN %}
-                    <td>
-                      <select class="form-control" id="orgDropdown">
-                        <option>Select Organization</option>
-                        <hr />
-                      {% for org in organizations %}
-                        <option>{{ org.name }}</option>
-                      {% endfor %}
-                      </select>
-                    </td>
+          <form id="user-update-form" method="post" action="{{ path('UserList') }}">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Creation Date</th>
+                  {% if currentUser.role == "SUPER_ADMIN" %}
+                    <th>Organization</th>
                   {% endif %}
-                  {% if user.role == ADMIN %}
-                    <td>
-                      <select class="form-control" id="orgDropdown">
-                        <option>Select Organization</option>
-                        <hr />
-                        <option>ADMIN</option>
-                        <option>USER</option>
-                        <option>SUPER_ADMIN</option>
-                      </select>
-                    </td>
+                  {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+                    <th>Role</th>
                   {% endif %}
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {% for user in users %}
+                  <tr class="alert" role="alert">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
+                    {% if currentUser.role == "SUPER_ADMIN" %}
+                      <td>
+                        <select class="form-control" name="organization_{{ user.id }}">
+                          <option value="">Select Organization</option>
+                          {% for org in organizations %}
+                            <option value="{{ org.id }}" {% if org.name == (user.organization ? user.organization.name : null) %}selected{% endif %}>{{ org.name }}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                    {% endif %}
+                    {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+                      <td>
+                        <select class="form-control" name="role_{{ user.id }}">
+                          <option value="USER" {% if user.role == 'USER' %}selected{% endif %}>USER</option>
+                          <option value="ADMIN" {% if user.role == 'ADMIN' %}selected{% endif %}>ADMIN</option>
+                          {% if currentUser.role == "SUPER_ADMIN" %}
+                            <option value="SUPER_ADMIN" {% if user.role == 'SUPER_ADMIN' %}selected{% endif %}>SUPER_ADMIN</option>
+                          {% endif %}
+                        </select>
+                      </td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+              <div class="row justify-content-center mt-4">
+                <div class="col-md-4 text-center">
+                  <button class="btn btn-primary" type="submit">Confirm Changes</button>
+                </div>
+              </div>
+            {% endif %}
+          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}

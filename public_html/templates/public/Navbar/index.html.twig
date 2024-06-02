@@ -16,7 +16,7 @@
             </li>
         </ul>
     </nav>
-    <a href="{% if is_logged_in %}{{ path('statPage') }}{% else %}{{ path('login') }}{% endif %}">
+    <a href="{% if is_logged_in %}{{ path('') }}{% else %}{{ path('login') }}{% endif %}">
         <img src="assets/Resource/img/UserButton.png" alt="logo" class="images">
     </a>
 </div>
