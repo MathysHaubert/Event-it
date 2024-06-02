@@ -16,6 +16,9 @@ class LoginController extends Controller{
             $password =  $_POST['_password'];
             $user = User::login(["email" => $username, "password" => $password]);
             if (!empty($user)){
+                $_SESSION['jwt'] = $user->getJwt();
+                $_SESSION['user'] = $user;
+            }
                 $this->webRender('public/userList/' . self::INDEX , [
                     'title' => 'User List Page',
                     'content' => 'Welcome to the user list page',
@@ -33,5 +36,4 @@ class LoginController extends Controller{
     }
 
 
-}
 }

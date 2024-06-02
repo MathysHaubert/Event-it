@@ -21,6 +21,12 @@ User List
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Creation Date</th>
+                {% if user.role == ADMIN %}
+                  <th>Organization</th>
+                {% endif %}
+                {% if user.role == ADMIN %}
+                  <th>Role</th>
+                {% endif %}
               </tr>
             </thead>
             <tbody>
@@ -30,6 +36,28 @@ User List
                   <td>{{ user.lastName }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
+                  {% if user.role == ADMIN %}
+                    <td>
+                      <select class="form-control" id="orgDropdown">
+                        <option>Select Organization</option>
+                        <hr />
+                      {% for org in organizations %}
+                        <option>{{ org.name }}</option>
+                      {% endfor %}
+                      </select>
+                    </td>
+                  {% endif %}
+                  {% if user.role == ADMIN %}
+                    <td>
+                      <select class="form-control" id="orgDropdown">
+                        <option>Select Organization</option>
+                        <hr />
+                        <option>ADMIN</option>
+                        <option>USER</option>
+                        <option>SUPER_ADMIN</option>
+                      </select>
+                    </td>
+                  {% endif %}
                 </tr>
               {% endfor %}
             </tbody>

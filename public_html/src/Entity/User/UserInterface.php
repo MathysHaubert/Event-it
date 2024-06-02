@@ -40,7 +40,7 @@ interface UserInterface
 
     public static function login(array $data): User | null;
 
-    public static function getCurrentUser(string $jwt): User | null;
+    public static function getCurrentUser(): User | null;
 
     public function setJwt(string $jwt): void;
 
