@@ -176,9 +176,6 @@ class User
     {
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/login', $data);
-        if(!!$response['error']){
-            return null;
-        }
         if($response){
             $user = self::createUserFromArray($response, true);
             $_SESSION['jwt'] = $user->getJwt();
@@ -203,14 +200,9 @@ class User
     public static function updateUser($data)
     {
         $api = new Api();
-        $response = $api->patch($_ENV['API_URL'].'/user' . $data['id'], $data);
-
-        if ($response) {
-            $user = self::createUserFromArray($data);
-            return $user;
-        }
-        return null;
-}
+        $api->patch($_ENV['API_URL'] . '/user', $data, $_SESSION['jwt']);
+        error_log(json_encode($data));
+    }
 }
 
 class Api {

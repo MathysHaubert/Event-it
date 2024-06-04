@@ -45,4 +45,8 @@ interface UserInterface
     public function setJwt(string $jwt): void;
 
     public function getJwt(): string;
+
+    public function updateUser(array $data): User;
+
+    public function updateUserFromArray(array $data): User;
 }
