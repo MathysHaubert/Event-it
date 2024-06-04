@@ -35,27 +35,10 @@ UserList:
   controller: App\Controller\UserList\UserListController
   method: index
 
-UserList:
-  path: /userlist
-  controller: App\Controller\UserList\UserListController
-  method: index
-
 event_it.public.faq:
   path: /faq
   controller: App\Controller\FAQ\FaqController
   method: index
-
-
-event_it.public.Ajoutfaq:
-  path: /Ajoutfaq
-  controller: App\Controller\AjoutFaq\AjoutFaqController
-  method: index
-
-event_it.public.faq:
-  path: /faq
-  controller: App\Controller\FAQ\FaqController
-  method: index
-
 
 event_it.public.Ajoutfaq:
   path: /Ajoutfaq

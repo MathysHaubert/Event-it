@@ -10,140 +10,18 @@
   <p class="pourquoiNous"> FAQ </p>
   <div class="accordion">
     <div class="accordion-container">
+      {% for faq in faqs %}
             <div class="questionsFaq">
                 <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Quel est le niveau de bruit maximum autorisé pour un concert en extérieur ?
+                    <i class="fa fa-angle-right"></i> {{ faq.question }}
                   </div>
-                  <div class="accordion-content">Le niveau de bruit maximum varie selon les réglementations locales, mais il est généralement fixé à environ 85-100 décibels pour les zones résidentielles. Il est crucial de vérifier les normes spécifiques de votre localité avant de planifier votre événement.</div>
-            </div>
-
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Comment mesurez-vous les niveaux sonores pendant un événement ?
-                  </div>
-                  <div class="accordion-content">Nous utilisons des sonomètres calibrés pour surveiller en continu les niveaux de bruit à différents points de l'événement. Ces données nous aident à ajuster le volume en temps réel pour respecter les normes légales et le confort du public.</div>
-            </div>
-
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Que faites-vous pour minimiser les perturbations sonores pour les résidents locaux ?
-                  </div>
-                  <div class="accordion-content">Nous adoptons plusieurs stratégies, telles que l'orientation des haut-parleurs vers l'intérieur du site, l'utilisation de barrières acoustiques et la limitation des basses fréquences. De plus, nous nous engageons à respecter les heures d'opération autorisées pour réduire l'impact sonore pendant les périodes de repos.</div>
+                  <div class="accordion-content">{{ faq.answer }}</div>
             </div>
           </div>
-
-    <div class="accordion-container">
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Comment gérez-vous les risques liés aux températures élevées lors d'un concert ?
-          </div>
-          <div class="accordion-content">La sécurité des participants est notre priorité. Nous assurons la disponibilité de zones ombragées, de stations d'hydratation gratuites et nous communiquons des conseils de prévention de la chaleur aux participants avant et pendant l'événement.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Y a-t-il des mesures prises pour les concerts en cas de températures basses ?
-          </div>
-          <div class="accordion-content">Pour les événements par temps froid, nous fournissons des zones chauffées, recommandons un habillement approprié à travers nos canaux de communication, et offrons parfois des accessoires chauffants à l'achat ou en location.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Que dois-je faire si je trouve le concert trop bruyant ou trop chaud ?
-          </div>
-          <div class="accordion-content">Nous encourageons tous les participants à signaler immédiatement tout inconfort au personnel de l'événement. Des ajustements peuvent souvent être faits en temps réel pour améliorer votre expérience.</div>
-        </div>
-  </div>
-{# plus de questions #}
-    <div class="accordion-container">
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Quel est le niveau de bruit maximum autorisé pour un concert en extérieur ?
-                  </div>
-                  <div class="accordion-content">Le niveau de bruit maximum varie selon les réglementations locales, mais il est généralement fixé à environ 85-100 décibels pour les zones résidentielles. Il est crucial de vérifier les normes spécifiques de votre localité avant de planifier votre événement.</div>
-            </div>
-
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Comment mesurez-vous les niveaux sonores pendant un événement ?
-                  </div>
-                  <div class="accordion-content">Nous utilisons des sonomètres calibrés pour surveiller en continu les niveaux de bruit à différents points de l'événement. Ces données nous aident à ajuster le volume en temps réel pour respecter les normes légales et le confort du public.</div>
-            </div>
-
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> Que faites-vous pour minimiser les perturbations sonores pour les résidents locaux ?
-                  </div>
-                  <div class="accordion-content">Nous adoptons plusieurs stratégies, telles que l'orientation des haut-parleurs vers l'intérieur du site, l'utilisation de barrières acoustiques et la limitation des basses fréquences. De plus, nous nous engageons à respecter les heures d'opération autorisées pour réduire l'impact sonore pendant les périodes de repos.</div>
-            </div>
-      </div>
+      {% endfor %}
 
 
-{# plus de questions #}
-    <div class="accordion-container">
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Pourquoi est-il important de surveiller le niveau sonore lors d'un concert ?
-          </div>
-          <div class="accordion-content"> Surveiller le niveau sonore est crucial pour protéger l'audience et les employés contre les dommages auditifs et pour respecter les réglementations locales sur les nuisances sonores.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i>  Comment mesurez-vous les niveaux sonores pendant un concert ?
-          </div>
-          <div class="accordion-content"> Nous utilisons des sonomètres calibrés et des systèmes de surveillance en temps réel pour mesurer et enregistrer les niveaux sonores à différents points du lieu de l'événement.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Quelles sont les limites de niveau sonore pour les concerts en intérieur et en extérieur ?
-          </div>
-          <div class="accordion-content">Les limites de niveau sonore peuvent varier en fonction de la réglementation locale, mais typiquement, elles se situent entre 85 dB et 105 dB pour les concerts en intérieur, et entre 95 dB et 110 dB pour les concerts en extérieur.</div>
-    </div>
-    </div>
 
-{# #}
-
-    <div class="accordion-container">
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Comment garantissez-vous que les niveaux sonores ne dépassent pas les limites réglementaires ?
-          </div>
-          <div class="accordion-content">Nous surveillons les niveaux sonores en temps réel et avons des protocoles en place pour alerter les ingénieurs du son si les niveaux approchent des limites réglementaires, permettant ainsi des ajustements immédiats.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i>Pourquoi est-il important de surveiller la température pendant un concert ?
-          </div>
-          <div class="accordion-content">La surveillance de la température assure le confort de l'audience et des artistes, et prévient les problèmes liés à la chaleur excessive ou au froid, ce qui peut affecter la santé et la sécurité de tous.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i>Quels outils utilisez-vous pour surveiller la température dans un lieu de concert ?
-          </div>
-          <div class="accordion-content">Nous utilisons des capteurs de température placés stratégiquement autour du lieu pour surveiller les variations de température en temps réel et ajuster les systèmes de chauffage, ventilation et climatisation (HVAC) en conséquence.</div>
-    </div>
-    </div>
-
-{# #}
-  <div class="accordion-container">
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Comment gérez-vous les variations de température dans des lieux de concert en plein air ?
-          </div>
-          <div class="accordion-content">Nous installons des systèmes de climatisation temporaires, des ventilateurs, et des chauffages si nécessaire, et nous surveillons de près les conditions météorologiques pour anticiper les changements de température.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Quelle est la température idéale à maintenir pendant un concert ?
-          </div>
-          <div class="accordion-content">La température idéale dépend du type de lieu et de la saison, mais généralement, nous visons à maintenir une température entre 20°C et 24°C pour assurer le confort optimal.</div>
-    </div>
-    <div class="questionsFaq">
-        <div class="accordion-header" aria-expanded="false">
-            <i class="fa fa-angle-right"></i> Que faites-vous en cas de dépassement des niveaux sonores autorisés ?
-          </div>
-          <div class="accordion-content">Si les niveaux sonores dépassent les limites autorisées, nous intervenons immédiatement pour réduire le volume, en travaillant avec les ingénieurs du son et en ajustant les systèmes audio.</div>
-    </div>
-    </div>
-    
 
     <div >
     <button id="RedirectToFaqAdd" class="boutonPlus"> Ajouter des questions</button>
