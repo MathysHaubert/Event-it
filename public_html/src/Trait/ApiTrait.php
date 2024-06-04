@@ -119,13 +119,15 @@ trait ApiTrait{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $headers = ['Content-Type: application/json'];
-        // if($token) {
-        //     $headers[] = 'Authorization: Bearer ' . $token;
-        // }
+        if($token) {
+            $headers[] = 'Authorization: Bearer ' . $token;
+        }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $output = curl_exec($ch);
         curl_close($ch);
+        error_log(print_r("Patch response ", true));
+        error_log(print_r($output, true)); // Debug: Log patch response
         return json_decode($output, true);
     }
 }

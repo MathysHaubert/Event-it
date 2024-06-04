@@ -203,10 +203,14 @@ class User
     public static function updateUser($data)
     {
         $api = new Api();
-        $debug = $api->patch($_ENV['API_URL'].'/user', $data, $_SESSION['jwt']);
-        error_log(print_r($debug, true));
-        return;
-    }
+        $response = $api->patch($_ENV['API_URL'].'/user' . $data['id'], $data);
+
+        if ($response) {
+            $user = self::createUserFromArray($data);
+            return $user;
+        }
+        return null;
+}
 }
 
 class Api {

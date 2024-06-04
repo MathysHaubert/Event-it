@@ -11,7 +11,7 @@ use App\Entity\Organization\Organization;
 
 class UserListController extends Controller {
     public function index($data = []): void {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user-update-form'])) {
             $this->updateUser($_POST);
         }
 
@@ -33,12 +33,17 @@ class UserListController extends Controller {
             }
         }
 
+        // Handle user filtering
+        if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
+            $userList = $this->filterUser($userList, $_GET['search']);
+        }
+
         $this->webRender('public/userList/' . self::INDEX, [
             'title' => 'User List Page',
             'content' => 'Welcome to the user list page',
             'cookieSet' => CookieHandler::isCookieSet(),
             'users' => $userList,
-            'currentUser' => $currentUser?? null,
+            'currentUser' => $currentUser ?? null,
             'organizations' => $organizationList,
             'logged' => isset($_SESSION['user']),
         ]);
@@ -52,29 +57,44 @@ class UserListController extends Controller {
                     $user = (new User())->getUser(["id" => $userId]);
                     if ($user) {
                         $user->setRole($value);
-                        $user->updateUser([
+                        $response = $user->updateUser([
                             'id' => $userId,
                             'role' => $value,
                         ]);
+                        error_log(json_encode($response));
                     }
                 }
             } if (strpos($key, 'organization_') === 0) {
                 $userId = str_replace('organization_', '', $key);
                 if ($userId !== '') {
-                $user = (new User())->getUser(["id" => $userId]);
-                $organization = (new Organization())->getOrganizationById(["id" => $value]);
-                if(!$organization || !$user) {
-                    continue;
-                }
-                if ($user) {
-                    $user->setOrganization($organization);
-                    $user->updateUser([
-                        'id' => $userId,
-                        'organization' => $organization,
-                    ]);
+                    $user = (new User())->getUser(["id" => $userId]);
+                    $organization = (new Organization())->getOrganizationById(["id" => $value]);
+                    if (!$organization || !$user) {
+                        continue;
+                    }
+                    if ($user) {
+                        $user->setOrganization($organization);
+                        $user->updateUser([
+                            'id' => $userId,
+                            'organization' => $organization,
+                        ]);
+                    }
                 }
             }
         }
-        }
+    }
+
+    private function filterUser($userList, $filter) {
+        $filter = strtolower($filter);
+        return array_filter($userList, function($user) use ($filter) {
+            $organizationName = $user->getOrganization() ? $user->getOrganization()->getName() : '';
+            $f = [
+                stripos(strtolower($user->getRole()), $filter) !== false,
+                stripos(strtolower($organizationName), $filter) !== false,
+                stripos(strtolower($user->getFirstName()), $filter) !== false,
+                stripos(strtolower($user->getLastName()), $filter) !== false
+            ];
+            return in_array(true, $f);
+        });
     }
 }

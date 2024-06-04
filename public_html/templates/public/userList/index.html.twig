@@ -10,12 +10,19 @@ User List
     <div class="row justify-content-center">
       <div class="col-md-6 text-center mb-5">
         <h2 class="heading-section">User List</h2>
+        <div class="search-bar">
+          <form action="{{ path('UserList') }}" method="get" id="filter-user">
+            <input type="text" name="search" placeholder="Search users">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
           <form id="user-update-form" method="post" action="{{ path('UserList') }}">
+            <input type="hidden" name="user-update-form" value="1">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -40,16 +47,16 @@ User List
                     <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
                     {% if currentUser.role == "SUPER_ADMIN" %}
                       <td>
-                          {% if user.userId %}
-                            <select class="form-control" name="organization_{{ user.userId }}">
-                              <option value="">Select Organization</option>
-                          {% else %}
-                            <p>ERROR {{ user.userId }}<p/>
-                          {% endif %}
-                          {% for org in organizations %}
-                            <option value="{{ org.id }}" {% if org.name == (user.organization ? user.organization.name : null) %}selected{% endif %}>{{ org.name }}</option>
-                          {% endfor %}
-                        </select>
+                        {% if user.userId %}
+                          <select class="form-control" name="organization_{{ user.userId }}">
+                            <option value="">Select Organization</option>
+                            {% for org in organizations %}
+                              <option value="{{ org.id }}" {% if org.name == (user.organization ? user.organization.name : null) %}selected{% endif %}>{{ org.name }}</option>
+                            {% endfor %}
+                          </select>
+                        {% else %}
+                          <p>ERROR {{ user.userId }}</p>
+                        {% endif %}
                       </td>
                     {% endif %}
                     {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}

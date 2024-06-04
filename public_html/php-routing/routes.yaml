@@ -34,3 +34,4 @@ UserList:
   path: /userlist
   controller: App\Controller\UserList\UserListController
   method: index
+  parameters: []
