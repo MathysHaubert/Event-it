@@ -73,7 +73,7 @@ class UserListController extends Controller {
                     if ($organization) {
                         $user->updateUser([
                             'id' => $userId,
-                            'organization' => $organization,
+                            'organization' => $organization[0],
                         ]);
                     }
                 }
