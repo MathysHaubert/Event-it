@@ -61,7 +61,7 @@ class Room
     public static function getLinkedRooms(User $user): array
     {
     $api = new Api();
-    $data = $api->get($_ENV['API_URL'].'/room', $user->getId());
+    $data = $api->get($_ENV['API_URL'].'/room', $user->getOrganization()->getId());
     $rooms = [];
     foreach ($data as $roomData) {
         $room = self::createRoomFromArray($roomData);
