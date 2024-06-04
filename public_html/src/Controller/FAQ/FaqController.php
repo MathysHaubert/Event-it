@@ -9,7 +9,8 @@ use App\Cookie\CookieHandler;
 
 class FaqController extends Controller{
     public function index($data = []): void
-{  
+{
+
     // define the default locale at french
     $this->webRender('public/faqPage/' . self::INDEX, [
         'title' => 'Home Page',
