@@ -19,6 +19,7 @@ class LoginController extends Controller{
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
             $user = User::login(["email" => $username, "password" => $password]);
+            error_log("User :".json_encode($user));
             if (!empty($user)){
                 $_SESSION['jwt'] = $user->getJwt();
                 $_SESSION['user'] = $user;

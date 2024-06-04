@@ -8,6 +8,7 @@ use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\User\User;
 use App\Entity\Organization\Organization;
+use App\Trait\ApiTrait;
 
 class UserListController extends Controller {
     public function index($data = []): void {
@@ -33,7 +34,6 @@ class UserListController extends Controller {
             }
         }
 
-        // Handle user filtering
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
             $userList = $this->filterUser($userList, $_GET['search']);
         }
@@ -69,9 +69,8 @@ class UserListController extends Controller {
                 $userId = str_replace('organization_', '', $key);
                 if ($userId !== '') {
                     $user = (new User())->getUser(["id" => $userId]);
-                    $organization = (new Organization())->getOrganizationById(["id" => $value]);
+                    $organization = (new Api())->get($_ENV['API_URL'].'/organization', ["id" => $value]);
                     if ($organization) {
-                        $user->setOrganization($organization);
                         $user->updateUser([
                             'id' => $userId,
                             'organization' => $organization,
@@ -97,4 +96,8 @@ class UserListController extends Controller {
             return in_array(true, $f);
         });
     }
+}
+
+class Api{
+    use ApiTrait;
 }
