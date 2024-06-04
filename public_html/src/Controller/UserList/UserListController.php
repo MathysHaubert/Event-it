@@ -58,10 +58,11 @@ class UserListController extends Controller {
                     $user = (new User())->getUser(["id" => $userId]);
                     if ($user) {
                         $user->setRole($value);
-                        $user->updateUser([
+                        $response = $user->updateUser([
                             'id' => $userId,
                             'role' => $value,
                         ]);
+                        error_log(json_encode($response));
                     }
                 }
             } elseif (strpos($key, 'organization_') === 0) {
@@ -69,18 +70,18 @@ class UserListController extends Controller {
                 if ($userId !== '') {
                     $user = (new User())->getUser(["id" => $userId]);
                     $organization = (new Organization())->getOrganizationById(["id" => $value]);
-                    if ($organization && $user) {
+                    if ($organization) {
                         $user->setOrganization($organization);
-                        $response = $user->updateUser([
+                        $user->updateUser([
                             'id' => $userId,
                             'organization' => $organization,
                         ]);
-                        error_log(json_encode($response));
                     }
                 }
             }
         }
     }
+
 
 
     private function filterUser($userList, $filter) {

@@ -50,24 +50,22 @@ class Organization
         $api = new Api();
         $data = $api->get($_ENV['API_URL'].'/organization', $params); // Ensure correct endpoint
         error_log("Organization :".json_encode($data));
-        if (!empty($data) && isset($data[0])) {
-            return self::createOrganizationFromArray($data[0]);
+        if (!empty($data)) {
+            return self::createOrganizationFromArray($data);
         }
         return null;
     }
 
-
-
-
     public static function createOrganizationFromArray(array $data): self
     {
-        return new Organization(
-            $data['id'] ?? 0,
-            $data['name'] ?? '',
+        return new self(
+            $data['id'],
+            $data['name'],
             $data['users'] ?? [],
-            $data['reservations'] ?? [],
+            $data['reservations'] ?? []
         );
     }
+
 }
 
 class Api {
