@@ -1,0 +1,25 @@
+{% extends '/public/base.html.twig' %}
+
+{% block title %}
+  FAQ
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>FAQ</h1>
+        <div class="faq-container" id="faq-container">
+            <!-- FAQ items will be loaded here dynamically -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/AjoutFaq/style.css">
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/AjoutFaq/script.js"></script>
+{% endblock %}
