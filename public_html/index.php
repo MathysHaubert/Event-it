@@ -8,6 +8,7 @@ require 'vendor/autoload.php';
 
 use App\Event\Kernel\KernelEvent;
 use App\Kernel\Kernel;
+use Dotenv\Dotenv;
 
 const ROOT = __DIR__;
 const LOG_FILE = ROOT . '/var/log/app.log';
@@ -22,6 +23,9 @@ const ASSETS = ROOT . '/assets';
 try {
     // check if app.log already exists
     Kernel::manageLogFile();
+    // Get the api url
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
     // Démarrer la session PHP
     session_start();
     // Vérifier si la locale est déjà définie dans la session

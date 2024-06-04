@@ -6,19 +6,22 @@ namespace App\Controller\Login;
 
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
+use App\Entity\User\User;
+
 class LoginController extends Controller{
     public function index($data = [])
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
-            header('Location: /');
-            $this->webRender('public/Home/' . self::INDEX, [
-                'title' => 'Home Page',
-                'content' => 'Welcome to the home page',
-                'cookieSet' => CookieHandler::isCookieSet(),
-            ]);
-
+            $user = User::login(["email" => $username, "password" => $password]);
+            if (!empty($user)){
+                $this->webRender('public/userList/' . self::INDEX , [
+                    'title' => 'User List Page',
+                    'content' => 'Welcome to the user list page',
+                    'cookieSet' => CookieHandler::isCookieSet(),
+                    'users' => $user,
+                ]);
         } else {
             $this->webRender('public/Login/' . self::INDEX, [
                 'title' => 'Login Page',
@@ -30,4 +33,5 @@ class LoginController extends Controller{
     }
 
 
+}
 }

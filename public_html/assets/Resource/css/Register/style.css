@@ -17,7 +17,9 @@ body {
   height: 100vh;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
   width: 100%;
   height: 3.5vh;
   margin: auto;
@@ -36,8 +38,8 @@ input[type="text"], input[type="password"], input[type="email"] {
   text-align: center;
   border-radius: 20px;
   color: #fff;
-  background-color: #C5D2EC;;
-  height: 75vh;
+  background-color: #c5d2ec;
+  height: 85vh;
   margin-top: 12.5vh;
 }
 
@@ -51,8 +53,8 @@ input[type="text"], input[type="password"], input[type="email"] {
   padding: 0;
   margin: 0;
   color: #1751bb;
-  background-color: #C5D2EC;
-  background: linear-gradient(#C5D2EC 50%, #fff 50%);
+  background-color: #c5d2ec;
+  background: linear-gradient(#c5d2ec 50%, #fff 50%);
   font-size: 2em;
   height: 100vh;
 }
@@ -63,7 +65,7 @@ input[type="text"], input[type="password"], input[type="email"] {
   font-size: 5vw;
   text-transform: uppercase;
   white-space: nowrap;
-  background: linear-gradient(#fff 50%, #C5D2EC 50%);
+  background: linear-gradient(#fff 50%, #c5d2ec 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -95,7 +97,7 @@ button {
   width: 50%;
   height: 3.5vh;
   margin-top: 4vh;
-  background-color: #1766F9;
+  background-color: #1766f9;
   color: white;
   border: none;
   border-radius: 15px;

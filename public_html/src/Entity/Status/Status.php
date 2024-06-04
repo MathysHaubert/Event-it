@@ -9,9 +9,12 @@ class Status implements  StatusInterface
 {
     use Identifier;
 
-    private string $name;
-
-    private User $user;
+    public function __construct(
+        private string $name,
+        private int $id,
+        private int $user_id
+    ){
+    }
 
     public function getName(): string
     {
@@ -23,6 +26,16 @@ class Status implements  StatusInterface
         $this->name = $name;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
     public function getUser(): User
     {
         return $this->user;
@@ -32,4 +45,5 @@ class Status implements  StatusInterface
     {
         $this->user = $user;
     }
+
 }

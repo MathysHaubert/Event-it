@@ -11,10 +11,13 @@ use App\Trait\dd;
 use App\TwigExtention\Translator;
 use App\Event\Kernel\KernelEvent;
 use App\Kernel\EventManager;
+use App\Trait\ApiTrait;
 
 abstract class Controller
 {
     use dd;
+
+    use ApiTrait;
 
     protected const INDEX = 'index.html.twig';
     private FilesystemLoader $loader;
