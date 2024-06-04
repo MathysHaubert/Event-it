@@ -11,9 +11,9 @@ use App\Entity\User\User;
 class LoginController extends Controller{
     public function index($data = [])
     {
-        if(isset($_SESSION['jwt'])){
-            unset($_SESSION['jwt']);
-            unset($_SESSION['user']);
+        if(isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)){
+            header('Location: /userprofile');
+            exit();
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
