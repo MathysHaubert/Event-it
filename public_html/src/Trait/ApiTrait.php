@@ -28,7 +28,7 @@ trait ApiTrait{
         }
 
         curl_close($ch);
-        
+
         if (substr($output, -2) === '""' && substr($output, -3, 1) === '}') {
             $output = substr($output, 0, -2);
         }

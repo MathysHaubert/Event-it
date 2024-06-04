@@ -44,3 +44,4 @@ event_it.public.Ajoutfaq:
   path: /Ajoutfaq
   controller: App\Controller\AjoutFaq\AjoutFaqController
   method: index
+  parameters: []

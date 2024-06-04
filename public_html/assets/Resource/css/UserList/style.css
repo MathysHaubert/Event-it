@@ -8201,3 +8201,13 @@ h1, h2, h3, h4, h5,
   .table tbody td .close span {
     font-size: 12px;
     color: #dc3545; }
+
+.not-logged {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+.h1-not-logged{
+  color: #fff;
+}
