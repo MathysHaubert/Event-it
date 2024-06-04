@@ -68,10 +68,8 @@ class UserListController extends Controller {
                 if ($userId !== '') {
                     $user = (new User())->getUser(["id" => $userId]);
                     $organization = (new Organization())->getOrganizationById(["id" => $value]);
-                    if (!$organization || !$user) {
-                        continue;
-                    }
-                    if ($user) {
+                    error_log(json_encode($organization));
+                    if ($user && $organization) {
                         $user->setOrganization($organization);
                         $user->updateUser([
                             'id' => $userId,
@@ -82,6 +80,8 @@ class UserListController extends Controller {
             }
         }
     }
+
+
 
 
     private function filterUser($userList, $filter) {
