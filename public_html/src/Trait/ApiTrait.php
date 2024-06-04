@@ -28,7 +28,7 @@ trait ApiTrait{
         }
 
         curl_close($ch);
-        
+
         if (substr($output, -2) === '""' && substr($output, -3, 1) === '}') {
             $output = substr($output, 0, -2);
         }
@@ -119,9 +119,9 @@ trait ApiTrait{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $headers = ['Content-Type: application/json'];
-        if($token) {
-            $headers[] = 'Authorization: Bearer ' . $token;
-        }
+        // if($token) {
+        //     $headers[] = 'Authorization: Bearer ' . $token;
+        // }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $output = curl_exec($ch);

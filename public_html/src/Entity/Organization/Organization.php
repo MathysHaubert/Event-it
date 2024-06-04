@@ -12,14 +12,13 @@ use App\Entity\Reservation\Reservation;
 
 class Organization
 {
-    use Identifier;
 
     public function __construct(
+        private int $id = 0,
         private string $name = '',
-        private int $orgId = -1,
-        private ?User $users = null,
+        private ?array $users = [],
+        private ?array $reservations = [],
     ){
-        $this->users = $users ?? new User();
     }
 
     public function getName(): string
@@ -32,35 +31,44 @@ class Organization
         $this->name = $name;
     }
 
-    public function getStatus(): Status
+    public function getId(): int
     {
-        return $this->status;
+        return $this->id;
     }
 
-    public function setStatus(Status $status): void
-    {
-        $this->status = $status;
-    }
-
-    public static function getOrganization(array $params)
+    public static function getOrganization(array $params = null)
     {
         $api = new Api();
         $data = $api->get($_ENV['API_URL'].'/organization', $params); //todo : replace url with env variable
         $organizations = [];
-    
+
         foreach ($data as $organizationData) {
-            $organization = self::createorganizationFromArray($organizationData);
+            $organization = self::createOrganizationFromArray($organizationData);
             $organizations[] = $organization;
         }
-    
-        return $organizations;
+
+            return $organizations;
+    }
+
+    public static function getOrganizationById(array $params)
+    {
+        $api = new Api();
+        $data = $api->get($_ENV['API_URL'].'/organization', $params); //todo : replace url with env variable
+
+        if (is_array($data) && count($data) > 0) {
+            return self::createOrganizationFromArray($data[0]);
+        }
+
+        return null;
     }
 
     public static function createOrganizationFromArray(array $data): self
     {
-        return new self(
-            $data['name'],
+        return new Organization(
             $data['id'],
+            $data['name'],
+            $data['users'],
+            $data['reservations'],
         );
     }
 }

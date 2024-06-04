@@ -4,6 +4,7 @@
 User List
 {% endblock %}
 {% block body %}
+{% if logged %}
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center">
@@ -39,8 +40,12 @@ User List
                     <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
                     {% if currentUser.role == "SUPER_ADMIN" %}
                       <td>
-                        <select class="form-control" name="organization_{{ user.id }}">
-                          <option value="">Select Organization</option>
+                          {% if user.userId %}
+                            <select class="form-control" name="organization_{{ user.userId }}">
+                              <option value="">Select Organization</option>
+                          {% else %}
+                            <p>ERROR {{ user.userId }}<p/>
+                          {% endif %}
                           {% for org in organizations %}
                             <option value="{{ org.id }}" {% if org.name == (user.organization ? user.organization.name : null) %}selected{% endif %}>{{ org.name }}</option>
                           {% endfor %}
@@ -49,7 +54,7 @@ User List
                     {% endif %}
                     {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
                       <td>
-                        <select class="form-control" name="role_{{ user.id }}">
+                        <select class="form-control" name="role_{{ user.userId }}">
                           <option value="USER" {% if user.role == 'USER' %}selected{% endif %}>USER</option>
                           <option value="ADMIN" {% if user.role == 'ADMIN' %}selected{% endif %}>ADMIN</option>
                           {% if currentUser.role == "SUPER_ADMIN" %}
@@ -75,6 +80,14 @@ User List
     </div>
   </div>
 </section>
+{% else %}
+<div class="not-logged">
+  <h1 class="h1-not-logged">
+    You are not authorized to view this page please login.
+  </h1>
+  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">Login</button>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block javascripts %}

@@ -14,6 +14,7 @@ class User
 
     private ?string $jwt;
     public function __construct(
+        private int $userId = 0,
         private string $lastname = '',
         private string $firstname = '',
         private ?DateTime $createAt = null,
@@ -123,10 +124,16 @@ class User
         $this->jwt = $jwt;
     }
 
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
 
     private static function createUserFromArray(array $data): User
     {
         return new User(
+            $data['id'],
             $data['lastName'],
             $data['firstName'],
             isset($data['createdAt']['date']) ? new DateTime($data['createdAt']['date']) : null,
@@ -139,7 +146,7 @@ class User
         );
     }
 
-    public static function getUser(array $params): User | array
+    public static function getUser(array $params)
     {
     $api = new Api();
     $data = $api->get($_ENV['API_URL'].'/user', $params); //todo : replace url with env variable
@@ -150,7 +157,7 @@ class User
         $users[] = $user;
     }
 
-    return $users;
+    return (count($users) > 1) ? $users : $users[0];
     }
 
     public static function createUser($data)
@@ -196,12 +203,9 @@ class User
     public static function updateUser($data)
     {
         $api = new Api();
-        $response = $api->put($_ENV['API_URL'].'/user', $data, $_SESSION['jwt']);
-        if($response){
-            $user = self::createUserFromArray($data);
-            return $user;
-        }
-        return null;
+        $debug = $api->patch($_ENV['API_URL'].'/user', $data, $_SESSION['jwt']);
+        error_log(print_r($debug, true));
+        return;
     }
 }
 

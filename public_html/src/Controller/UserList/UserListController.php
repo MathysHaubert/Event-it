@@ -18,22 +18,19 @@ class UserListController extends Controller {
         $userInstance = new User();
         $organizationInstance = new Organization();
         $userList = $userInstance->getUser([]);
-        $organizationList = $organizationInstance->getOrganization([]);
+        $organizationList = $organizationInstance->getOrganization();
 
         if (isset($_SESSION['user'])) {
             $currentUser = $_SESSION['user'];
-        } else {
-            die('User not set in session');
-        }
-
-        if ($currentUser->getRole() == 'ADMIN') {
-            $userList = array_filter($userList, function($user) use ($currentUser) {
-                return $user->getOrganization() && $user->getOrganization()->getName() == $currentUser->getOrganization()->getName();
-            });
-        } elseif ($currentUser->getRole() == 'USER') {
-            $userList = array_filter($userList, function($user) use ($currentUser) {
-                return $user->getOrganization() && $user->getOrganization()->getName() == $currentUser->getOrganization()->getName();
-            });
+            if ($currentUser->getRole() == 'ADMIN') {
+                $userList = array_filter($userList, function($user) use ($currentUser) {
+                    return $user->getOrganization() && $user->getOrganization()->getName() == $currentUser->getOrganization()->getName();
+                });
+            } elseif ($currentUser->getRole() == 'USER') {
+                $userList = array_filter($userList, function($user) use ($currentUser) {
+                    return $user->getOrganization() && $user->getOrganization()->getName() == $currentUser->getOrganization()->getName();
+                });
+            }
         }
 
         $this->webRender('public/userList/' . self::INDEX, [
@@ -41,8 +38,9 @@ class UserListController extends Controller {
             'content' => 'Welcome to the user list page',
             'cookieSet' => CookieHandler::isCookieSet(),
             'users' => $userList,
-            'currentUser' => $currentUser,
+            'currentUser' => $currentUser?? null,
             'organizations' => $organizationList,
+            'logged' => isset($_SESSION['user']),
         ]);
     }
 
@@ -50,26 +48,33 @@ class UserListController extends Controller {
         foreach ($data as $key => $value) {
             if (strpos($key, 'role_') === 0) {
                 $userId = str_replace('role_', '', $key);
-                $user = (new User())->getUser(["id" => $userId]);
-                if ($user) {
-                    $user->setRole($value);
-                    $user->updateUser([
-                        'userId' => $userId,
-                        'role' => $value,
-                    ]);
+                if ($userId !== '') {
+                    $user = (new User())->getUser(["id" => $userId]);
+                    if ($user) {
+                        $user->setRole($value);
+                        $user->updateUser([
+                            'id' => $userId,
+                            'role' => $value,
+                        ]);
+                    }
                 }
-            } elseif (strpos($key, 'organization_') === 0) {
+            } if (strpos($key, 'organization_') === 0) {
                 $userId = str_replace('organization_', '', $key);
+                if ($userId !== '') {
                 $user = (new User())->getUser(["id" => $userId]);
+                $organization = (new Organization())->getOrganizationById(["id" => $value]);
+                if(!$organization || !$user) {
+                    continue;
+                }
                 if ($user) {
-                    $organizationId = $value;
-                    $user->setOrganizationId($organizationId);
+                    $user->setOrganization($organization);
                     $user->updateUser([
-                        'userId' => $userId,
-                        'organizationId' => $organizationId,
+                        'id' => $userId,
+                        'organization' => $organization,
                     ]);
                 }
             }
+        }
         }
     }
 }
