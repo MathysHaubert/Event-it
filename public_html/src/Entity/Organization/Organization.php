@@ -45,18 +45,18 @@ class Organization
         return $organizations;
     }
 
-    public static function getOrganizationById(array $params)
+    public static function getOrganizationById(array $params): ?self
     {
         $api = new Api();
-        $data = $api->get($_ENV['API_URL'].'/organization', $params);
-        error_log("Organization :" . json_encode($data));
-
-        if (!empty($data) && isset($data[0]['id'])) {
+        $data = $api->get($_ENV['API_URL'].'/organization', $params); // Ensure correct endpoint
+        error_log("Organization :".json_encode($data));
+        if (!empty($data) && isset($data[0])) {
             return self::createOrganizationFromArray($data[0]);
         }
-
         return null;
     }
+
+
 
 
     public static function createOrganizationFromArray(array $data): self

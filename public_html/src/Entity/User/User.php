@@ -108,7 +108,6 @@ class User
         $this->organization = $organization;
     }
 
-
     public function setOrganizationId(int $organizationId): void
     {
         $organization = Organization::getOrganization(['id' => $organizationId]);
@@ -202,7 +201,6 @@ class User
     {
         $api = new Api();
         $api->patch($_ENV['API_URL'] . '/user', $data, $_SESSION['jwt']);
-        error_log(json_encode($data));
     }
 }
 

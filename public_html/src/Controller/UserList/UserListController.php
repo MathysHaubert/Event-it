@@ -49,7 +49,8 @@ class UserListController extends Controller {
         ]);
     }
 
-    public function updateUser($data): void {
+    public function updateUser($data): void
+    {
         foreach ($data as $key => $value) {
             if (strpos($key, 'role_') === 0) {
                 $userId = str_replace('role_', '', $key);
@@ -68,20 +69,18 @@ class UserListController extends Controller {
                 if ($userId !== '') {
                     $user = (new User())->getUser(["id" => $userId]);
                     $organization = (new Organization())->getOrganizationById(["id" => $value]);
-                    error_log(json_encode($organization));
-                    if ($user && $organization) {
+                    if ($organization && $user) {
                         $user->setOrganization($organization);
-                        $user->updateUser([
+                        $response = $user->updateUser([
                             'id' => $userId,
                             'organization' => $organization,
                         ]);
+                        error_log(json_encode($response));
                     }
                 }
             }
         }
     }
-
-
 
 
     private function filterUser($userList, $filter) {
