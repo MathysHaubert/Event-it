@@ -20,6 +20,7 @@ abstract class Controller
     use ApiTrait;
 
     protected const INDEX = 'index.html.twig';
+    protected const MANAGE = 'manage.html.twig';
     private FilesystemLoader $loader;
 
     protected Environment $twig;

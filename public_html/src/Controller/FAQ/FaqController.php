@@ -22,6 +22,34 @@ class FaqController extends Controller{
             'faqs' => $faq,
         ]);
     }
+
+    public function manageAction($data = []): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $index = 1;
+            $datas = [];
+            while(true) {
+                if (isset($_POST['question_'.$index])) {
+                    $datas[] = array("question" => $_POST['question_'.$index],"answer" => $_POST['answer_'.$index]);
+                    $index++;
+                    continue;
+                } else {
+                    break;
+                }
+            }
+            foreach($datas as $data) {
+                $this->post($_ENV['API_URL'].'/faq',$data);
+            }
+        }
+        $faq = (new Faq)->getAllFaq();
+        // define the default locale at french
+        $this->webRender('public/faqPage/' . self::MANAGE, [
+            'title' => 'Home Page',
+            'content' => 'Welcome to the home page',
+            'cookieSet' => CookieHandler::isCookieSet(),
+            'faqs' => $faq,
+        ]);
+    }
     private function linkForumToMessage($forums,$forumMessages)
     {
         $result = [];
