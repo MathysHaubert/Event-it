@@ -46,6 +46,3 @@
 [2024-05-02 22:02:37] Unable to find template "public/UserList/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-02 22:21:29] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-02 22:22:05] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
-[2024-06-03 20:38:45] Error: No such file or directory in file /var/www/html/src/Controller/Contact/ContactController.php at line 29
-[2024-06-03 20:42:56] Error: No such file or directory in file /var/www/html/src/Controller/Contact/ContactController.php at line 29
-[2024-06-03 20:43:45] Error: No such file or directory in file /var/www/html/src/Controller/Contact/ContactController.php at line 29
