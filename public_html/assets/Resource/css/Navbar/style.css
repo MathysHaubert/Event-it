@@ -39,3 +39,53 @@
 .nav-link.active{
   text-decoration: underline;
 }
+
+.right {
+  display: flex;
+  gap: 1vw;
+}
+
+.languageSelect {
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #7f98bc;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.languageSelect:focus {
+  outline: none;
+}
+
+.languageSelect option {
+  font-size: 18px;
+  background-color: #7f98bc;
+  color: #fff;
+  padding: 10px;
+}
+
+.languageSelect-container {
+  position: relative;
+  display: inline-block;
+}
+
+.languageSelect-container::after {
+  content: '\25BC';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.languageSelect::-ms-expand {
+  display: none;
+}

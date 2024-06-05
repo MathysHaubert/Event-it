@@ -9,8 +9,6 @@ use Twig\TemplateWrapper;
 use App\Kernel\Kernel;
 use App\Trait\dd;
 use App\TwigExtention\Translator;
-use App\Event\Kernel\KernelEvent;
-use App\Kernel\EventManager;
 use App\Trait\ApiTrait;
 
 abstract class Controller
@@ -59,6 +57,7 @@ abstract class Controller
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
 
+        $this->twig->addGlobal('session', $_SESSION);
         // Chargement et affichage du template avec les données
         $this->twig->load($template)->display($data);
 
