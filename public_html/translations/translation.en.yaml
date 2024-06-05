@@ -68,3 +68,8 @@ event_it:
     confirmPassword: "Confirm Password"
     register: "Register"
     cgu: "I accept the terms and conditions"
+  navBar:
+    home: "Home"
+    faq: "FAQ"
+    userList: "User List"
+    contact: "Contact"

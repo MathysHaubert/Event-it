@@ -68,3 +68,8 @@ event_it:
     confirmPassword: "Confirmer le mot de passe"
     register: "Inscription"
     cgu: "J'accepte les termes et conditions"
+  navBar:
+    home: "Accueil"
+    faq: "FAQ"
+    userList: "Liste des utilisateurs"
+    contact: "Contact"
