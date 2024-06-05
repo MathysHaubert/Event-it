@@ -9,6 +9,7 @@ use App\Cookie\CookieHandler;
 use App\Entity\Forum\Forum;
 use App\Entity\Forum\ForumMessage\ForumMessage;
 use App\Entity\Faq\Faq;
+use App\Entity\Api\Api;
 
 class FaqController extends Controller{
     public function index($data = []): void
@@ -26,11 +27,22 @@ class FaqController extends Controller{
     public function manageAction($data = []): void
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
-            $index = 1;
+            $index = 0;
             $datas = [];
+            /** @var array<Faq> $faqs */
+            $faqs = (new Faq)->getAllFaq();
+            foreach ($faqs as $faq) {
+                (new Api())->delete($_ENV['API_URL'].'/faq',array("question" => $faq->getQuestion(),"answer"=>$faq->getAnswer()));
+            }
             while(true) {
-                if (isset($_POST['question_'.$index])) {
-                    $datas[] = array("question" => $_POST['question_'.$index],"answer" => $_POST['answer_'.$index]);
+                if (count($_POST) > 0) {
+                    if (isset($_POST['question_'.$index])) {
+                        if ($_POST['question_'.$index] !== "" || $_POST['answer_'.$index] !== "") {
+                            $datas[] = array("question" => $_POST['question_'.$index],"answer" => $_POST['answer_'.$index]);
+                        }
+                        unset($_POST['question_'.$index]);
+                        unset($_POST['answer_'.$index]);
+                    }
                     $index++;
                     continue;
                 } else {

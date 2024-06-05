@@ -14,7 +14,6 @@ contact:
   controller: App\Controller\Contact\ContactController
   method: index
 
-
   # Here ajax's route
 event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
@@ -46,11 +45,6 @@ event_it.public.manage_faq:
   controller: App\Controller\FAQ\FaqController
   method: manageAction
 
-event_it.public.Ajoutfaq:
-  path: /AjoutFaq
-  controller: App\Controller\AjoutFaq\AjoutFaqController
-  method: index
-  parameters: []
 
 UserProfile:
   path: /userprofile

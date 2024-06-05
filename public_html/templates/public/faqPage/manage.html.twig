@@ -19,14 +19,20 @@
           <tr>
               <td><input type="text" name="question_{{ loop.index }}" value="{{ faq.question }}"></input></td>
               <td><input type="text" name="answer_{{ loop.index }}" value="{{ faq.answer }}"></input></td>
-              <td><button>Edit</button> <button>Delete</button></td>
+              <td> <button type="button" data-delete>Delete</button></td>
           </tr>
       {% endfor %}
-                <tr>
-              <td></td>
-              <td><button>Enregistrer les modifications</button></td>
-              <td></td>
-          </tr>
+      <tr>
+        <td><input type="text" name="question_0"></input></td>
+        <td><input type="text" name="answer_0"></input></td>
+        <td> <button type="button" data-add>Ajouter</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button>Enregistrer les modifications</button></td>
+        <td></td>
+      </tr>
+    </form>
     </tbody>
 </table>
 {% endblock %}
@@ -38,4 +44,5 @@
 
 {% block javascripts %}
   {{ parent() }}
+  <script src="assets/Resource/js/FAQ/manage.js"></script>
 {% endblock %}
