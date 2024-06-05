@@ -176,6 +176,10 @@ class User
     {
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/login', $data);
+        if(isset($response['error'])){
+            return $response;
+        }
+
         if($response){
             $user = self::createUserFromArray($response, true);
             $_SESSION['jwt'] = $user->getJwt();
