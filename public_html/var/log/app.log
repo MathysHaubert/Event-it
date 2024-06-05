@@ -32,3 +32,5 @@
 [2024-05-31 19:49:32] Unexpected token "operator" of value "//". in file /var/www/html/templates/public/faqPage/index.html.twig at line 25
 [2024-05-31 19:50:29] Unexpected token "operator" of value "//". in file /var/www/html/templates/public/faqPage/index.html.twig at line 25
 [2024-05-31 19:50:43] Unexpected token "operator" of value "//". in file /var/www/html/templates/public/faqPage/index.html.twig at line 25
+[2024-06-05 13:39:15] Error: php_network_getaddresses: getaddrinfo for http failed: Temporary failure in name resolution in file /var/www/html/src/Controller/AjoutFaq/AjoutFaqController.php at line 17
+[2024-06-05 13:44:06] App\Controller\AjoutFaq\AjoutFaqController not found

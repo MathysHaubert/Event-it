@@ -2,6 +2,48 @@
 .faq {display: block;
 unicode-bidi: isolate;
 }
+
+.boutonPlus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 188px;
+  height: 73px;
+  top: 664px;
+
+  margin-bottom: 20px;
+  border-radius: 9999px;
+  opacity: 0px;
+  background-color: #1766F9;
+
+
+}
+
+.boutonPlusHome{
+
+  position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: none;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+.pourquoiNous{
+
+  font-family: Inter;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 77.45px;
+  text-align: center;
+  color: #FFFFFF;
+
+
+}
 .accordion {
   display: flex;
   flex-direction: column;

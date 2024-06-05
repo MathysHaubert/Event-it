@@ -90,6 +90,6 @@ redirectToFaqAdd()
 function redirectToFaqAdd() {
   const button = document.getElementById("RedirectToFaqAdd")
   button.addEventListener('click',function(){
-    window.location.href = '/faqadd'
+    window.location.href = '/AjoutFaq'
   })
 }
