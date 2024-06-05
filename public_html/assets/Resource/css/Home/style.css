@@ -268,4 +268,11 @@ display: flex;
 }
 }
 
+.buttonFaqDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
 /* Fin style FAQ*/

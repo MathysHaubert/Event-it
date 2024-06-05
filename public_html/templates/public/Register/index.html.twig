@@ -12,34 +12,34 @@
         <div class="register-form">
             <form id="registerForm" action="{{ path('register') }}" method="post">
                 <div class="form-group">
-                    <label for="username">First name</label>
+                    <label for="username">{{ "event_it.register.firstName" | trans }}</label>
                     <input type="text" id="firstName" name="firstName" class="form-control" required >
-                    <label for="username">Last name</label>
+                    <label for="username">{{ "event_it.register.lastName" | trans }}</label>
                     <input type="text" id="lastName" name="lastName" class="form-control" required >
                 </div>
                 <div class="form-group
                 ">
-                    <label for="email">Email</label>
+                    <label for="email">{{ "event_it.register.email" | trans }}</label>
                     <input type="email" id="email" name="email" class="form-control" value="{{ form.email.vars.value }} " required>
 
                 </div>
                 <div class="form-group
                 ">
-                    <label for="password">Password</label>
+                    <label for="password">{{ "event_it.register.password" | trans }}</label>
                     <input type="password" id="password" name="password" class="form-control" value="{{ form.password.vars.value }}" required>
 
                 </div>
                 <div class="form-group
                 ">
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label for="confirmPassword">{{ "event_it.register.confirmPassword" | trans }}</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" value="{{ form.confirmPassword.vars.value }}" required>
 
                 </div>
               <div>
-                <label for="CGU"><a href="https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-web/rediger-des-conditions-generales-dutilisation#autres-mentions-obligatoires">I accept<br> the terms and Conditions</a></label>
+                <label for="CGU"><a href="/CGU">{{ "event_it.register.cgu" | trans }}</a></label>
                   <input type="checkbox" id="CGU" name="CGU" required>
               </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">{{ "event_it.register.register" | trans }}</button>
             </form>
         </div>
     </div>

@@ -14,6 +14,7 @@ contact:
   controller: App\Controller\Contact\ContactController
   method: index
 
+
   # Here ajax's route
 event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
@@ -34,3 +35,29 @@ UserList:
   path: /userlist
   controller: App\Controller\UserList\UserListController
   method: index
+
+event_it.public.faq:
+  path: /faq
+  controller: App\Controller\FAQ\FaqController
+  method: index
+
+event_it.public.Ajoutfaq:
+  path: /Ajoutfaq
+  controller: App\Controller\AjoutFaq\AjoutFaqController
+  method: index
+  parameters: []
+
+UserProfile:
+  path: /userprofile
+  controller: App\Controller\UserProfile\UserProfileController
+  method: index
+
+event_it.public.CGU:
+  path: /CGU
+  controller: App\Controller\CGU\CGUController
+  method: index
+
+event_it.public.language_change:
+  path: /change_language
+  controller: App\Controller\LanguageController
+  method: changeLanguage

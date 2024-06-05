@@ -24,7 +24,7 @@ class Translator extends AbstractExtension
 
     public function __construct(string $locale)
     {
-        $this->locale = $locale;
+        $this->locale = $_SESSION['locale'] ?? "en";
     }
 
     //create a function who will read in the translations/translation.$locale.yaml
