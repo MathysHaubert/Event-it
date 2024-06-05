@@ -2,7 +2,7 @@ services:
   php:
     container_name: php-8.2-apache
     ports:
-      - "9000:80"
+      - "8085:80"
     volumes:
       - ./public_html:/var/www/html
     build:

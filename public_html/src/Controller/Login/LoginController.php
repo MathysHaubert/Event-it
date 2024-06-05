@@ -11,9 +11,9 @@ use App\Entity\User\User;
 class LoginController extends Controller{
     public function index($data = [])
     {
-        if(isset($_SESSION['jwt'])){
-            unset($_SESSION['jwt']);
-            unset($_SESSION['user']);
+        if(isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)){
+            header('Location: /userprofile');
+            exit();
         }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username =  $_POST['_username'];
@@ -24,12 +24,8 @@ class LoginController extends Controller{
                 $_SESSION['jwt'] = $user->getJwt();
                 $_SESSION['user'] = $user;
                 }
-                $this->webRender('public/userList/' . self::INDEX , [
-                    'title' => 'User List Page',
-                    'content' => 'Welcome to the user list page',
-                    'cookieSet' => CookieHandler::isCookieSet(),
-                    'users' => $user,
-                ]);
+                header('Location: /');
+                exit();
         } else {
             $this->webRender('public/Login/' . self::INDEX, [
                 'title' => 'Login Page',

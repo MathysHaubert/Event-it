@@ -46,3 +46,8 @@ event_it.public.Ajoutfaq:
   controller: App\Controller\AjoutFaq\AjoutFaqController
   method: index
   parameters: []
+
+UserProfile:
+  path: /userprofile
+  controller: App\Controller\UserProfile\UserProfileController
+  method: index
