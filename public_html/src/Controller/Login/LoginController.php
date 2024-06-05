@@ -19,7 +19,7 @@ class LoginController extends Controller{
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
             $user = User::login(["email" => $username, "password" => $password]);
-            if(isset($user['error'])){
+            if(is_array($user) && isset($user['error'])){
                 $this->webRender('public/Login/' . self::INDEX, [
                     'title' => 'Login Page',
                     'content' => 'Welcome to the login page',
