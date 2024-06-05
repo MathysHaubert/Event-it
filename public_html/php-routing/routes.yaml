@@ -51,3 +51,8 @@ UserProfile:
   path: /userprofile
   controller: App\Controller\UserProfile\UserProfileController
   method: index
+
+event_it.public.CGU:
+  path: /CGU
+  controller: App\Controller\CGU\CGUController
+  method: index
