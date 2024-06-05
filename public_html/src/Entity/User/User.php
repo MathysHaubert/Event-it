@@ -163,11 +163,11 @@ class User
     public static function createUser($data)
     {
         $api = new Api();
-        $response = $api->post("http://176.147.224.139:8088".'/user', $data); //todo : replace url with env variable
-
-        if($response){
-            $user = self::createUserFromArray($data);
-            return $user;
+        $api->post("http://176.147.224.139:8088".'/user', $data); //todo : replace url with env variable
+        $user = self::getUser(['email' => $data['email']]);
+        error_log(json_encode($user));
+        if($user){
+        return $user;
         }
         return null;
     }
