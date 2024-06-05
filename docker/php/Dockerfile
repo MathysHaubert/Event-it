@@ -1,37 +1,15 @@
 FROM php:8.2-apache
-LABEL authors="MathysHaubert"
+LABEL authors="Mathys"
 
-RUN apt-get update && apt-get upgrade -y
-RUN if [ ! -e /usr/local/etc/php/php.ini ]; then ln -s /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini; fi
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y default-mysql-client default-libmysqlclient-dev libyaml-dev && \
+    docker-php-ext-install pdo_mysql mysqli && \
+    docker-php-ext-enable pdo_mysql mysqli && \
+    if ! pecl list | grep -q 'yaml'; then pecl install yaml && docker-php-ext-enable yaml; fi && \
+    if [ ! -e /usr/local/etc/php/php.ini ]; then ln -s /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini; fi && \
+    echo "extension=yaml.so" >> /usr/local/etc/php/php.ini && \
+    a2enmod rewrite
 
-# Install dependencies
-RUN apt-get install -y \
-  libpng-dev libwebp-dev libjpeg-dev libfreetype6-dev libc-client-dev \
-  libonig-dev libxslt-dev libpq-dev libvips42 \
-  libssh-dev libgmp-dev libzip-dev libxml2-dev freetds-dev \
-  \
-  # Php extensions
-  && docker-php-ext-install \
-  mbstring \
-  xml \
-  gd \
-  exif \
-  zip \
-  soap \
-  intl \
-  xsl \
-  opcache \
-  # Clean php extensions
-  && rm -rf /tmp/pear \
-  && docker-php-source delete \
-  \
-  # Clean up \
-  && apt-get autoremove -y \
-  && apt-get clean
+CMD ["apache2ctl", "-D", "FOREGROUND"]
 
-RUN a2enmod rewrite
-
-# Expose port
 EXPOSE 80
-
-

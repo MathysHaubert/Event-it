@@ -11,12 +11,16 @@ use App\Trait\dd;
 use App\TwigExtention\Translator;
 use App\Event\Kernel\KernelEvent;
 use App\Kernel\EventManager;
+use App\Trait\ApiTrait;
 
 abstract class Controller
 {
     use dd;
 
+    use ApiTrait;
+
     protected const INDEX = 'index.html.twig';
+    protected const MANAGE = 'manage.html.twig';
     private FilesystemLoader $loader;
 
     protected Environment $twig;
@@ -53,6 +57,9 @@ abstract class Controller
     public function webRender(string $template, array $data = []): void
 {
     try {
+        if (isset($_SESSION['user'])) {
+            $data['user'] = $_SESSION['user'];
+        }
         // ajout des données de traduction en plus des données passées
         $data = $this->addDataToArray($data, ['translator' => $this->translator->getInstance()]);
 

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\User;
 
 use App\Entity\Client\Client;
+use App\Entity\Organization\Organization;
+use App\Trait\ApiTrait;
 use App\Trait\Identifier;
 use DateTime;
 
@@ -10,16 +12,18 @@ class User
 {
     use Identifier;
 
+    private ?string $jwt;
     public function __construct(
-        private string $lastname,
-        private string $firstname,
-        private DateTime $createAt,
-        private DateTime $lastConnection,
-        private Client $client,
-        private string $password,
-        private string $email,
-        private Organization $organization
+        private string $lastname = '',
+        private string $firstname = '',
+        private ?DateTime $createAt = null,
+        private ?DateTime $lastConnection = null,
+        private string $password = '',
+        private string $email = '',
+        private ?Organization $organization = null,
+        $jwt = null,
     ) {
+        $this->jwt = $jwt;
     }
 
     public function getLastname(): string
@@ -62,16 +66,6 @@ class User
         $this->lastConnection = $lastConnection;
     }
 
-    public function getClient(): Client
-    {
-        return $this->client;
-    }
-
-    public function setClient(Client $client): void
-    {
-        $this->client = $client;
-    }
-
     public function getPassword(): string
     {
         return $this->password;
@@ -101,5 +95,87 @@ class User
     {
         $this->organization = $organization;
     }
-    
+
+    public function getJwt(): string
+    {
+        return $this->jwt;
+    }
+
+    public function setJwt(string $jwt): void
+    {
+        $this->jwt = $jwt;
+    }
+
+
+    private static function createUserFromArray(array $data): User
+    {
+        return new User(
+            $data['lastName'],
+            $data['firstName'],
+            isset($data['createdAt']['date']) ? new DateTime($data['createdAt']['date']) : null,
+            isset($data['lastConnection']['date']) ? new DateTime($data['lastConnection']['date']) : null,
+            $data['password'] ?? '',
+            $data['email'],
+            isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null,
+            $data['token'] ?? null,
+        );
+    }
+
+    public static function getUser(array $params): array
+    {
+    $api = new Api();
+    $data = $api->get($_ENV['API_URL'].'/user', $params); //todo : replace url with env variable
+    $users = [];
+
+    foreach ($data as $userData) {
+        $user = self::createUserFromArray($userData);
+        $users[] = $user;
+    }
+
+    return $users;
+    }
+
+    public static function createUser($data)
+    {
+        $api = new Api();
+        $response = $api->post("http://176.147.224.139:8088".'/user', $data); //todo : replace url with env variable
+
+        if($response){
+            $user = self::createUserFromArray($data);
+            return $user;
+        }
+        return null;
+    }
+
+    public static function login($data)
+    {
+        $api = new Api();
+        $response = $api->post("http://176.147.224.139:8088".'/login', $data);
+        if(!!$response['error']){
+            return null;
+        }
+        if($response){
+            $user = self::createUserFromArray($response, true);
+            $_SESSION['jwt'] = $user->getJwt();
+            return $user;
+        }
+        return null;
+    }
+
+    public static function getCurrentUser() {
+        if(!isset($_SESSION['jwt'])){
+            return;
+        }
+        $api = new Api();
+
+        $currentUser = $api->get($_ENV['API_URL'].'/currentUser', null, $_SESSION['jwt']);
+
+        if(!$currentUser) return;
+
+        return self::createUserFromArray($currentUser);
+    }
+}
+
+class Api {
+    use ApiTrait;
 }

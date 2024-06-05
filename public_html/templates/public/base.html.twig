@@ -16,6 +16,9 @@
     {% endblock %}
 </head>
 <body>
+    {% block navbar %}
+        {% include '/public/Navbar/index.html.twig' %}
+    {% endblock %}
     {% block body %}{% endblock %}
 </body>
 </html>

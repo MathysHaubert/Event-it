@@ -1,30 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
+
     const registerForm = document.querySelector('#registerForm');
 
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    registerForm.addEventListener('submit',  async (event) => {
+      event.preventDefault();
+      const input = document.querySelector("#password[name='password']");
+      const hashedPassword = await strHash(input.value);
+      const confirminput = document.querySelector("#confirmPassword[name='confirmPassword']");
+      const hashedconfirmPassword = await strHash(confirminput.value);
+      input.value = hashedPassword;
+      confirminput.value = hashedconfirmPassword;
+      console.log(hashedPassword);
 
-        const username = document.querySelector('#username').value;
-        const password = document.querySelector('#password').value;
-        const confirmPassword = document.querySelector('#confirmPassword').value;
-        const email = document.querySelector('#email').value
-        const terms = document.querySelector('#terms').checked;
+      const email = document.querySelector('#email')
+      const terms = document.querySelector('#CGU');
 
-      if (username === '' || password === '' || confirmPassword === '' || email === '' || !terms) {
-            alert('All fields are required!');
-            return;
-        }
+      if (input.value === '' || confirminput.value === '' || email.value === '' || !terms.checked) {
+        alert('All fields are required!');
+        return;
+      }
 
-        if (password !== confirmPassword) {
-            alert('Passwords do not match!');
-            return;
-        }
+      if (input.value !== confirminput.value) {
+        alert('Passwords do not match!');
+      }
 
-        // Simulate a registration request
-        setTimeout(function() {
-            alert('Registration successful!');
-            window.location.href = 'login.html';
-        }, 2000);
-
-    });
+      event.target.submit();
 });
+async function strHash(a) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(a);
+  const hash = await window.crypto.subtle.digest("SHA-256", data);
+
+  // Convert the result to hexadecimal
+  let hashArray = Array.from(new Uint8Array(hash));
+  let hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+
+  return hashHex;
+}

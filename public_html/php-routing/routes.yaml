@@ -30,11 +30,20 @@ Register:
   controller: App\Controller\Register\RegisterController
   method: index
 
+UserList:
+  path: /userlist
+  controller: App\Controller\UserList\UserListController
+  method: index
+
 event_it.public.faq:
   path: /faq
   controller: App\Controller\FAQ\FaqController
   method: index
 
+event_it.public.manage_faq:
+  path: /manage-faq
+  controller: App\Controller\FAQ\FaqController
+  method: manageAction
 
 event_it.public.Ajoutfaq:
   path: /AjoutFaq
