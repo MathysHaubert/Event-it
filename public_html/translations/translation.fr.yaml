@@ -1,3 +1,4 @@
 event_it:
-  teste:
-    hello_world: "Bonjour le monde"
+  home:
+    title: "Acceuil"
+    welcome: "Bienvenue"
