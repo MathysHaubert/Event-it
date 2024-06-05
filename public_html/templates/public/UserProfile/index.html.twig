@@ -30,12 +30,6 @@ User Profile
     <button type="submit" class="btn btn-primary" name="update_profile" id="update_profile">Update Profile</button>
     <button type="button" class="btn btn-primary" id="logout-button">Logout</button>
   </form>
-  <form action="{{ path('change_language') }}" method="post">
-    <select name="language" onchange="this.form.submit()">
-        <option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>English</option>
-        <option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>Français</option>
-    </select>
-</form>
 </section>
 {% endblock %}
 

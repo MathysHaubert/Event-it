@@ -16,6 +16,12 @@
             </li>
         </ul>
     </nav>
+    <form action="{{ path('change_language') }}" method="post">
+      <select name="language" onchange="this.form.submit()">
+          <option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>English</option>
+          <option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>Français</option>
+      </select>
+  </form>
     <a href="{% if is_logged_in %}{{ path('') }}{% else %}{{ path('login') }}{% endif %}">
         <img src="assets/Resource/img/UserButton.png" alt="logo" class="images">
     </a>
