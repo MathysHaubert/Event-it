@@ -19,7 +19,15 @@ class LoginController extends Controller{
             $username =  $_POST['_username'];
             $password =  $_POST['_password'];
             $user = User::login(["email" => $username, "password" => $password]);
-            error_log("User :".json_encode($user));
+            if(isset($user['error'])){
+                $this->webRender('public/Login/' . self::INDEX, [
+                    'title' => 'Login Page',
+                    'content' => 'Welcome to the login page',
+                    'cookieSet' => CookieHandler::isCookieSet(),
+                    'error' => $user['error']
+                ]);
+                exit();
+            }
             if (!empty($user)){
                 $_SESSION['jwt'] = $user->getJwt();
                 $_SESSION['user'] = $user;
