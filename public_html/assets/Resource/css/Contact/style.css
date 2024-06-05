@@ -1,18 +1,20 @@
 /* Additional styles for the contact page */
 body{
     height: auto;
+    margin: 0;
+    background-color: #28293D;
 }
 .container {
     text-align: center;
     }
 
 #container2 {
-    
+
     text-align: center;
     width: 700px;
     margin: 0 auto;
-    
-   
+
+
 }
 
 #contactForm{
@@ -58,12 +60,12 @@ h1 {
 .input-group {
     display: flex;
     justify-content: space-between;
-    
-    
+
+
 }
 
 .input-group input[type="text"] {
-    width: 45%; 
+    width: 45%;
 }
 
 input, textarea, .file-upload {
@@ -78,7 +80,7 @@ input, textarea, .file-upload {
 }
 
 textarea {
-    min-height: 120px; 
+    min-height: 120px;
     border-radius: 20px;
 
 }
@@ -94,7 +96,7 @@ textarea {
     opacity: 0; /* Hide the default file input */
     width: 100%;
     height: 100%;
-    
+
     top: 0;
     left: 0;
     cursor: pointer;
@@ -102,12 +104,12 @@ textarea {
 
 .checkbox {
     display: flex;
-    align-items: center; 
-     
+    align-items: center;
+
 }
 
 .checkbox input[type="checkbox"] {
-    margin-right: 5px; 
+    margin-right: 5px;
     float: left;
     width: 10px;
     font-size: larger;

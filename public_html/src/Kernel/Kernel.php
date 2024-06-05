@@ -16,9 +16,9 @@ class Kernel
      */
     public static function logger(mixed $message): void
     {
-        error_log('teste');
-        $time = '['.date('Y-m-d H:i:s').'] ';
-        error_log($time . $message . "\n", 3, LOG_FILE);
+        // error_log('teste');
+        // $time = '['.date('Y-m-d H:i:s').'] ';
+        // error_log($time . $message . "\n", 3, LOG_FILE);
     }
 
     /**

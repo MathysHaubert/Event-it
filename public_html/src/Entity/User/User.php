@@ -14,6 +14,7 @@ class User
 
     private ?string $jwt;
     public function __construct(
+        private int $userId = 0,
         private string $lastname = '',
         private string $firstname = '',
         private ?DateTime $createAt = null,
@@ -21,6 +22,7 @@ class User
         private string $password = '',
         private string $email = '',
         private ?Organization $organization = null,
+        private string $role = '',
         $jwt = null,
     ) {
         $this->jwt = $jwt;
@@ -44,6 +46,16 @@ class User
     public function setFirstname(string $firstname): void
     {
         $this->firstname = $firstname;
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     public function getCreateAt(): DateTime
@@ -86,14 +98,20 @@ class User
         $this->email = $email;
     }
 
-    public function getOrganization(): Organization
+    public function getOrganization(): ?Organization
     {
         return $this->organization;
     }
 
-    public function setOrganization(Organization $organization): void
+    public function setOrganization(?Organization $organization): void
     {
         $this->organization = $organization;
+    }
+
+    public function setOrganizationId(int $organizationId): void
+    {
+        $organization = Organization::getOrganization(['id' => $organizationId]);
+        $this->organization = $organization[0];
     }
 
     public function getJwt(): string
@@ -106,10 +124,16 @@ class User
         $this->jwt = $jwt;
     }
 
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
 
     private static function createUserFromArray(array $data): User
     {
         return new User(
+            $data['id'],
             $data['lastName'],
             $data['firstName'],
             isset($data['createdAt']['date']) ? new DateTime($data['createdAt']['date']) : null,
@@ -117,11 +141,12 @@ class User
             $data['password'] ?? '',
             $data['email'],
             isset($data['organization']) ? Organization::createOrganizationFromArray($data['organization']) : null,
+            $data['role'],
             $data['token'] ?? null,
         );
     }
 
-    public static function getUser(array $params): array
+    public static function getUser(array $params)
     {
     $api = new Api();
     $data = $api->get($_ENV['API_URL'].'/user', $params); //todo : replace url with env variable
@@ -132,7 +157,7 @@ class User
         $users[] = $user;
     }
 
-    return $users;
+    return (count($users) > 1) ? $users : $users[0];
     }
 
     public static function createUser($data)
@@ -151,9 +176,10 @@ class User
     {
         $api = new Api();
         $response = $api->post("http://176.147.224.139:8088".'/login', $data);
-        if(!!$response['error']){
-            return null;
+        if(isset($response['error'])){
+            return $response;
         }
+
         if($response){
             $user = self::createUserFromArray($response, true);
             $_SESSION['jwt'] = $user->getJwt();
@@ -173,6 +199,13 @@ class User
         if(!$currentUser) return;
 
         return self::createUserFromArray($currentUser);
+    }
+
+    public static function updateUser($data)
+    {
+        error_log(json_encode($data));
+        $api = new Api();
+        return $api->patch($_ENV['API_URL'] . '/user', $data, $_SESSION['jwt']);
     }
 }
 
