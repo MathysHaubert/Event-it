@@ -9,14 +9,16 @@ use App\Cookie\CookieHandler;
 
 class LanguageController extends Controller
 {
-    public function changeLanguage($data = [], $currentPage = "/"): void
+    public function changeLanguage($data = []): void
     {
-        if (isset($data['locale'])) {
-            $_SESSION['locale'] = $data['locale'];
+        if (isset($_POST['language'])) {
+            $_SESSION['locale'] = $_POST['language'];
         }
 
+        error_log("Language changed to: " . $_SESSION['locale']);
+
         $redirectUrl = $_SERVER['HTTP_REFERER'] ?? '/';
-        header('Location: ' . $currentPage);
+        header('Location: ' . $redirectUrl);
         exit();
     }
 }

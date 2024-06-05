@@ -9,7 +9,7 @@ User List
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center mb-5">
-        <h2 class="heading-section">User List</h2>
+        <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
         <div class="search-bar">
           <form action="{{ path('UserList') }}" method="get" id="filter-user">
             <input type="text" name="search" placeholder="Search users">
@@ -26,14 +26,14 @@ User List
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
+                  <th>{{ "event_it.userList.firstName" | trans }}</th>
+                  <th>{{ "event_it.userList.lastName" | trans }}</th>
+                  <th>{{ "event_it.userList.email" | trans }}</th>
                   {% if currentUser.role == "SUPER_ADMIN" %}
-                    <th>Organization</th>
+                    <th>{{ "event_it.userList.organization" | trans }}</th>
                   {% endif %}
                   {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
-                    <th>Role</th>
+                    <th>{{ "event_it.userList.role" | trans }}</th>
                   {% endif %}
                 </tr>
               </thead>
@@ -75,7 +75,7 @@ User List
             {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
               <div class="row justify-content-center mt-4">
                 <div class="col-md-4 text-center">
-                  <button class="btn btn-primary" type="submit">Confirm Changes</button>
+                  <button class="btn btn-primary" type="submit">{{ "event_it.userList.confirm" | trans }}</button>
                 </div>
               </div>
             {% endif %}
@@ -88,9 +88,9 @@ User List
 {% else %}
 <div class="not-logged">
   <h1 class="h1-not-logged">
-    You are not authorized to view this page please login.
+    {{ "event_it.userList.error" | trans }}
   </h1>
-  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">Login</button>
+  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">{{ "event_it.userList.login" | trans }}</button>
 </div>
 {% endif %}
 {% endblock %}
