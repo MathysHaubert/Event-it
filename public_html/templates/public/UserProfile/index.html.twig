@@ -6,7 +6,7 @@ User Profile
 
 {% block body %}
 <section class="s-body">
-  <form method="POST" action="">
+  <form id="profile-form" method="POST" action="">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
@@ -27,7 +27,8 @@ User Profile
       <label for="confirm_password">Confirm Password:</label>
       <input type="password" class="form-control" id="confirm_password" name="confirm_password">
     </div>
-    <button type="submit" class="btn btn-primary">Update Profile</button>
+    <button type="submit" class="btn btn-primary" name="update_profile" id="update_profile">Update Profile</button>
+    <button type="button" class="btn btn-primary" id="logout-button">Logout</button>
   </form>
 </section>
 {% endblock %}
@@ -35,6 +36,22 @@ User Profile
 {% block javascripts %}
   {{ parent() }}
   <script src="assets/Resource/js/UserProfile/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoutButton = document.getElementById('logout-button');
+      var form = document.getElementById('profile-form');
+      logoutButton.addEventListener('click', function() {
+        console.log('Logout button clicked');  // Debugging line
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'logout';
+        input.value = '1';
+        form.appendChild(input);
+        console.log('Submitting form');  // Debugging line
+        form.submit();
+    });
+  });
+  </script>
 {% endblock %}
 
 {% block stylesheets %}

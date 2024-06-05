@@ -24,12 +24,8 @@ class LoginController extends Controller{
                 $_SESSION['jwt'] = $user->getJwt();
                 $_SESSION['user'] = $user;
                 }
-                $this->webRender('public/userList/' . self::INDEX , [
-                    'title' => 'User List Page',
-                    'content' => 'Welcome to the user list page',
-                    'cookieSet' => CookieHandler::isCookieSet(),
-                    'users' => $user,
-                ]);
+                header('Location: /');
+                exit();
         } else {
             $this->webRender('public/Login/' . self::INDEX, [
                 'title' => 'Login Page',

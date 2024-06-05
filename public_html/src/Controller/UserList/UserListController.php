@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\UserList;
 
+use Api;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\User\User;
@@ -96,8 +97,4 @@ class UserListController extends Controller {
             return in_array(true, $f);
         });
     }
-}
-
-class Api{
-    use ApiTrait;
 }

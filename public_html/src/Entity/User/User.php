@@ -199,8 +199,9 @@ class User
 
     public static function updateUser($data)
     {
+        error_log(json_encode($data));
         $api = new Api();
-        $api->patch($_ENV['API_URL'] . '/user', $data, $_SESSION['jwt']);
+        return $api->patch($_ENV['API_URL'] . '/user', $data, $_SESSION['jwt']);
     }
 }
 
