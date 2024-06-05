@@ -61,3 +61,8 @@ event_it.public.language_change:
   path: /change_language
   controller: App\Controller\LanguageController
   method: changeLanguage
+
+event_it.public.roomList:
+  path: /roomList
+  controller: App\Controller\RoomList\RoomListController
+  method: index
