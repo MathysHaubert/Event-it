@@ -1,85 +1,108 @@
 body {
-  position: relative;
-  display: flex;
-  justify-content: center; /* Centrage horizontal */
-  align-items: center; /* Centrage vertical */
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #28293d;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #28293d;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .container {
-  display: flex;
-  justify-content: center; /* Centrage horizontal */
-  align-items: center; /* Centrage vertical */
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
 }
 
 .login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centrage vertical */
-  align-items: center; /* Centrage horizontal */
-  text-align: center;
-  padding: 20px; /* Ajout de marge autour du contenu */
-  border-radius: 20px;
-  color: #fff;
-  background-color: #c5d2ec;
-  width: 100%; /* Largeur de 100% de la largeur de la page */
-  height: 60%
+    grid-column: 10;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #c5d2ec;
+    height: 50vh;
+    width: 25vw;
+    margin-top: 25vh;
 }
 
 .logo {
-  display: none; /* Cache le logo */
+    display: flex;
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: #1751bb;
+    background: linear-gradient(#fff 50%, #c5d2ec 50%);
+    font-size: 2em;
+    width: 50vw;
+    height: 100vh;
 }
 
 .login-form {
-  width: 70%;
+    width: 70%;
 }
 
-h2 {
-  margin: 0 0 10px 0; /* Ajout de marge en bas */
+h1 {
+    position: relative;
+    margin: 0;
+    font-size: 5vw;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: linear-gradient(#c5d2ec 50%, #fff 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 1.2em;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
 }
 
-input[type="email"] {
-  width: 100%;
-  height: 3.5vh;
-  margin: auto;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
-  margin-bottom: 4vh;
-}
-
-/* Modifier le sélecteur pour correspondre à votre champ d'e-mail de vérification */
-input[type="email"] + label,
-input[type="email"] + p {
-  display: block;
-  margin-top: 0.5em;
-  font-size: 1em;
-  color: #666; /* Couleur du texte pour les étiquettes */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    height: 3.5vh;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 4vh;
 }
 
 button {
-  width: 70%; /* Ajuste la largeur du bouton */
-  height: 3.5vh;
-  margin-top: 4vh;
-  background-color: #1766f9;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 1.2em;
+    width: 50%;
+    height: 3.5vh;
+    margin-top: 4vh;
+    background-color: #1766f9;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 
 button:hover {
-  background-color: #3d7ef7;
+    background-color: #3d7ef7;
 }

@@ -20,17 +20,18 @@ class RegisterController extends Controller
             $confirmPassword = $_POST['confirmPassword'];
             $userInstance = new User();
             if ($confirmPassword !== $password ) {
-                $this->webRender('public/homePage/' . self::INDEX, [
+                self::webRender('public/Register/' . self::INDEX, [
                     'title' => 'Register Page',
                     'content' => 'Welcome to the register page',
                     'cookieSet' => CookieHandler::isCookieSet(),
+                    'error' => 'Passwords do not match',
                 ]);
+                return;
             }
             $user = User::createUser(["email" => $email, "password" => $password, "lastName" => $lastName, "firstName" => $fistName, "role" => ""]);
             if (!empty($user)) {
                 $userList = $userInstance->getUser([]);
-                //TODO render to verifyemail
-                $this->webRender('public/homePage/' . self::INDEX, [
+                $this->webRender('public/VerifyEmail/' . self::INDEX, [
                     'title' => 'User List Page',
                     'content' => 'Welcome to the user list page',
                     'cookieSet' => CookieHandler::isCookieSet(),
