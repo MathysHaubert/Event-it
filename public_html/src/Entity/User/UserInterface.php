@@ -39,4 +39,14 @@ interface UserInterface
     public static function createUser(array $data): User | null;
 
     public static function login(array $data): User | null;
+
+    public static function getCurrentUser(): User | null;
+
+    public function setJwt(string $jwt): void;
+
+    public function getJwt(): string;
+
+    public function updateUser(array $data): User;
+
+    public function updateUserFromArray(array $data): User;
 }

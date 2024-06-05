@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\Entity\Organization;
 
-use App\Entity\Status\Status;
-use App\Trait\Identifier;
+use App\Trait\ApiTrait;
 
 class Organization
 {
-    use Identifier;
-
     public function __construct(
-        private string $name,
-        private Status $status
-    ){
+        private int $id = 0,
+        private string $name = '',
+        private ?array $users = [],
+        private ?array $reservations = [],
+    ) {
     }
 
     public function getName(): string
@@ -27,22 +26,48 @@ class Organization
         $this->name = $name;
     }
 
-    public function getStatus(): Status
+    public function getId(): int
     {
-        return $this->status;
+        return $this->id;
     }
 
-    public function setStatus(Status $status): void
+    public static function getOrganization(array $params = null)
     {
-        $this->status = $status;
+        $api = new Api();
+        $data = $api->get($_ENV['API_URL'] . '/organization', $params);
+        $organizations = [];
+
+        foreach ($data as $organizationData) {
+            $organization = self::createOrganizationFromArray($organizationData);
+            $organizations[] = $organization;
+        }
+
+        return $organizations;
+    }
+
+    public static function getOrganizationById(array $params): ?self
+    {
+        $api = new Api();
+        $data = $api->get($_ENV['API_URL'].'/organization', $params); // Ensure correct endpoint
+        error_log("Organization :".json_encode($data));
+        if (!empty($data)) {
+            return self::createOrganizationFromArray($data);
+        }
+        return null;
     }
 
     public static function createOrganizationFromArray(array $data): self
     {
         return new self(
-            $data['name'],
             $data['id'],
-            $data['status']
+            $data['name'],
+            $data['users'] ?? [],
+            $data['reservations'] ?? []
         );
     }
+
+}
+
+class Api {
+    use ApiTrait;
 }

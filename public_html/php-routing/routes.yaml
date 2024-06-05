@@ -14,6 +14,7 @@ contact:
   controller: ContactController
   method: index
 
+
   # Here ajax's route
 event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
@@ -38,4 +39,25 @@ recuperationMDP:
 verify email:
   path: /VerifyEmail
   controller: App\Controller\VerifyEmail\VerifyEmailController
+  method: index
+
+event_it.public.faq:
+  path: /faq
+  controller: App\Controller\FAQ\FaqController
+  method: index
+
+event_it.public.Ajoutfaq:
+  path: /Ajoutfaq
+  controller: App\Controller\AjoutFaq\AjoutFaqController
+  method: index
+  parameters: []
+
+UserProfile:
+  path: /userprofile
+  controller: App\Controller\UserProfile\UserProfileController
+  method: index
+
+event_it.public.CGU:
+  path: /CGU
+  controller: App\Controller\CGU\CGUController
   method: index

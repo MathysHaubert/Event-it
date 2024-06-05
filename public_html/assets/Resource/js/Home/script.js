@@ -77,7 +77,9 @@ document.querySelector(".next").addEventListener("click", function() {
   plusSlides(1);
 });
 
-
+function scrollToSection(sectionId) {
+  document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+}
 
 // Début FAQ gestion boutons
 
@@ -110,3 +112,10 @@ headers.forEach(header => {
 
 // Fin FAQ gestion boutons
 
+redirectToFaqPage()
+function redirectToFaqPage() {
+  const button = document.getElementById("RedirectToFaq")
+  button.addEventListener('click',function(){
+    window.location.href = '/faq'
+  })
+}

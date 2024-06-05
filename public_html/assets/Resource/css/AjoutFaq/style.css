@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.faq-container {
+    margin-top: 20px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.question {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.answer {
+    display: none;
+    margin-left: 20px;
+}

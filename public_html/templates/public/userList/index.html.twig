@@ -1,44 +1,102 @@
-{% extends'public/base.html.twig' %}
+{% extends 'public/base.html.twig' %}
 
 {% block title %}
 User List
 {% endblock %}
 {% block body %}
+{% if logged %}
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center mb-5">
         <h2 class="heading-section">User List</h2>
+        <div class="search-bar">
+          <form action="{{ path('UserList') }}" method="get" id="filter-user">
+            <input type="text" name="search" placeholder="Search users">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Creation Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for user in users %}
-                <tr class="alert" role="alert">
-                  <td>{{ user.firstName }}</td>
-                  <td>{{ user.lastName }}</td>
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.creationDate|date('Y-m-d H:i:s') }}</td>
+          <form id="user-update-form" method="post" action="{{ path('UserList') }}">
+            <input type="hidden" name="user-update-form" value="1">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  {% if currentUser.role == "SUPER_ADMIN" %}
+                    <th>Organization</th>
+                  {% endif %}
+                  {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+                    <th>Role</th>
+                  {% endif %}
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {% for user in users %}
+                  <tr class="alert" role="alert">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    {% if currentUser.role == "SUPER_ADMIN" %}
+                      <td>
+                        {% if user.userId %}
+                          <select class="form-control" name="organization_{{ user.userId }}">
+                            <option value="">Select Organization</option>
+                            {% for org in organizations %}
+                              <option value="{{ org.id }}" {% if org.name == (user.organization ? user.organization.name : null) %}selected{% endif %}>{{ org.name }}</option>
+                            {% endfor %}
+                          </select>
+                        {% else %}
+                          <p>ERROR {{ user.userId }}</p>
+                        {% endif %}
+                      </td>
+                    {% endif %}
+                    {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+                      <td>
+                        <select class="form-control" name="role_{{ user.userId }}">
+                          <option value="USER" {% if user.role == 'USER' %}selected{% endif %}>USER</option>
+                          <option value="ADMIN" {% if user.role == 'ADMIN' %}selected{% endif %}>ADMIN</option>
+                          {% if currentUser.role == "SUPER_ADMIN" %}
+                            <option value="SUPER_ADMIN" {% if user.role == 'SUPER_ADMIN' %}selected{% endif %}>SUPER_ADMIN</option>
+                          {% endif %}
+                        </select>
+                      </td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% if currentUser.role in ["ADMIN", "SUPER_ADMIN"] %}
+              <div class="row justify-content-center mt-4">
+                <div class="col-md-4 text-center">
+                  <button class="btn btn-primary" type="submit">Confirm Changes</button>
+                </div>
+              </div>
+            {% endif %}
+          </form>
         </div>
       </div>
     </div>
   </div>
 </section>
+{% else %}
+<div class="not-logged">
+  <h1 class="h1-not-logged">
+    You are not authorized to view this page please login.
+  </h1>
+  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">Login</button>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
