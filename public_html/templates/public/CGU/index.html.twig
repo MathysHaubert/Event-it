@@ -1,0 +1,47 @@
+{% extends 'public/base.html.twig' %}
+
+{% block title %}
+CGU
+{% endblock %}
+
+{% block body %}
+<section class="cgu-section">
+  <div class="container">
+    <h1>Conditions Générales d'Utilisation (CGU)</h1>
+    <p>Bienvenue sur notre site. En accédant à ce site, vous acceptez les présentes conditions générales d'utilisation.</p>
+
+    <h2>1. Objet</h2>
+    <p>Les présentes CGU ont pour objet de définir les conditions dans lesquelles les utilisateurs peuvent accéder et utiliser notre site.</p>
+
+    <h2>2. Accès au site</h2>
+    <p>Notre site est accessible gratuitement à tout utilisateur disposant d'un accès à internet. Tous les coûts relatifs à l'accès au site, que ce soient les frais matériels, logiciels ou d'accès à internet, sont exclusivement à la charge de l'utilisateur. Il est seul responsable du bon fonctionnement de son équipement informatique ainsi que de son accès à internet.</p>
+
+    <h2>3. Propriété intellectuelle</h2>
+    <p>Le contenu de ce site, incluant, de façon non limitative, les textes, images, graphismes, logo, icônes, sons, logiciels, sont la propriété de notre société ou de ses partenaires et est protégé par les lois en vigueur au titre de la propriété intellectuelle.</p>
+
+    <h2>4. Données personnelles</h2>
+    <p>Les données personnelles collectées sur ce site sont destinées à un usage interne uniquement. En aucun cas ces données ne seront cédées ou vendues à des tiers.</p>
+
+    <h2>5. Responsabilité</h2>
+    <p>Nous ne pouvons être tenus responsables des dommages directs ou indirects pouvant résulter de l'accès ou de l'utilisation du site, incluant, mais sans s'y limiter, les pertes de données, virus informatiques, bugs ou actions malveillantes.</p>
+
+    <h2>6. Liens hypertextes</h2>
+    <p>Notre site peut contenir des liens hypertextes vers d'autres sites présents sur le réseau internet. Nous n'avons aucun contrôle sur ces sites et déclinons toute responsabilité quant à leur contenu.</p>
+
+    <h2>7. Modification des CGU</h2>
+    <p>Nous nous réservons le droit de modifier les présentes conditions d'utilisation à tout moment et sans préavis afin de les adapter aux évolutions du site et/ou de son exploitation.</p>
+
+    <h2>8. Droit applicable et juridiction compétente</h2>
+    <p>Les présentes conditions d'utilisation sont régies par la loi française. En cas de litige relatif à l'utilisation du site, les tribunaux français seront seuls compétents.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/CGU/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
