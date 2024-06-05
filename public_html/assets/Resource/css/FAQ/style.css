@@ -1,36 +1,37 @@
-.pourquoiNous {
-  font-family: Inter;
-  font-size: 4rem; /* 64px / 16px = 4rem */
-  font-weight: 500;
-  line-height: 4.84rem; /* 77.45px / 16px = 4.84rem */
-  text-align: center;
-  color: #FFFFFF;
-}
-
 /* Début style FAQ */
+.faq {display: block;
+unicode-bidi: isolate;
+}
 .accordion {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   font-family: Inter;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: auto;
 }
 
 .accordion-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   font-family: Inter;
+  width: 100%;
 }
 
 .questionsFaq {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 0.32rem; /* 2% of a standard 16px font size */
-  margin-right: 0.32rem; /* 2% of a standard 16px font size */
-  margin-bottom: 0.48rem; /* 3% of a standard 16px font size */
+  justify-content: center; /* Alignement centré */
+  margin: 0.32rem;
+  margin-bottom: 0.48rem;
+  box-sizing: border-box;
+  flex: 1 0 30%; /* Ajustez la taille pour occuper environ 30% de la largeur du conteneur */
+  max-width: 30%; /* Assurez-vous que les éléments ne dépassent pas 30% de la largeur du conteneur */
 }
 
 .accordion-header {
@@ -39,8 +40,8 @@
   color: white;
   cursor: pointer;
   padding: 1.125rem; /* 18px / 16px = 1.125rem */
-  width: 23.125rem; /* 370px / 16px = 23.125rem */
-  height: 5.3125rem; /* 85px / 16px = 5.3125rem */
+  width: 100%;
+  height: auto;
   border: none;
   text-align: left;
   outline: none;
@@ -72,6 +73,12 @@
 }
 
 @media (max-width: 767px) {
+  .questionsFaq {
+    flex: 1 0 100%; /* Occupe toute la largeur sur petits écrans */
+    max-width: 100%;
+    height: auto; /* Ajuste automatiquement la hauteur */
+  }
+
   .accordion-header {
     font-size: 1.125rem; /* 18px / 16px = 1.125rem */
   }
@@ -82,5 +89,4 @@
     font-size: 1.375rem; /* 22px / 16px = 1.375rem */
   }
 }
-
 /* Fin style FAQ */
