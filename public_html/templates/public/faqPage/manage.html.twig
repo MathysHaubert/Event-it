@@ -1,0 +1,48 @@
+{% extends '/public/base.html.twig' %}
+
+{% block title %}
+  FAQ
+{% endblock %}
+
+{% block body %}
+<table>
+    <thead>
+        <tr>
+            <th>Questions</th>
+            <th>Answers</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    <form action="{{ path('event_it.public.manage_faq') }}" method="POST">
+      {% for faq in faqs%}
+          <tr>
+              <td><input type="text" name="question_{{ loop.index }}" value="{{ faq.question }}"></input></td>
+              <td><input type="text" name="answer_{{ loop.index }}" value="{{ faq.answer }}"></input></td>
+              <td> <button type="button" data-delete>Delete</button></td>
+          </tr>
+      {% endfor %}
+      <tr>
+        <td><input type="text" name="question_0"></input></td>
+        <td><input type="text" name="answer_0"></input></td>
+        <td> <button type="button" data-add>Ajouter</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button>Enregistrer les modifications</button></td>
+        <td></td>
+      </tr>
+    </form>
+    </tbody>
+</table>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="assets/Resource/js/FAQ/manage.js"></script>
+{% endblock %}

@@ -49,3 +49,8 @@
 [2024-05-02 22:02:37] Unable to find template "public/UserList/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-02 22:21:29] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
 [2024-05-02 22:22:05] Unable to find template "public/verifyemail/index.html.twig" (looked into: /var/www/html/templates). in file /var/www/html/vendor/twig/twig/src/Loader/FilesystemLoader.php at line 227
+[2024-06-04 19:18:17] Error: Duplicate key "UserList" detected at line 38. in file /var/www/html/vendor/symfony/yaml/Parser.php at line 332
+[2024-06-04 19:18:17] Error: Duplicate key "UserList" detected at line 38. in file /var/www/html/vendor/symfony/yaml/Parser.php at line 332
+[2024-06-04 19:19:08] Error: Duplicate key "event_it.public.faq" detected at line 49. in file /var/www/html/vendor/symfony/yaml/Parser.php at line 332
+[2024-06-04 19:19:08] Error: Duplicate key "event_it.public.faq" detected at line 49. in file /var/www/html/vendor/symfony/yaml/Parser.php at line 332
+[2024-06-04 20:48:17] An exception has been thrown during the rendering of a template ("Object of class App\Entity\Faq\Faq could not be converted to string"). in file /var/www/html/templates/public/faqPage/index.html.twig at line 18

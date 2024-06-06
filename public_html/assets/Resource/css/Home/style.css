@@ -190,7 +190,7 @@ left: 0;
 /* Début style FAQ*/
 .accordion{
 
-display: flex;
+  display: flex;
   flex-direction: column;
   justify-content:space-evenly;
   align-items: center;
@@ -266,6 +266,13 @@ display: flex;
 .accordion-header {
   font-size: 22px;
 }
+}
+
+.buttonFaqDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
 
 /* Fin style FAQ*/

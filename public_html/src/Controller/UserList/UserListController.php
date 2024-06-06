@@ -9,7 +9,6 @@ use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\User\User;
 use App\Entity\Organization\Organization;
-use App\Trait\ApiTrait;
 
 class UserListController extends Controller {
     public function index($data = []): void {
@@ -47,6 +46,7 @@ class UserListController extends Controller {
             'currentUser' => $currentUser ?? null,
             'organizations' => $organizationList,
             'logged' => isset($_SESSION['user']),
+            'role' => $currentUser->getRole() ?? '',
         ]);
     }
 

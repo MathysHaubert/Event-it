@@ -13,28 +13,20 @@
       <div class="login-form">
         <form id="form" action="{{ path('login') }}" method="post">
           <div class="form-group">
-            <h1>Login</h1>
-          {% if error %}
-            has-error
-          {% endif %}
             {% if error %}
               <h2 class="error">{{ error }}</h2>
             {% endif %}
-            <h2 class="header2">Login</h2>
-            <label for="username">Username</label>
+            <h2 class="header2">{{ "event_it.login.title" | trans }}</h2>
+            <label for="username">{{ "event_it.login.email" | trans }}</label>
             <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required>
           </div>
-          <div class="form-group
-          {% if error %}
-            has-error
-          {% endif %}">
-            <label for="password">Password</label>
+          <div class="form-group">
+            <label for="password">{{ "event_it.login.password" | trans }}</label>
             <input type="password" id="password" name="_password" class="form-control" required>
           </div>
-          <a href="{{ path('register') }}">Create an account</a>
+          <a href="{{ path('register') }}" class="register">{{ "event_it.login.register" | trans }}</a>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" >Login</button>
-
+            <button type="submit" class="btn btn-primary">{{ "event_it.login.login" | trans }}</button>
           </div>
         </form>
       </div>

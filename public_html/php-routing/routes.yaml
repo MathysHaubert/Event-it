@@ -14,7 +14,6 @@ contact:
   controller: ContactController
   method: index
 
-
   # Here ajax's route
 event_it.ajax.public.manage_cookie:
   path: /ajax/cookie
@@ -46,11 +45,11 @@ event_it.public.faq:
   controller: App\Controller\FAQ\FaqController
   method: index
 
-event_it.public.Ajoutfaq:
-  path: /Ajoutfaq
-  controller: App\Controller\AjoutFaq\AjoutFaqController
-  method: index
-  parameters: []
+event_it.public.manage_faq:
+  path: /manage-faq
+  controller: App\Controller\FAQ\FaqController
+  method: manageAction
+
 
 UserProfile:
   path: /userprofile
@@ -60,4 +59,29 @@ UserProfile:
 event_it.public.CGU:
   path: /CGU
   controller: App\Controller\CGU\CGUController
+  method: index
+
+event_it.public.language_change:
+  path: /change_language
+  controller: App\Controller\LanguageController
+  method: changeLanguage
+
+event_it.public.roomList:
+  path: /roomList
+  controller: App\Controller\RoomList\RoomListController
+  method: index
+
+event_it.public.reservation:
+  path: /reservation/{id}
+  controller: App\Controller\Reservation\ReservationController
+  method: index
+
+event_it.admin.add-room:
+  path: /add-room
+  controller: App\Controller\RoomList\RoomListController
+  method: createRoom
+
+event_it.admin.room_show:
+  path: /reservation
+  controller: App\Controller\RoomList\RoomListController
   method: index

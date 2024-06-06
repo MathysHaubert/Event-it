@@ -80,8 +80,11 @@ trait ApiTrait{
         return json_decode($output, true);
     }
 
-    public static function delete($url, $token = null){
+    public static function delete($url,$data = null, $token = null){
         $ch = curl_init();
+        if (null !== $data) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

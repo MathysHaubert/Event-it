@@ -1,26 +1,45 @@
 <div class="body">
-    <img src="assets/Resource/img/logo.png" alt="logo" class="images">
+    <img src="/assets/Resource/img/logo.png" alt="logo" class="images">
     <nav class="navbar">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="{{ path('/') }}" class="nav-link">Acceuil</a>
+                <a href="{{ path('/') }}" class="nav-link">{{ "event_it.navBar.home" | trans }}</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('userlist') }}" class="nav-link">Liste des utilisateurs</a>
+                <a href="{{ path('/userlist') }}" class="nav-link">{{ "event_it.navBar.userList" | trans }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">FAQ</a>
+                <a class="nav-link">{{ "event_it.navBar.faq" | trans }}</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('contact') }}" class="nav-link">Contact</a>
+                <a href="{{ path('/contact') }}" class="nav-link">{{ "event_it.navBar.contact" | trans }}</a>
             </li>
+          {% if session.user.role in ["ADMIN","SUPER_ADMIN"] %}
+            <li class="nav-item">
+              <a href="{{ path('event_it.public.roomList') }}" class="nav-link">{{ "event_it.room.show" | trans }}</a>
+            </li>
+            <li class="nav-item">
+              <a href="/manage-faq" class="nav-link">{{ "event_it.faq.manage" | trans }}</a>
+            </li>
+          {% endif %}
+
         </ul>
     </nav>
-    <a href="{% if is_logged_in %}{{ path('') }}{% else %}{{ path('login') }}{% endif %}">
-        <img src="assets/Resource/img/UserButton.png" alt="logo" class="images">
-    </a>
+    <form class="right" action="{{ path('/change_language') }}" method="post">
+      <input type="hidden" name="redirect" value="{{ app.request.uri }}" />
+      <div class="languageSelect-container">
+        <select class="languageSelect" name="language" onchange="this.form.submit()">
+            <option class="optionLang" value="en" {% if session.locale == 'en' %}selected{% endif %}>English</option>
+            <option class="optionLang" value="fr" {% if session.locale == 'fr' %}selected{% endif %}>Français</option>
+        </select>
+      </div>
+      <a href="{% if is_logged_in %}{{ path('') }}{% else %}{{ path('/login') }}{% endif %}">
+          <img src="/assets/Resource/img/UserButton.png" alt="logo" class="images">
+      </a>
+    </form>
 </div>
 
-<link rel="stylesheet" href="assets/Resource/css/Navbar/style.css">
+<link rel="stylesheet" href="/assets/Resource/css/Navbar/style.css">
 
-<script type="module" src="assets/Resource/js/Navbar/script.js"></script>
+<script type="module" src="/assets/Resource/js/Navbar/script.js"></script>
+
