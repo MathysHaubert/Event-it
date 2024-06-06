@@ -18,16 +18,17 @@
       <div class="login-form">
         <h2>Email Verification</h2>
         <form action="{{ path('verify_email') }}" method="POST">
+          <label >Enter the code here</label>
           <div class="form-group">
-            <label for="email">{{ "event_it.email.code-verif.text "|trans }}</label>
+            {% if error is defined %}
+              <label for="email">{{ error }}</label>
+            {% endif %}
             <label>
               <input type="text" name='code_email' class="form-control" required>
             </label>
-            <div id="email-validation-message" class="error-message" style="display: none;">L'adresse e-mail est invalide.</div>
           </div>
             <button class="btn btn-primary">Verify</button>
         </form>
-        <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail a été envoyé avec succès.</div>
       </div>
     </div>
     <div class="logo">

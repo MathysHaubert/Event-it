@@ -87,4 +87,6 @@ event_it:
     date : "Date"
     addReservation : "Ajouter une réservation"
     submit : "Ajouter"
-
+  email:
+    code-verif:
+      text: "Entrer le code reçu par mail"

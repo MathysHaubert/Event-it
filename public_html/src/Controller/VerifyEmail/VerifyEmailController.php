@@ -14,7 +14,7 @@ class VerifyEmailController extends Controller {
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['token'])) {
-            $this->webRender('public/VerifyEmail/' . self::INDEX, [
+            $this->webRender('public/register/' . self::INDEX, [
                 'title' => 'Home Page',
                 'content' => 'Welcome to the home page',
                 'cookieSet' => CookieHandler::isCookieSet(),
@@ -30,7 +30,6 @@ class VerifyEmailController extends Controller {
                 header('Location: /');
                 exit();
             } else {
-                echo "non";
                 $this->webRender('public/VerifyEmail/' . self::INDEX, [
                     'title' => 'Home Page',
                     'content' => 'Welcome to the home page',

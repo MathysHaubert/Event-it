@@ -87,3 +87,6 @@ event_it:
     date : "Date"
     addReservation : "Add a reservation"
     submit : "Submit"
+  email:
+    code-verif:
+      text: "Enter the code you have receive by email"
