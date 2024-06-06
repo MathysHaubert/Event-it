@@ -1,0 +1,41 @@
+{% extends '/public/base.html.twig' %}
+
+{% block title %}
+  Verify Email
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="assets/Resource/css/VerifyEmail/style.css"> {# Utilise le même fichier CSS que la page de login #}
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="login-container">
+      <div class="login-form">
+        <h2>Email Verification</h2>
+        <form action="{{ path('verify_email') }}" method="POST">
+          <div class="form-group">
+            <label for="email">{{ "event_it.email.code-verif.text "|trans }}</label>
+            <label>
+              <input type="text" name='code_email' class="form-control" required>
+            </label>
+            <div id="email-validation-message" class="error-message" style="display: none;">L'adresse e-mail est invalide.</div>
+          </div>
+            <button class="btn btn-primary">Verify</button>
+        </form>
+        <div id="confirmation-message" class="success-message" style="display: none;">L'e-mail a été envoyé avec succès.</div>
+      </div>
+    </div>
+    <div class="logo">
+      <h1>EVENT IT</h1>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
