@@ -1,3 +1,5 @@
+{# reservation/index.html.twig #}
+
 {% extends 'public/base.html.twig' %}
 
 {% block title %}
@@ -11,7 +13,7 @@ Reservation List
       <div class="col-md-6 text-center mb-5">
         <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
         <div class="search-bar">
-          <form action="{{ path('/event_it.public.reservation', {'id': roomId}) }}" method="get" id="filter-date">
+          <form action="{{ path('event_it.public.reservation', {'id': roomId}) }}" method="get" id="filter-date">
             <input type="text" name="search" placeholder="Search date">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -21,9 +23,8 @@ Reservation List
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
-          <form id="reservation-form" method="post" action="{{ path('event_it.public.reservation', {'id': roomId}) }}">
+          <form id="reservation-form" method="post" action="{{ path(roomId) }}">
             <input type="hidden" name="reservation-form">
-            <input type="hidden" id="organization-id-hidden" name="organization_id" value="{{ reservationList[0].organization.id }}">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -35,7 +36,7 @@ Reservation List
                 {% for reservation in reservationList %}
                   <tr class="alert" role="alert">
                     <td>{{ reservation.organization.name }}</td>
-                    <input type="hidden" name="organization_{{ reservation.id }}" value="{{ reservation.organization.id }}">
+                    <input type="hidden" name="organization" id="organization_id" value="{{ reservation.organization.id }}"/>
                     <td>{{ reservation.date }}</td>
                   </tr>
                 {% endfor %}
@@ -89,6 +90,11 @@ Reservation List
 
         if (!exists && newDate) {
           var form = document.getElementById('reservation-form');
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'new_reservation_date';
+          input.value = newDate;
+          form.appendChild(input);
           form.submit();
         } else if (exists) {
           alert('Date already exists in the reservation list.');

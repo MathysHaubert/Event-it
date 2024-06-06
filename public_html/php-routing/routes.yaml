@@ -68,6 +68,6 @@ event_it.public.roomList:
   method: index
 
 event_it.public.reservation:
-  path: /reservation
+  path: /reservation/{id}
   controller: App\Controller\Reservation\ReservationController
   method: index

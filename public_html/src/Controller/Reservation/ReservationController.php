@@ -6,17 +6,16 @@ namespace App\Controller\Reservation;
 
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
-use App\Entity\Organization\Organization;
 use App\Entity\Reservation\Reservation;
 
 class ReservationController extends Controller {
     public function index($data = []): void {
         try {
-            // $url = $_SERVER['REQUEST_URI'];
-            // $urlParts = explode('/', $url);
-            // $id = end($urlParts);
-            $id = 1;
-            $reservationList = Reservation::getReservations(['room'=>["id"=>$id]]);
+            $url = $_SERVER['REQUEST_URI'];
+            $urlParts = explode('/', $url);
+            $id = end($urlParts);
+
+            $reservationList = Reservation::getReservations(['room' => ["id" => $id]]);
             $room = $id;
 
             if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
@@ -24,17 +23,15 @@ class ReservationController extends Controller {
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_reservation_date'])) {
-                // $organizationId = $_POST['organization_id'];
-                $organizationId = 1;
                 $reservationData = [
                     'startAt' => $_POST['new_reservation_date'] . "T00:00:00Z",
                     'endAt' => $_POST['new_reservation_date'] . "T00:00:00Z",
-                    'room' => 1,
-                    'organization' => $organizationId,
+                    'room' => $room,
+                    'organization' => $_SESSION['user']->getOrganization()->getId(),
                 ];
                 error_log(print_r($reservationData, true));
                 Reservation::createReservation($reservationData);
-                header('Location: /reservation');
+                header('Location: /reservation/' . $room);
                 exit();
             }
 
@@ -45,6 +42,7 @@ class ReservationController extends Controller {
                 'currentUser' => $_SESSION['user'] ?? '',
                 'reservationList' => $reservationList,
                 'logged' => isset($_SESSION['user']),
+                'roomId' => $room,
             ]);
         } catch (\Exception $e) {
             error_log($e->getMessage());
