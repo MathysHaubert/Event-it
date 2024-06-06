@@ -58,10 +58,10 @@ class Room
         return $this;
     }
 
-    public static function getLinkedRooms(User $user): array
+    public static function getRooms(): array
     {
     $api = new Api();
-    $data = $api->get($_ENV['API_URL'].'/room', $user->getOrganization()->getId());
+    $data = $api->get($_ENV['API_URL'].'/room');
     $rooms = [];
     foreach ($data as $roomData) {
         $room = self::createRoomFromArray($roomData);
@@ -74,7 +74,7 @@ class Room
     {
         $room = new Room();
         $room->setLocation($params['location']);
-        $room->setIntegratedAt($params['integrated_at']);
+        $room->setIntegratedAt(new DateTime($params['integrated_at']['date']));
         return $room;
     }
 }
