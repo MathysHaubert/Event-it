@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\RoomList;
 
-use App\Entity\User\Api;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\Room\Room;
+use App\Entity\User\Api;
 use App\Entity\User\User;
 
 class RoomListController extends Controller{
