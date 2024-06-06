@@ -11,7 +11,7 @@ Reservation List
       <div class="col-md-6 text-center mb-5">
         <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
         <div class="search-bar">
-          <form action="{{ path('event_it.public.reservation') }}" method="get" id="filter-date">
+          <form action="{{ path('/event_it.public.reservation', {'id': roomId}) }}" method="get" id="filter-date">
             <input type="text" name="search" placeholder="Search date">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -21,8 +21,9 @@ Reservation List
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
-          <form id="user-update-form" method="post" action="{{ path('event_it.public.reservation') }}">
-            <input type="hidden" name="user-update-form" value="1">
+          <form id="reservation-form" method="post" action="{{ path('event_it.public.reservation', {'id': roomId}) }}">
+            <input type="hidden" name="reservation-form">
+            <input type="hidden" id="organization-id-hidden" name="organization_id" value="{{ reservationList[0].organization.id }}">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -34,19 +35,20 @@ Reservation List
                 {% for reservation in reservationList %}
                   <tr class="alert" role="alert">
                     <td>{{ reservation.organization.name }}</td>
+                    <input type="hidden" name="organization_{{ reservation.id }}" value="{{ reservation.organization.id }}">
                     <td>{{ reservation.date }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
             </table>
-          </form>
-          <div style="display:flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
-            <div id="new-reservation-form" style="display: none;">
-              <input type="date" id="new-reservation-date">
-              <button id="submit-new-reservation" class="btn btn-primary">Submit Reservation</button>
+            <div style="display:flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+              <div id="new-reservation-form" style="display: none;">
+                <input type="date" id="new-reservation-date" name="new_reservation_date">
+                <button type="button" id="submit-new-reservation" class="btn btn-primary">Submit Reservation</button>
+              </div>
+              <button type="button" id="add-reservation-button" class="btn btn-primary">Add New Reservation</button>
             </div>
-            <button id="add-reservation-button" class="btn btn-primary">Add New Reservation</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -85,16 +87,13 @@ Reservation List
           }
         });
 
-        if (!exists) {
-          var form = document.getElementById('user-update-form');
-          var input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = 'new_reservation_date';
-          input.value = newDate;
-          form.appendChild(input);
+        if (!exists && newDate) {
+          var form = document.getElementById('reservation-form');
           form.submit();
-        } else {
+        } else if (exists) {
           alert('Date already exists in the reservation list.');
+        } else {
+          alert('Please select a date.');
         }
       });
     });
@@ -104,5 +103,5 @@ Reservation List
 {% block stylesheets %}
   {{ parent() }}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/Resource/css/UserList/style.css">
+  <link rel="stylesheet" href="/assets/Resource/css/UserList/style.css">
 {% endblock %}

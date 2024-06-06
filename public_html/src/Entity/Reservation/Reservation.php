@@ -10,11 +10,11 @@ use App\Entity\Api\Api;
 class Reservation
 {
     public function __construct(
-        private int $id = 0,
-        private Organization $organization,
         private string $date,
-    )
-    {
+        private Organization $organization,
+        private int $id = 0,
+        private int $roomId = 0
+    ) {
     }
 
     public function getId(): int
@@ -42,13 +42,21 @@ class Reservation
         $this->date = $date;
     }
 
+    public function getRoomId(): int
+    {
+        return $this->roomId;
+    }
+
+    public function setRoomId(int $roomId): void
+    {
+        $this->roomId = $roomId;
+    }
+
     public static function getReservations(array $params = null): array
     {
         $api = new Api();
         $data = $api->get($_ENV['API_URL'] . '/reservation', $params);
         $reservations = [];
-
-        error_log("Reservation :".json_encode($data));
 
         foreach ($data as $reservationData) {
             $reservation = self::createReservationFromArray($reservationData);
@@ -61,12 +69,18 @@ class Reservation
     public static function getReservationById(array $params): ?self
     {
         $api = new Api();
-        $data = $api->get($_ENV['API_URL'].'/reservation', $params);
-        error_log("Reservation :".json_encode($data));
+        $data = $api->get($_ENV['API_URL'] . '/reservation', $params);
         if (!empty($data)) {
             return self::createReservationFromArray($data);
         }
         return null;
+    }
+
+    public static function createReservation(array $reservationData): void
+    {
+        error_log('Creating reservation');
+        $api = new Api();
+        $response = $api->post($_ENV['API_URL'] . '/reservation', $reservationData);
     }
 
     public static function createReservationFromArray(array $reservationData): self
@@ -75,9 +89,10 @@ class Reservation
         $date = explode(" ", $reservationData['startAt']['date'])[0];
 
         return new self(
-            $reservationData['id'],
-            $organization,
             $date,
+            $organization,
+            $reservationData['id'],
+            $reservationData['room']['id']
         );
     }
 }
