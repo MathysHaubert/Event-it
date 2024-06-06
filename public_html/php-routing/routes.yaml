@@ -35,7 +35,7 @@ recuperationMDP:
   controller: App\Controller\PasswordRecovery\recuperationMDP
   method: index
 
-verify email:
+verify_email:
   path: /VerifyEmail
   controller: App\Controller\VerifyEmail\VerifyEmailController
   method: index

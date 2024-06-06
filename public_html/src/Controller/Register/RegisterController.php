@@ -7,6 +7,7 @@ namespace App\Controller\Register;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\User\User;
+use App\Tools\Email\EmailChek;
 
 class RegisterController extends Controller
 {
@@ -20,7 +21,7 @@ class RegisterController extends Controller
             $confirmPassword = $_POST['confirmPassword'];
             $userInstance = new User();
             if ($confirmPassword !== $password ) {
-                self::webRender('public/Register/' . self::INDEX, [
+                $this->webRender('public/Register/' . self::INDEX, [
                     'title' => 'Register Page',
                     'content' => 'Welcome to the register page',
                     'cookieSet' => CookieHandler::isCookieSet(),
@@ -28,16 +29,18 @@ class RegisterController extends Controller
                 ]);
                 return;
             }
-            $user = User::createUser(["email" => $email, "password" => $password, "lastName" => $lastName, "firstName" => $fistName, "role" => ""]);
-            if (!empty($user)) {
-                $userList = $userInstance->getUser([]);
-                $this->webRender('public/VerifyEmail/' . self::INDEX, [
-                    'title' => 'User List Page',
-                    'content' => 'Welcome to the user list page',
-                    'cookieSet' => CookieHandler::isCookieSet(),
-                    'users' => $userList,
-                ]);
-            }
+            $_SESSION["temporary_user"] = [
+                "email" => $email,
+                "password" => $password,
+                "lastName" => $lastName,
+                "firstName" => $fistName,
+                "role" => ""];
+            (new EmailChek)->sendVerify($email);
+            $this->webRender('public/VerifyEmail/' . self::INDEX, [
+                'title' => 'User List Page',
+                'content' => 'Welcome to the user list page',
+                'cookieSet' => CookieHandler::isCookieSet(),
+            ]);
         } else {
             $this->webRender('public/Register/' . self::INDEX, [
                 'title' => 'Register Page',

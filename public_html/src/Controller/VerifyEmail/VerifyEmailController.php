@@ -12,18 +12,32 @@ use App\Entity\User\User;
 class VerifyEmailController extends Controller {
     public function index($data = []): void
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['token'])) {
-            $this->webRender('public/homePage/' . self::INDEX, [
+            $this->webRender('public/VerifyEmail/' . self::INDEX, [
                 'title' => 'Home Page',
                 'content' => 'Welcome to the home page',
                 'cookieSet' => CookieHandler::isCookieSet(),
             ]);
         } else {
-            $this->webRender('public/VerifyEmail/' . self::INDEX, [
-                'title' => 'Verify Email Page',
-                'content' => 'Error verifying email. Please try again.',
-                'cookieSet' => CookieHandler::isCookieSet(),
-            ]);
+            if ($_SESSION['verifyEmail_code'] === $_POST['code_email']) {
+                $user = User::createUser($_SESSION['temporary_user']);
+                $user = User::login(["email" => $user->getEmail(), "password" => $user->getPassword()]);
+                if (!empty($user)){
+                    $_SESSION['jwt'] = $user->getJwt();
+                    $_SESSION['user'] = $user;
+                }
+                header('Location: /');
+                exit();
+            } else {
+                echo "non";
+                $this->webRender('public/VerifyEmail/' . self::INDEX, [
+                    'title' => 'Home Page',
+                    'content' => 'Welcome to the home page',
+                    'cookieSet' => CookieHandler::isCookieSet(),
+                    'error' => 'Code is not correct'
+                ]);
+            }
         }
     }
 }
