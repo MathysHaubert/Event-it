@@ -19,14 +19,6 @@ User Profile
       <label for="last_name">{{ "event_it.userProfile.lastName" | trans }}</label>
       <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.lastName }}">
     </div>
-    <div class="form-group">
-      <label for="password">{{ "event_it.userProfile.password" | trans }}</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <div class="form-group">
-      <label for="confirm_password">{{ "event_it.userProfile.confirmPassword" | trans }}</label>
-      <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-    </div>
     <button type="submit" class="btn btn-primary" name="update_profile" id="update_profile">{{ "event_it.userProfile.updateProfile" | trans }}</button>
     <button type="button" class="btn btn-primary" id="logout-button">{{ "event_it.userProfile.loggout" | trans }}</button>
   </form>
@@ -35,19 +27,19 @@ User Profile
 
 {% block javascripts %}
   {{ parent() }}
-  <script src="assets/Resource/js/UserProfile/script.js"></script>
+  <script src="/assets/Resource/js/UserProfile/script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var logoutButton = document.getElementById('logout-button');
       var form = document.getElementById('profile-form');
       logoutButton.addEventListener('click', function() {
-        console.log('Logout button clicked');  // Debugging line
+        console.log('Logout button clicked');
         var input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'logout';
         input.value = '1';
         form.appendChild(input);
-        console.log('Submitting form');  // Debugging line
+        console.log('Submitting form');
         form.submit();
     });
   });
@@ -56,5 +48,5 @@ User Profile
 
 {% block stylesheets %}
   {{ parent() }}
-  <link rel="stylesheet" href="assets/Resource/css/userProfile/style.css">
+  <link rel="stylesheet" href="/assets/Resource/css/userProfile/style.css">
 {% endblock %}
