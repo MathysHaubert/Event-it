@@ -1,0 +1,61 @@
+{% extends 'public/base.html.twig' %}
+
+{% block title %}
+  User List
+{% endblock %}
+{% block body %}
+  {% if logged %}
+    <section class="ftco-section">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-wrap">
+                <input type="hidden" name="user-update-form" value="1">
+                <table class="table">
+                  <thead class="thead-dark">
+                  <tr>
+                    <th>{{ "event_it.room.location" | trans }}</th>
+                    <th>{{ "event_it.room.see_more" | trans }}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for room in rooms %}
+                    <tr class="alert" role="alert">
+                      <td>{{ room.location }}</td>
+                      <td><a href="{{ path('event_it.admin.room_show') }}/{{ room.id }}"><button type="button">Voir plus</button></a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+                {% if user.role is same as ('SUPER_ADMIN') %}
+                  <button data-add> {{ "event_it.room.add" | trans }} </button>
+                  <form action="{{ path('event_it.admin.add-room') }}" method="post">
+                    <input name="room_name" style="visibility: hidden" data-add-input type="text">
+                    <button style="visibility: hidden" data-add-input> {{ "event_it.room.register" | trans }} </button>
+                  </form>
+                  {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% else %}
+    <div class="not-logged">
+      <h1 class="h1-not-logged">
+        {{ "event_it.userList.error" | trans }}
+      </h1>
+      <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">{{ "event_it.userList.login" | trans }}</button>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="module" src="assets/Resource/js/RoomList/script.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/Resource/css/UserList/style.css">
+{% endblock %}
