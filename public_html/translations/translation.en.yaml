@@ -73,3 +73,8 @@ event_it:
     faq: "FAQ"
     userList: "User List"
     contact: "Contact"
+  room:
+    location: "Location"
+    see_more: "Edition"
+    add: "Add a room"
+    register: "Register a room"

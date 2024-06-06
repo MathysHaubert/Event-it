@@ -66,3 +66,13 @@ event_it.admin.roomList:
   path: /roomlist
   controller: App\Controller\RoomList\RoomListController
   method: index
+
+event_it.admin.add-room:
+  path: /add-room
+  controller: App\Controller\RoomList\RoomListController
+  method: createRoom
+
+event_it.admin.room_show:
+  path: /reservation
+  controller: App\Controller\RoomList\RoomListController
+  method: index
