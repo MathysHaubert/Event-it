@@ -50,6 +50,10 @@ event_it.public.manage_faq:
   controller: App\Controller\FAQ\FaqController
   method: manageAction
 
+event_it.public.userList:
+  path: /userlist
+  controller: App\Controller\UserList\UserListController
+  method: index
 
 UserProfile:
   path: /userprofile

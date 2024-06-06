@@ -11,7 +11,7 @@ User List
       <div class="col-md-6 text-center mb-5">
         <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
         <div class="search-bar">
-          <form action="{{ path('UserList') }}" method="get" id="filter-user">
+          <form action="{{ path('/userlist') }}" method="get" id="filter-user">
             <input type="text" name="search" placeholder="Search users">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -21,7 +21,7 @@ User List
     <div class="row">
       <div class="col-md-12">
         <div class="table-wrap">
-          <form id="user-update-form" method="post" action="{{ path('UserList') }}">
+          <form id="user-update-form" method="post" action="{{ path('/userlist') }}">
             <input type="hidden" name="user-update-form" value="1">
             <table class="table">
               <thead class="thead-dark">
@@ -90,7 +90,7 @@ User List
   <h1 class="h1-not-logged">
     {{ "event_it.userList.error" | trans }}
   </h1>
-  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">{{ "event_it.userList.login" | trans }}</button>
+  <button class="btn btn-primary" onclick="window.location.href = '{{ path('/login') }}';">{{ "event_it.userList.login" | trans }}</button>
 </div>
 {% endif %}
 {% endblock %}
