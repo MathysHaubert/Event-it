@@ -1,9 +1,12 @@
 <?php
 // src/Entity/Forum.php
-namespace App\Entity\Forum\Forum;
+namespace App\Entity\Forum;
+use App\Trait\ApiTrait;
 
 class Forum implements \JsonSerializable
 {
+
+    use ApiTrait;
     private $lastModified;
 
     private $id;
@@ -148,5 +151,24 @@ class Forum implements \JsonSerializable
             'close' => $this->close,
             'forumMessages' => $forumMessagesId,
         ];
+    }
+
+    public static function createFromArray(array $params): Forum
+    {
+        $resource = new self();
+        $resource->setClose($params['close']);
+        $resource->setForumMessages($params['forumMessages']);
+        $resource->setPostNumber($params['postNumber']);
+        return $resource;
+    }
+
+    public function getAllForum(): array
+    {
+        $messages = $this->get($_ENV['API_URL'].'/forum',);
+        $result = [];
+        foreach ($messages as $message) {
+            $result[] = self::createFromArray($message);
+        }
+        return $result;
     }
 }

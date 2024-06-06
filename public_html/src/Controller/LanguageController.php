@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\Controller;
-use App\Cookie\CookieHandler;
-
 class LanguageController extends Controller
 {
     public function changeLanguage($data = []): void
