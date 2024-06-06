@@ -10,6 +10,7 @@ event_it:
     description2: "Plongez dans l'univers envoûtant de la musique où chaque note résonne avec une clarté exceptionnelle. Notre mission est de transcender l'expérience sonore dans les salles de concert, offrant une qualité sonore inégalée qui captive les auditeurs et amplifie l'énergie artistique. Découvrez comment nous redéfinissons les normes acoustiques, créant une symphonie parfaite entre l'artiste et son public. Bienvenue dans une nouvelle ère de perfection sonore."
     instantConnection: "Son Émotionnel, Connexion Instantanée"
   faq:
+    manage: "Gestion faq"
     question1: "Quel est le niveau de bruit maximum autorisé pour un concert en extérieur ?"
     answer1: "Le niveau de bruit maximum varie selon les réglementations locales, mais il est généralement fixé à environ 85-100 décibels pour les zones résidentielles. Il est crucial de vérifier les normes spécifiques de votre localité avant de planifier votre événement."
     question2: "Comment mesurez-vous les niveaux sonores pendant un événement ?"
@@ -74,6 +75,7 @@ event_it:
     userList: "Liste des utilisateurs"
     contact: "Contact"
   room:
+    show: "Salles"
     location: "Location"
     see_more: "Edition"
     add: "Ajouter une room"
