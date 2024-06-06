@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\RoomList;
 
+use App\Entity\User\Api;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\Room\Room;
@@ -47,9 +48,12 @@ class RoomListController extends Controller{
                 ]);
             }
         }
-        // todo: si user admin/super_admin alors c'est ok
-        // todo: si super_admin il a un bouton addroom en bas pour ajouter une room quand le bouton est cliqué ça fait pop un inpout avec un autre bouton
-        // todo: et puis du coup après l'input tu rentres le room name et sa rajoute une room
+    }
 
+    public function createRoom($data = []) {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            (new Api())->post($_ENV['API_URL'].'/room',array("location" => $_POST['room_name']));
+        }
+        header('Location: /roomlist');
     }
 }
