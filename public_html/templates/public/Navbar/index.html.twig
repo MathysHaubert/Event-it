@@ -14,9 +14,9 @@
             <li class="nav-item">
                 <a href="{{ path('/contact') }}" class="nav-link">{{ "event_it.navBar.contact" | trans }}</a>
             </li>
-          {% if user.role in ["ADMIN","SUPER_ADMIN"] %}
+          {% if session.user.role in ["ADMIN","SUPER_ADMIN"] %}
             <li class="nav-item">
-              <a href="{{ path('event_it.admin.roomList') }}" class="nav-link">{{ "event_it.room.show" | trans }}</a>
+              <a href="{{ path('event_it.public.roomList') }}" class="nav-link">{{ "event_it.room.show" | trans }}</a>
             </li>
             <li class="nav-item">
               <a href="/manage-faq" class="nav-link">{{ "event_it.faq.manage" | trans }}</a>
