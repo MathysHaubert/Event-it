@@ -10,6 +10,7 @@ event_it:
     description2: "Dive into the enchanting world of music where every note resonates with exceptional clarity. Our mission is to transcend the sound experience in concert halls, offering unparalleled sound quality that captivates listeners and amplifies artistic energy. Discover how we redefine acoustic standards, creating a perfect symphony between the artist and their audience. Welcome to a new era of sound perfection."
     instantConnection: "Emotional Sound, Instant Connection"
   faq:
+    manage: "Manage faq"
     question1: "What is the maximum noise level allowed for an outdoor concert?"
     answer1: "The maximum noise level varies according to local regulations, but it is generally set at around 85-100 decibels for residential areas. It is crucial to check the specific standards of your locality before planning your event."
     question2: "How do you measure noise levels during an event?"
@@ -74,6 +75,7 @@ event_it:
     userList: "User List"
     contact: "Contact"
   room:
+    show: "Room"
     location: "Location"
     see_more: "Edition"
     add: "Add a room"
