@@ -55,3 +55,23 @@ event_it.public.CGU:
   path: /CGU
   controller: App\Controller\CGU\CGUController
   method: index
+
+event_it.public.language_change:
+  path: /change_language
+  controller: App\Controller\LanguageController
+  method: changeLanguage
+
+event_it.admin.roomList:
+  path: /roomlist
+  controller: App\Controller\RoomList\RoomListController
+  method: index
+
+event_it.admin.add-room:
+  path: /add-room
+  controller: App\Controller\RoomList\RoomListController
+  method: createRoom
+
+event_it.admin.room_show:
+  path: /reservation
+  controller: App\Controller\RoomList\RoomListController
+  method: index
