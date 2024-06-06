@@ -11,10 +11,10 @@ Reservation List
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center mb-5">
-        <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
+        <h2 class="heading-section">{{ "event_it.reservation.title" | trans }}</h2>
         <div class="search-bar">
           <form action="{{ path('event_it.public.reservation', {'id': roomId}) }}" method="get" id="filter-date">
-            <input type="text" name="search" placeholder="Search date">
+            <input type="text" name="search" placeholder="{{ "event_it.reservation.search" | trans }} ">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
@@ -28,8 +28,8 @@ Reservation List
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th>Organization</th>
-                  <th>Date</th>
+                  <th>{{ "event_it.reservation.organization" | trans}}</th>
+                  <th>{{ "event_it.reservation.date" | trans }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,9 +45,9 @@ Reservation List
             <div style="display:flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
               <div id="new-reservation-form" style="display: none;">
                 <input type="date" id="new-reservation-date" name="new_reservation_date">
-                <button type="button" id="submit-new-reservation" class="btn btn-primary">Submit Reservation</button>
+                <button type="button" id="submit-new-reservation" class="btn btn-primary">{{ "event_it.reservation.submit" | trans }}</button>
               </div>
-              <button type="button" id="add-reservation-button" class="btn btn-primary">Add New Reservation</button>
+              <button type="button" id="add-reservation-button" class="btn btn-primary">{{ "event_it.reservation.addReservation" | trans }}</button>
             </div>
           </form>
         </div>

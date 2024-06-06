@@ -80,4 +80,11 @@ event_it:
     see_more: "Edition"
     add: "Ajouter une room"
     register: "Enregister une room"
+  reservation:
+    title: "Réservation"
+    search: "Rechercher par date"
+    organization: "Organisation"
+    date : "Date"
+    addReservation : "Ajouter une réservation"
+    submit : "Ajouter"
 

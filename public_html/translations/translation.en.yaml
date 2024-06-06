@@ -80,3 +80,10 @@ event_it:
     see_more: "Edition"
     add: "Add a room"
     register: "Register a room"
+  reservation:
+    title: "Reservation"
+    search: "Search by date"
+    organization: "Organization"
+    date : "Date"
+    addReservation : "Add a reservation"
+    submit : "Submit"
