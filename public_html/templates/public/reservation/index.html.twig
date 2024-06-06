@@ -1,0 +1,108 @@
+{% extends 'public/base.html.twig' %}
+
+{% block title %}
+Reservation List
+{% endblock %}
+{% block body %}
+{% if logged and currentUser.role in ['ADMIN', 'SUPER_ADMIN'] %}
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">{{ "event_it.userList.title" | trans }}</h2>
+        <div class="search-bar">
+          <form action="{{ path('event_it.public.reservation') }}" method="get" id="filter-date">
+            <input type="text" name="search" placeholder="Search date">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-wrap">
+          <form id="user-update-form" method="post" action="{{ path('event_it.public.reservation') }}">
+            <input type="hidden" name="user-update-form" value="1">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Organization</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for reservation in reservationList %}
+                  <tr class="alert" role="alert">
+                    <td>{{ reservation.organization.name }}</td>
+                    <td>{{ reservation.date }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </form>
+          <div style="display:flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+            <div id="new-reservation-form" style="display: none;">
+              <input type="date" id="new-reservation-date">
+              <button id="submit-new-reservation" class="btn btn-primary">Submit Reservation</button>
+            </div>
+            <button id="add-reservation-button" class="btn btn-primary">Add New Reservation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<div class="not-logged">
+  <h1 class="h1-not-logged">
+    {{ "event_it.userList.error" | trans }}
+  </h1>
+  <button class="btn btn-primary" onclick="window.location.href = '{{ path('login') }}';">{{ "event_it.userList.login" | trans }}</button>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var addButton = document.getElementById('add-reservation-button');
+      var newReservationForm = document.getElementById('new-reservation-form');
+      var submitButton = document.getElementById('submit-new-reservation');
+
+      addButton.addEventListener('click', function() {
+        newReservationForm.style.display = 'block';
+        addButton.style.display = 'none';
+      });
+
+      submitButton.addEventListener('click', function() {
+        var newDate = document.getElementById('new-reservation-date').value;
+        var exists = false;
+
+        document.querySelectorAll('tbody tr').forEach(function(row) {
+          if (row.cells[1].innerText === newDate) {
+            exists = true;
+          }
+        });
+
+        if (!exists) {
+          var form = document.getElementById('user-update-form');
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'new_reservation_date';
+          input.value = newDate;
+          form.appendChild(input);
+          form.submit();
+        } else {
+          alert('Date already exists in the reservation list.');
+        }
+      });
+    });
+  </script>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/Resource/css/UserList/style.css">
+{% endblock %}

@@ -66,3 +66,8 @@ event_it.public.roomList:
   path: /roomList
   controller: App\Controller\RoomList\RoomListController
   method: index
+
+event_it.public.reservation:
+  path: /reservation
+  controller: App\Controller\Reservation\ReservationController
+  method: index
