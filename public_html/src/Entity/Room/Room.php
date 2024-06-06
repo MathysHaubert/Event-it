@@ -4,8 +4,6 @@ namespace App\Entity\Room;
 
 use App\Entity\User\Api;
 use DateTime;
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 
 class Room implements \JsonSerializable
 {

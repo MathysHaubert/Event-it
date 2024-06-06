@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\TwigExtention;
 
-use Symfony\Component\Yaml\Yaml;
 use App\Kernel\Kernel;
+use Symfony\Component\Yaml\Yaml;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 

@@ -3,9 +3,11 @@
 namespace App\Entity\Forum\ForumMessage;
 
 use App\Entity\User\User;
+use App\Trait\ApiTrait;
 
 class ForumMessage implements \JsonSerializable
 {
+    use ApiTrait;
 
     private $id;
 
@@ -160,8 +162,18 @@ class ForumMessage implements \JsonSerializable
         $resource->setPrimaryMessage($params['primary_message']);
         $resource->setResolved($params['resolved']);
         $resource->setLike($params['like']);
-        $resource->setForum($params['forum']);
-        $resource->setUser($_SESSION['user']);
         return $resource;
+    }
+
+    public function getAllForumMessage(): array
+    {
+        $messages = $this->get($_ENV['API_URL'].'/ForumMessage',);
+        echo print_r($messages,true);
+
+        $result = [];
+        foreach ($messages as $message) {
+            $result[] = self::createFromArray($message);
+        }
+        return $result;
     }
 }
