@@ -11,18 +11,13 @@
   <div class="accordion">
     <div class="accordion-container">
       {% for faq in faqs %}
-            <div class="questionsFaq">
-                <div class="accordion-header" aria-expanded="false">
-                    <i class="fa fa-angle-right"></i> {{ faq.question }}
-                  </div>
-                  <div class="accordion-content">{{ faq.answer }}</div>
+        <div class="questionsFaq">
+          <div class="accordion-header" aria-expanded="false">
+              <i class="fa fa-angle-right"></i> {{ faq.question }}
             </div>
-          </div>
+          <div class="accordion-content">{{ faq.answer }}</div>
+        </div>
       {% endfor %}
-
-
-    <div class="boutonPlus" >
-    <button id="RedirectToFaqAdd" class="boutonPlusHome" onclick="scrollToSection('targetSection')"> Ajouter des questions</button>
     </div>
 
 </div>

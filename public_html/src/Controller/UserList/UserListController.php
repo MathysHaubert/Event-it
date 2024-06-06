@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\UserList;
 
-use Api;
 use App\Controller\Controller;
 use App\Cookie\CookieHandler;
 use App\Entity\User\User;
 use App\Entity\Organization\Organization;
+use App\Entity\Api\Api;
 
 class UserListController extends Controller {
     public function index($data = []): void {
@@ -20,8 +20,9 @@ class UserListController extends Controller {
         $organizationInstance = new Organization();
         $userList = $userInstance->getUser([]);
         $organizationList = $organizationInstance->getOrganization();
+        $currentUser = null;
 
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && $_SESSION['user'] instanceof User) {
             $currentUser = $_SESSION['user'];
             if ($currentUser->getRole() == 'ADMIN') {
                 $userList = array_filter($userList, function($user) use ($currentUser) {
@@ -38,16 +39,29 @@ class UserListController extends Controller {
             $userList = $this->filterUser($userList, $_GET['search']);
         }
 
-        $this->webRender('public/userList/' . self::INDEX, [
-            'title' => 'User List Page',
-            'content' => 'Welcome to the user list page',
-            'cookieSet' => CookieHandler::isCookieSet(),
-            'users' => $userList,
-            'currentUser' => $currentUser ?? null,
-            'organizations' => $organizationList,
-            'logged' => isset($_SESSION['user']),
-            'role' => $currentUser->getRole() ?? '',
-        ]);
+        if(!$currentUser){
+            $this->webRender('public/userList/' . self::INDEX, [
+                'title' => 'User List Page',
+                'content' => 'Welcome to the user list page',
+                'cookieSet' => CookieHandler::isCookieSet(),
+                'users' => $userList,
+                'currentUser' => $currentUser ?? null,
+                'organizations' => $organizationList,
+                'logged' => isset($_SESSION['user']),
+                'role' => "",
+            ]);
+        } else {
+            $this->webRender('public/userList/' . self::INDEX, [
+                'title' => 'User List Page',
+                'content' => 'Welcome to the user list page',
+                'cookieSet' => CookieHandler::isCookieSet(),
+                'users' => $userList,
+                'currentUser' => $currentUser ?? null,
+                'organizations' => $organizationList,
+                'logged' => isset($_SESSION['user']),
+                'role' => $currentUser->getRole() ?? '',
+            ]);
+        }
     }
 
     public function updateUser($data): void

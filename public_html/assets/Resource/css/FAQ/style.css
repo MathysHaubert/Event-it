@@ -1,6 +1,11 @@
 /* Début style FAQ */
-.faq {display: block;
-unicode-bidi: isolate;
+.body{
+  margin: 0;
+}
+
+.faq {
+  display: block;
+  unicode-bidi: isolate;
 }
 
 .boutonPlus{
@@ -59,9 +64,9 @@ unicode-bidi: isolate;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
   font-family: Inter;
   width: 100%;
+  gap: 0.5rem;
 }
 
 .questionsFaq {
