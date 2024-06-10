@@ -1,0 +1,36 @@
+{% extends 'public/base.html.twig' %}
+
+{% block title %}
+Capteur
+{% endblock %}
+
+{% block body %}
+<div>
+  <h1>Capteur</h1>
+  <div class="selectors">
+    <form id="selectors" method="post" action="{{ path(roomId) }}">
+      <select id="capteur" name="capteur">
+        <option value="temp" {% if currentType == 'temp' %}selected{% endif %}>Temperature</option>
+        <option value="sound" {% if currentType == 'sound' %}selected{% endif %}>Son</option>
+        <option value="all" {% if currentType == 'all' %}selected{% endif %}>Tous</option>
+      </select>
+      <input type="submit" value="Valider">
+    </form>
+  </div>
+  <div class="graph">
+  </div>
+  <div class="values">
+    <p id="value">Valeur actuelle : {{ lastCurrentValue }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="/assets/Resource/css/Capteur/style.css">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="/assets/Resource/js/Capteur/script.js"></script>
+{% endblock %}

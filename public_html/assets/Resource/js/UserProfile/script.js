@@ -1,18 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const profileForm = document.querySelector('form');
+  var submitButton = document.getElementById('update_profile');
 
-  profileForm.addEventListener('submit', async (event) => {
+  submitButton.addEventListener('click', async (event) => {
       event.preventDefault();
 
       const passwordInput = document.querySelector("#password[name='password']");
       const confirmPasswordInput = document.querySelector("#confirm_password[name='confirm_password']");
       const emailInput = document.querySelector('#email');
 
-      const hashedPassword = await strHash(passwordInput.value);
-      const hashedConfirmPassword = await strHash(confirmPasswordInput.value);
-
-      passwordInput.value = hashedPassword;
-      confirmPasswordInput.value = hashedConfirmPassword;
+      console.log(passwordInput.value);
 
       if (passwordInput.value === '' || confirmPasswordInput.value === '' || emailInput.value === '') {
           alert('All fields are required!');
@@ -21,12 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (passwordInput.value !== confirmPasswordInput.value) {
           alert('Passwords do not match!');
-          document.querySelector("#password[name='password']").value = '';
-          document.querySelector("#confirm_password[name='confirm_password']").value = '';
+          passwordInput.value = '';
+          confirmPasswordInput.value = '';
           return;
       }
 
-      event.target.submit();
+      const hashedPassword = await strHash(passwordInput.value);
+      const hashedConfirmPassword = await strHash(confirmPasswordInput.value);
+
+      console.log(hashedPassword);
+
+      passwordInput.value = hashedPassword;
+      confirmPasswordInput.value = hashedConfirmPassword;
+
+      profileForm.submit();
   });
 
   async function strHash(string) {
@@ -40,4 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return hashHex;
   }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var logoutButton = document.getElementById('logout-button');
+  var form = document.getElementById('profile-form');
+  logoutButton.addEventListener('click', function() {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'logout';
+    input.value = '1';
+    form.appendChild(input);
+    form.submit();
+  });
 });

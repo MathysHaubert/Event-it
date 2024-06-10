@@ -89,3 +89,8 @@ event_it.admin.room_show:
   path: /reservation
   controller: App\Controller\RoomList\RoomListController
   method: index
+
+event_it.admin.capteur:
+  path: /capteur/{id}
+  controller: App\Controller\Capteur\CapteurController
+  method: index
