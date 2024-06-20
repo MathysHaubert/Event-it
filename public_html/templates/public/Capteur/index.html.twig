@@ -14,13 +14,14 @@ Capteur
         <option value="sound" {% if currentType == 'sound' %}selected{% endif %}>Son</option>
         <option value="all" {% if currentType == 'all' %}selected{% endif %}>Tous</option>
       </select>
-      <input type="submit" value="Valider">
     </form>
   </div>
   <div class="graph">
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
   </div>
   <div class="values">
-    <p id="value">Valeur actuelle : {{ lastCurrentValue }}</p>
   </div>
 </div>
 {% endblock %}
@@ -32,5 +33,6 @@ Capteur
 
 {% block javascripts %}
   {{ parent() }}
-  <script src="/assets/Resource/js/Capteur/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="/assets/Resource/js/Capteur/script.js"></script>
 {% endblock %}

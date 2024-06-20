@@ -14,9 +14,7 @@ class CapteurController extends Controller{
     $url = $_SERVER['REQUEST_URI'];
     $urlParts = explode('/', $url);
     $roomId = end($urlParts);
-
     $currentType = $_POST['capteur'] ?? 'temp';
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['capteur'])) {
         $currentType = $_POST['capteur'];
     }
@@ -36,7 +34,7 @@ class CapteurController extends Controller{
         return $capteur->getValue();
     }, $capteur);
 
-    $this->webRender('public/capteur/' . self::INDEX, [
+    $this->webRender('public/Capteur/' . self::INDEX, [
         'title' => 'Home Page',
         'content' => 'Welcome to the home page',
         'cookieSet' => CookieHandler::isCookieSet(),

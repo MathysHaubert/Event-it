@@ -66,3 +66,7 @@ p#value {
   padding: 10px;
   border-radius: 4px;
 }
+#myChart {
+  height: 500px !important;
+  width: 1200px !important;
+}

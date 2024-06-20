@@ -75,6 +75,7 @@ event_it:
     userList: "User List"
     contact: "Contact"
   room:
+    see_captor: "View data"
     show: "Room"
     location: "Location"
     see_more: "Edition"

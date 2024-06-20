@@ -75,6 +75,7 @@ event_it:
     userList: "Liste des utilisateurs"
     contact: "Contact"
   room:
+    see_captor: "Voir les capteurs"
     show: "Salles"
     location: "Location"
     see_more: "Edition"
