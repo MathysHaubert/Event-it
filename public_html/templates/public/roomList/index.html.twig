@@ -15,6 +15,7 @@
                   <tr>
                     <th>{{ "event_it.room.location" | trans }}</th>
                     <th>{{ "event_it.room.see_more" | trans }}</th>
+                    <th>{{ "event_it.room.see_captor" | trans }}</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -22,6 +23,7 @@
                     <tr class="alert" role="alert">
                       <td>{{ room.location }}</td>
                       <td><a href="{{ path('event_it.admin.room_show') }}/{{ room.id }}"><button type="button">Voir plus</button></a></td>
+                      <td><a href="{{ path('event_it.admin.capteur') }}/1"><button type="button">Voir capteurs</button></a></td>
                     </tr>
                   {% endfor %}
                   </tbody>
